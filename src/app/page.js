@@ -10,7 +10,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect( () => {
-    if(user.RolId === 1){
+    if(user?.RolId === 1){
       router.push("/Admin");
     }
   },[user])
