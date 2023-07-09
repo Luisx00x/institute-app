@@ -13,4 +13,14 @@ export const Slice = createSlice({
   }
 });
 
+export const AdminSlice = createSlice({
+  name: "Admin",
+  initialState: {
+    test: "pruebaSlice"
+  },
+  reducers: {
+
+  }
+});
+
 export const { setUser } = Slice.actions;
