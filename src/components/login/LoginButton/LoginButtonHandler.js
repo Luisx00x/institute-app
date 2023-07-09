@@ -19,6 +19,7 @@ export const loginHandler = async (userName, password, dispatch) => {
       //AGregar aqui el activador del modal
       dispatch(setUser(res));
     })
+    .catch(err => {throw new Error("No se pudo hacer la petición")})
 
     
 
