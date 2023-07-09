@@ -1,30 +1,30 @@
 
-const useFetch = (url, method, body) => {
+const useFetch =  async (url, method, body) => {
 
-  let fechingData;
+  try{
 
-  if(body)
-  {
-    fechingData = fetch(url, {
-      method: method,
-      body: JSON.stringify(body),
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+    let fechingData;
 
-  }else{
-    fechingData = fetch(url)
+    if(body)
+    {
+      fechingData = await fetch(url, {
+        method: method,
+        body: JSON.stringify(body),
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+  
+    }else{
+      fechingData = await fetch(url);
+    }
+
+    return fechingData;
+
+  }catch(err){
+    console.error(err)
   }
-
-  fechingData
-  .then(res => res.json())
-  .then(res => console.log(res))
-  .catch(err => console.error(err))
-  
-  
-  return fechingData
 
 }
 
