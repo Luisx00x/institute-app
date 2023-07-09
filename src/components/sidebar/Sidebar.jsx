@@ -1,13 +1,17 @@
+
+import Link from 'next/link';
 import s from './Sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({menus}) => {
+
   return (
     <nav className={s.container}>
       <ul className={s.list}>
-          <li>Elemento 1</li>
-          <li>Elemento 2</li>
-          <li>Elemento 3</li>
-          <li>Elemento 4</li>
+          {
+            menus.map( (menu,index) => {
+              return <li key={index}><Link href={menu.route} >{menu.name}</Link></li>
+            })
+          }
         </ul>
     </nav>
   )
