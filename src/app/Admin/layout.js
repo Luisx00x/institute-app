@@ -2,17 +2,14 @@
 import s from './layout.module.css';
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
-/* import { useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux'; */
+
 
 const layout = ({children}) =>{
 
-  /* const router = useRouter();
-  const user = useSelector(state => state.primarySlice.userLog); */
-
   const menuRoutes = [
     {name: "Resumen", route: "/Admin"},
-    {name: "Registrar alumno", route: "/Admin/RegisterStudent"}
+    {name: "Registrar Alumno", route: "/Admin/registerStudent"},
+    {name: "Registrar Profesor", route: "/Admin/registerTeacher"}
   ]
 
   return (

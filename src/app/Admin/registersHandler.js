@@ -1,4 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
+import { STUDENT, TEACHER } from "@/const";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
 export function inputHandler (e, set){
@@ -11,8 +12,11 @@ export function inputHandler (e, set){
   })
 }
 
-export async function submitHandler (e, inputs){
+export async function submitHandler (e, inputs, type){
   e.preventDefault(e);
+
+  if(type === STUDENT) inputs = {...inputs, userRol: 2};
+  if(type === TEACHER) inputs = {...inputs, userRol: 3};
 
   try{
 

@@ -2,9 +2,8 @@
 import CreateUsers from "@/components/createUsers/CreateUsers";
 import s from './page.module.css';
 import { useState } from "react";
-import { inputHandler, submitHandler} from "./studentRegisterHandler";
-
-//const attributes = ["Nombres del alumno","Apellidos del alumno","Nombres de la Madre","Apellidos de la Madre","Nombres del Padre","Apellidos del Padre","Email del Apoderado"];
+import { inputHandler, submitHandler } from "../registersHandler";
+import { STUDENT } from "@/const";
 
 const attributes = [
   { name: "Nombres del alumno", attribute: "name" },
@@ -26,7 +25,6 @@ const RegisterStudent = () => {
     fatherLastName: "",
     email: "",
     representative: undefined,
-    userRol: 2
   });
 
   return (
@@ -56,7 +54,7 @@ const RegisterStudent = () => {
       </div>
 
       <button type="submit" className={s.submit}
-        onClick={(e) => submitHandler(e, inputs)}
+        onClick={(e) => submitHandler(e, inputs, STUDENT)}
       >Matricular</button>
     </form>
   )
