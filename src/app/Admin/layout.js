@@ -18,8 +18,6 @@ const layout = ({children}) =>{
   return (
     <>
     {
-      /* user?.RolId !== 1 || user === null ? router.push("/") :  */
-
       <div className={s.container}>
         <Header />
         <div className={s.uiContainer}>
