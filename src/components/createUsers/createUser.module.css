@@ -9,6 +9,7 @@
 
 .labels{
   width: 30%;
+  min-width: fit-content;
 }
 
 .items{
