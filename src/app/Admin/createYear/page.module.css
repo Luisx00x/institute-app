@@ -1,0 +1,51 @@
+
+.container{
+  display: flex;
+  width: 100%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.form{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.button{
+  width: fit-content;
+  padding: 0 3%;
+  height: 10vh;
+  margin: 2% auto;
+  font-size: large;
+}
+
+.year{
+  background-color: rgb(192, 192, 231);
+  width: fit-content;
+  padding: 2%;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 2%;
+}
+
+/*  .test{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(159, 159, 247);
+  width: 100%;
+  margin-left: 3%;
+  padding: 5%;
+  margin-bottom: 3%;
+  border-radius: 15px;
+} */
+
+.title{
+  margin: 2% auto;
+  width: fit-content;
+  font-weight: 900;
+}
+
+/* .sections{
+  margin: 5% 0;
+}  */
