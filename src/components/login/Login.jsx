@@ -30,7 +30,7 @@ const Login = () => {
             value={inputs.userName} className={s.formItem} type="text" id="userNameInput" />
 
             <input name="password" onChange={(e) => inputHandler(e, setInputs)} 
-            value={inputs.password} className={s.formItem} type="text" id="passwordInput" />
+            value={inputs.password} className={s.formItem} type="password" id="passwordInput" />
 
           </div>
         </form>
