@@ -8,8 +8,9 @@ const layout = ({children}) =>{
 
   const menuRoutes = [
     {name: "Resumen", route: "/Admin"},
-    {name: "Registrar Alumno", route: "/Admin/registerStudent"},
-    {name: "Registrar Profesor", route: "/Admin/registerTeacher"}
+    {name: "Registrar Alumno", route: "/Admin/RegisterStudent"},
+    {name: "Registrar Profesor", route: "/Admin/registerTeacher"},
+    {name: "Crear un nuevo año escolar", route: "/Admin/createYear"}
   ]
 
   return (
