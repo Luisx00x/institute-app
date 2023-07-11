@@ -27,6 +27,21 @@ const CreateUsers = ({children, attributes, ...rest}) => {
           {children}
         </div>
       </div>
+
+          {
+            rest.info ? 
+            <div>
+              <p>Secciones agregadas para asignar: </p>
+              
+              {
+                rest.info.map( sec => `"${sec}"/`)
+              }
+
+            </div> 
+            : null
+          }
+        
+
     </div>
   )
 }
