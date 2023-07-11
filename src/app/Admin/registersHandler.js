@@ -37,3 +37,40 @@ export async function submitHandler (e, inputs, type){
     console.error(err)
   }
 }
+
+export const createYearData = (year, initial, elementary, secundary) => {
+
+  const compatData = {
+    newYear: year,
+    initial,
+    elementary,
+    secundary
+  }
+
+  return compatData;
+
+}
+
+export const SubmitYearHandler = async (data) => {
+
+  try{
+
+    let status;
+
+    const fechingData = await useFetch(`${LOGIN_URL}/academyYear`,"POST", data)
+    .then(res => {
+      status = res.status;
+      return res.json();
+    })
+    .then( res => {
+      if(status === 200) console.log(res);
+      else throw new Error(res);
+    })
+    .catch(err => console.log(err))
+
+
+  }catch(err){
+    console.error(err)
+  }
+
+}
