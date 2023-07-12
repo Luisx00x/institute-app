@@ -23,7 +23,7 @@ const RegisterAdmin = () => {
     <form className={s.form}>
       <div className={s.container}>
 
-        <CreateUsers attributes={attributes} title={"Registro de Profesor"} set={setInputs} handler={inputHandler}/>
+        <CreateUsers attributes={attributes} title={"Registro de Profesor"} set={setInputs} values={inputs} handler={inputHandler}/>
 
       </div>
 

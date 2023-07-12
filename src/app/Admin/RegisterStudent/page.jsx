@@ -31,7 +31,7 @@ const RegisterStudent = () => {
     <form className={s.form}>
       <div className={s.container}>
         
-        <CreateUsers attributes={attributes} title={"Registro de nuevo Alumno"} set={setInputs} handler={inputHandler}>
+        <CreateUsers attributes={attributes} title={"Registro de nuevo Alumno"} set={setInputs} handler={inputHandler} values={inputs}>
           
           <div>
             <label>Apoderado</label>
