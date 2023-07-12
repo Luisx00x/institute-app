@@ -31,8 +31,8 @@ const GradesAssignment = ({attributes, title, collection, setCollection}) => {
               collection?.map( element => {
                 return( 
                 <div className={s.sections}>
-                  <label>Nivel: {element.gradeName}</label> <br/>
-                  <label>Secciones: {element.sections.map( section => `"${section}"/`)}</label>  
+                  <label>Nivel: {element.gradeName}</label> <br/> {console.log(element.sections.length-1, "LONG")}
+                  <label>Secciones: {element.sections.map( (section,index) => `"${section}" ${element.sections.length-1 !== index ? `/` : `.` }`)}</label>  
                 </div>
                 )
               })
@@ -46,7 +46,7 @@ const GradesAssignment = ({attributes, title, collection, setCollection}) => {
         onClick={() => {
           assingLevel(setCollection, initial);
           setInitial( prev => {
-            return {...prev, gradeName: ""}
+            return { gradeName: "", section: "", sections: []}
           })
         }}
         >Asignar</button>
