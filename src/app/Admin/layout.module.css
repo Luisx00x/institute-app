@@ -7,6 +7,6 @@
 
 .uiContainer{
   display: flex;
-  background-color: red;
+  background-color: #0086bb;
   justify-content: flex-start;
 }
