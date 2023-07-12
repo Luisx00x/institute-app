@@ -17,7 +17,7 @@ const CreateUsers = ({children, attributes, ...rest}) => {
         <div className={s.container}>
           {
             attributes.map((attribute, index) => {
-              return <input name={attribute.attribute} className={s.items} key={attribute.name} values={rest.values[attribute.attribute]} id={`input${index}`} type="text" 
+              return <input name={attribute.attribute} className={s.items} key={attribute.name} value={rest.values[attribute.attribute]} id={`input${index}`} type="text" 
               onChange={(e) => rest.handler(e, rest.set)}
               />
             })
