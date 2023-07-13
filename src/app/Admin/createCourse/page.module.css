@@ -17,3 +17,9 @@
   margin: 2% auto;
   font-size: large;
 }
+
+.title{
+  margin: 2% auto;
+  width: fit-content;
+  font-weight: 900;
+}
