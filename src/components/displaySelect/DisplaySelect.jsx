@@ -1,6 +1,6 @@
 import { setSelectHandler } from './DisplaySelectHandlers.js';
 
-const DisplaySelect = ({title, choices, feature, setValue}) => {
+const DisplaySelect = ({title, choices, feature, setValue, ... rest}) => {
 
   return(
     <>  
@@ -15,7 +15,15 @@ const DisplaySelect = ({title, choices, feature, setValue}) => {
             {
               choices?.map( choice => {
                 return (
-                  <option key={choice.id+choice[feature]} value={choice.id} >{choice[feature]}</option>
+                  <option 
+                  key={`${choice.id}${choice[feature]}`} 
+                  value={choice.id} >
+                    {
+                    rest.additionalFeat ? 
+                    `${choice[rest.additionalFeat]} ${choice[feature]}` 
+                    : 
+                    choice[feature]}
+                  </option>
                 )
               })
             }

@@ -16,15 +16,19 @@ export const Slice = createSlice({
 export const AdminSlice = createSlice({
   name: "Admin",
   initialState: {
-    allGrades: []
+    allGrades: [],
+    Teachers: []
   },
   reducers: {
     setAllGrades: (state, action) => {
       state.allGrades = action.payload;
+    },
+    setTeachers: (state, action) => {
+      state.Teachers = action.payload;
     }
   }
 });
 
 export const { setUser } = Slice.actions;
 
-export const { setAllGrades } = AdminSlice.actions;
+export const { setAllGrades, setTeachers } = AdminSlice.actions;
