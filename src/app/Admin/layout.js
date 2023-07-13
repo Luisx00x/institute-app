@@ -10,7 +10,8 @@ const layout = ({children}) =>{
     {name: "Resumen", route: "/Admin"},
     {name: "Registrar Alumno", route: "/Admin/RegisterStudent"},
     {name: "Registrar Profesor", route: "/Admin/registerTeacher"},
-    {name: "Crear un nuevo año escolar", route: "/Admin/createYear"}
+    {name: "Crear un nuevo año escolar", route: "/Admin/createYear"},
+    {name: "Crear un nuevo Curso", route: "/Admin/createCourse"}
   ]
 
   return (

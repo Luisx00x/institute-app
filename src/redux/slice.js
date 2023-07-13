@@ -16,11 +16,15 @@ export const Slice = createSlice({
 export const AdminSlice = createSlice({
   name: "Admin",
   initialState: {
-    test: "pruebaSlice"
+    allGrades: []
   },
   reducers: {
-
+    setAllGrades: (state, action) => {
+      state.allGrades = action.payload;
+    }
   }
 });
 
 export const { setUser } = Slice.actions;
+
+export const { setAllGrades } = AdminSlice.actions;
