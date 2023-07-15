@@ -58,3 +58,53 @@ export const searchTeachers = async (dispatch) => {
   }
 
 }
+
+export const setDay = (set) => {
+  set( prev => {
+    return {
+      ...prev,
+      days: [...prev.days, {day: "", init: "", end: ""}]
+    }
+  })
+}
+
+export const dayHandler = (e, set, index) => {
+  set( prev => {
+    
+    const newDay = {
+      ...prev.days[index],
+      day: e.target.value
+    }
+    
+    const modifier = prev.days
+    modifier[index] = newDay;
+
+    return {
+      ...prev,
+      days: modifier
+    }
+  })
+}
+
+export const submitHandler = async (e, data) => {
+
+  e.preventDefault();
+  try{
+
+    let status;
+
+    const fechingData = useFetch(`${LOGIN_URL}/courseCreation`, "POST", data)
+    .then( res => {
+      status = res.status;
+      return res.json();
+    })
+    .then(res => {
+      if(status != 200) throw new Error(res);
+      console.log(res);
+    })
+
+  }catch(err){
+    console.error(err)
+  }
+
+}
