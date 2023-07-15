@@ -14,6 +14,7 @@ const DisplaySelect = ({title, choices, feature, setValue, ... rest}) => {
             
             {
               choices?.map( choice => {
+                console.log(choice.id)
                 return (
                   <option 
                   key={`${choice.id}${choice[feature]}`} 
