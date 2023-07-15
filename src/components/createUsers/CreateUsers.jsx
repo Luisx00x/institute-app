@@ -4,7 +4,11 @@ const CreateUsers = ({children, attributes, ...rest}) => {
 
   return(
     <div className={s.component}>
-      <h2>{rest.title}</h2>
+
+      {
+        rest.title ? <h2>{rest.title}</h2> : null
+      }
+
       <div className={s.flex}>
         <div className={`${s.container} ${s.labels}`}>
           {
