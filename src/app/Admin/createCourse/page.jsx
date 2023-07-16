@@ -109,47 +109,47 @@ const CreateCourse = () => {
 
           <h3>Ingresar Días y Hora para el Curso</h3>
 
-          {
+          <div className={s.daysCounter}>
+              {
 
-            inputs.days.map( (day, index) => {
+                inputs.days.map( (day, index) => {
 
-              return (
-          
-                  <div className={s.newDay}>
+                  return (
+              
+                      <div className={s.newDay}>
 
-                  <label htmlFor={`day${index}`}>Ingrese un día</label>
-                  <select 
-                  name={`day${index}`} 
-                  id={`day${index}`}
-                  onClick={(e) => dayHandler(e, setInputs, index)}
-                  >
-                      <option value="">Seleccione un dia para el curso</option>
-                    {
-                      DAYS.map( day => {
-                        return <option value={day}>{day}</option>
-                      })
-                    }
-                  </select>
+                      <label htmlFor={`day${index}`}>Ingrese un día: </label>
+                      <select 
+                      name={`day${index}`} 
+                      id={`day${index}`}
+                      onClick={(e) => dayHandler(e, setInputs, index)}
+                      >
+                          <option value="">Seleccione un dia para el curso</option>
+                        {
+                          DAYS.map( day => {
+                            return <option value={day}>{day}</option>
+                          })
+                        }
+                      </select>
 
-                  <div className={s.props}>
-                    <p>Hora de entrada</p>
-                    <TimerSet set={setInputs} inputName={"init"} index={index} />
-                  </div>
+                      <div className={s.props}>
+                        <p>Hora de entrada</p>
+                        <TimerSet set={setInputs} inputName={"init"} index={index} />
+                      </div>
 
-                  <div className={s.props}>
-                    <p>Hora de salida</p>
-                    <TimerSet set={setInputs} inputName={"end"} index={index} />
-                  </div>
+                      <div className={s.props}>
+                        <p>Hora de salida</p>
+                        <TimerSet set={setInputs} inputName={"end"} index={index} />
+                      </div>
 
-                  </div>
-                
-              )
+                      </div>  
+                  )
+                })
 
-            })
+              }
 
-          }
-
-          <button className={s.submit} type="button" onClick={(e) => setDay(setInputs)}>Agregar un dia al curso</button>
+              <button className={s.submit} type="button" onClick={(e) => setDay(setInputs)}>Agregar un dia al curso</button>
+          </div>
 
           <button className={s.submit} type="button" onClick={(e) => submitHandler(e, inputs)}>Crear el curso</button>
 
