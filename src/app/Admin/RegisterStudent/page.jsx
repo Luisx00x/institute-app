@@ -29,7 +29,14 @@ const RegisterStudent = () => {
 
   return (
     <form className={s.form}>
+        <p>
+
+          Cuando se matricula al alumno con la información suministrada se matricula al alumno, se crea su usuario con una contraseña aleatoria, se crea el usuari del apoderado seleccionado y se enviará al correo que suministre
+          el apoderado su nombre de usuario, su contraseña aleatoria y los del alumno matriculado
+
+        </p>
       <div className={s.container}>
+        
         
         <CreateUsers attributes={attributes} title={"Registro de nuevo Alumno"} set={setInputs} handler={inputHandler} values={inputs}>
           

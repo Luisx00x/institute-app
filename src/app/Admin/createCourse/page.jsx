@@ -59,9 +59,6 @@ const CreateCourse = () => {
   return (
     
     <form className={s.form}>
-      <h2>CreateCourse</h2>
-
-      {console.log(inputs)}
 
       {gradesInTheYear.length ? 
       

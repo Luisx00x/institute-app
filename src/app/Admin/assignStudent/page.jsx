@@ -43,6 +43,11 @@ const AssignStudent = () => {
   return(
     <>
       <div className={s.form}>
+
+        <p>
+          Se selecciona un alumno de los que se encuentran registrados y activos en el sistema, se selecciona el grado en el cual se quiere agregar al alumno year
+          luego la seccion a la cual se desea agregar. Al hacer esto el alumno se relaciona a la seccion del agrado en el año escolar en cuestion y a todas los cursos de dicha sección
+        </p>
         
         <h2 className={s.title}>Asignación de alumno</h2>
 

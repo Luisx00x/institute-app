@@ -21,6 +21,12 @@ const RegisterAdmin = () => {
 
   return (
     <form className={s.form}>
+
+    <p>
+      Al igual que con el alumno, al registrar al prefesor se mandará un mail con el modulo nodemailer con su 
+      usuario y contraseña
+    </p>
+
       <div className={s.container}>
 
         <CreateUsers attributes={attributes} title={"Registro de Profesor"} set={setInputs} values={inputs} handler={inputHandler}/>
