@@ -8,6 +8,8 @@ export const loginHandler = async (userName, password, dispatch) => {
     
     let status;
 
+    console.log(LOGIN_URL)
+
     const feching = await useFetch(`${LOGIN_URL}/login`, "POST", {userName, password})
 
     .then(res => {
