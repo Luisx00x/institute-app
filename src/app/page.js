@@ -2,9 +2,19 @@
 import Login from '@/components/login/Login';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ModalMsg from '@/components/Modals/ModalMsg/ModalMsg';
 
 export default function Home() {
+
+/*   const [modal, setModal] = useState({
+    isActive: false,
+    msg: "",
+    title: "",
+    type: undefined
+  }); */
+
+  const modal = useSelector(state => state.primarySlice.modal);
 
   const user = useSelector(state => state.primarySlice.userLog);
   const router = useRouter();
@@ -17,7 +27,8 @@ export default function Home() {
 
   return (
     <>
-          <Login />
+      {modal.isActive ? <ModalMsg {...modal} /> : null}
+      <Login />
     </>      
   )
 }

@@ -1,5 +1,6 @@
 import useFetch from "@/Hooks/useFetch";
-import { setUser } from "@/redux/slice";
+import { FAILURE } from "@/const";
+import { setModal, setUser } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
 export const loginHandler = async (userName, password, dispatch) => {
@@ -7,8 +8,6 @@ export const loginHandler = async (userName, password, dispatch) => {
   try{
     
     let status;
-
-    console.log(LOGIN_URL)
 
     const feching = await useFetch(`${LOGIN_URL}/login`, "POST", {userName, password})
 
@@ -18,10 +17,18 @@ export const loginHandler = async (userName, password, dispatch) => {
     })
     .then(res => {
       if(status !== 200) throw new Error(res);
-      //AGregar aqui el activador del modal
+      
       dispatch(setUser(res));
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      const error = {
+        type: FAILURE,
+        title: err.name,
+        msg: err.message,
+        isActive: true
+      }
+      dispatch(setModal(error));
+    })
 
     
 

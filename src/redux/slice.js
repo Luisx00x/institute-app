@@ -4,11 +4,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const Slice = createSlice({
   name: "PrimirySlice",
   initialState: {
-    userLog: null
+    userLog: null,
+    modal: {
+      isActive: true,
+      title: "",
+      msg: "",
+      type: null
+    }
   },
   reducers: {
     setUser: (state, action) => {
       state.userLog = action.payload;
+    },
+    setModal: (state, action) => {
+      state.modal = action.payload;
     }
   }
 });
@@ -33,6 +42,6 @@ export const AdminSlice = createSlice({
   }
 });
 
-export const { setUser } = Slice.actions;
+export const { setUser, setModal } = Slice.actions;
 
 export const { setAllGrades, setTeachers, setStudents } = AdminSlice.actions;
