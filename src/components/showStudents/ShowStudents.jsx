@@ -5,32 +5,60 @@ import { searchStudents } from "@/app/Admin/assignStudent/assingStudentHandler";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StudentCard from "./studentCard/StudentCard";
+import { STUDENT, TEACHER, YEAR } from '@/const';
+import { searchGrades, searchTeachers } from '@/app/Admin/createCourse/createCourseHandlers';
 
-const ShowStudents = () => {
+const ShowStudents = ({type, display}) => {
   
   const dispatch = useDispatch();
 
+  const students = useSelector(state => state.admin.Students);
+  const teachers = useSelector(state => state.admin.Teachers);
+  const academyYear = useSelector(state => state.admin.allGrades);
+  
   useEffect( () => {
 
-    searchStudents(dispatch);
-
-  },[])
-
-  const students = useSelector(state => state.admin.Students);
-
-  console.log(students)
+    if(type === STUDENT) searchStudents(dispatch);
+    if(type === TEACHER) searchTeachers(dispatch);
+    if(type === YEAR) searchGrades(dispatch); 
+  },[]);
+  
+  console.log(academyYear)
 
   return (    
     <div className={s.studentsContainer}>
 
-      <h2>Lista de estudiantes activos</h2>
+      {
+      type === STUDENT ? <h2>Lista de estudiantes activos</h2> 
+      : type === TEACHER ? <h2>Lista de Profesores activos</h2> 
+      : type === YEAR ? <h2>Año escolar </h2>
+      : null
+      }
 
-      <div>
+      <div className={display ? s.rows : s.column}>
+
+        { 
+          type === STUDENT ?
+          students?.map( student => {
+            return <StudentCard list={student} /> 
+          })
+          : null
+        }
 
         {
-          students.map( student => {
-            return <StudentCard student={student} /> 
+          type === TEACHER
+          ? teachers?.map( teacher => {
+            return <StudentCard list={teacher} />
           })
+          : null
+        }
+
+        {
+          type === YEAR
+          ? academyYear?.map( grade => {
+            return <StudentCard list={grade} alt={true} />
+          })
+          : null
         }
 
       </div>
