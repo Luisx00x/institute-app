@@ -4,6 +4,8 @@ import s from './page.module.css';
 import { useState } from "react";
 import { inputHandler, submitHandler } from "../registersHandler";
 import { STUDENT } from "@/const";
+import { useDispatch, useSelector } from "react-redux";
+import ModalMsg from "@/components/Modals/ModalMsg/ModalMsg";
 
 const attributes = [
   { name: "Nombres del alumno", attribute: "name" },
@@ -15,6 +17,9 @@ const attributes = [
 ]
 
 const RegisterStudent = () => {
+
+  const dispatch = useDispatch();
+  const modal = useSelector(state => state.primarySlice.modal);
 
   const [inputs, setInputs] = useState({
     name: "",
@@ -28,42 +33,48 @@ const RegisterStudent = () => {
   });
 
   return (
-    <form className={s.form}>
-        <p>
 
-          Cuando se matricula al alumno con la información suministrada se matricula al alumno, se crea su usuario con una contraseña aleatoria, se crea el usuari del apoderado seleccionado y se enviará al correo que suministre
-          el apoderado su nombre de usuario, su contraseña aleatoria y los del alumno matriculado
+    <>
+      {modal.isActive ? <ModalMsg {...modal} /> : null}  
+  
+      <form className={s.form}>
+          <p>
 
-        </p>
-      <div className={s.container}>
-        
-        
-        <CreateUsers attributes={attributes} title={"Registro de nuevo Alumno"} set={setInputs} handler={inputHandler} values={inputs}>
+            Cuando se matricula al alumno con la información suministrada se matricula al alumno, se crea su usuario con una contraseña aleatoria, se crea el usuari del apoderado seleccionado y se enviará al correo que suministre
+            el apoderado su nombre de usuario, su contraseña aleatoria y los del alumno matriculado
+
+          </p>
+        <div className={s.container}>
           
-          <div>
-            <label>Apoderado</label>
-            <select onChange={(e) => inputHandler(e, setInputs)} name="representative" id="repSelect">
-              <option value="">-- Seleccione un representante --</option>
-              <option value="1">Padre</option>
-              <option value="2">Madre</option>
+          
+          <CreateUsers attributes={attributes} title={"Registro de nuevo Alumno"} set={setInputs} handler={inputHandler} values={inputs}>
+            
+            <div>
+              <label>Apoderado</label>
+              <select onChange={(e) => inputHandler(e, setInputs)} name="representative" id="repSelect">
+                <option value="">-- Seleccione un representante --</option>
+                <option value="1">Padre</option>
+                <option value="2">Madre</option>
 
-            </select>
-          </div>
-          <div>
-            <label htmlFor="emailRepresentative">Email del Apoderado</label>
-            <input type="text" name="email" id="emailRepresentative"
-            onChange={(e) => inputHandler(e, setInputs) }
-            />
-          </div>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="emailRepresentative">Email del Apoderado</label>
+              <input type="text" name="email" id="emailRepresentative"
+              onChange={(e) => inputHandler(e, setInputs) }
+              />
+            </div>
 
-        </CreateUsers>
-        
-      </div>
+          </CreateUsers>
+          
+        </div>
 
-      <button type="submit" className={s.submit}
-        onClick={(e) => submitHandler(e, inputs, STUDENT)}
-      >Matricular</button>
-    </form>
+        <button type="submit" className={s.submit}
+          onClick={(e) => submitHandler(e, inputs, STUDENT, dispatch)}
+        >Matricular</button>
+      </form>
+    </>
+
   )
 }
 

@@ -1,5 +1,6 @@
 import useFetch from "@/Hooks/useFetch";
-import { setStudents } from "@/redux/slice";
+import { FAILURE, SUCCESS } from "@/const";
+import { setModal, setStudents } from "@/redux/slice";
 
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
@@ -13,13 +14,22 @@ export const searchStudents = (dispatch) => {
     return res.json();
   })
   .then(res => {
-    if(status !== 200) throw new Error(res);
+    if(status !== 200) {
+      const error = {
+        isActive: true,
+        msg: res.message,
+        title: res.name,
+        type: FAILURE
+      }
+      throw new Error(res)
+    }
+    
     dispatch(setStudents(res));
   })
 
 }
 
-export const submitAssign = (e, data) => {
+export const submitAssign = (e, data, dispatch) => {
 
   e.preventDefault();
 
@@ -31,7 +41,27 @@ export const submitAssign = (e, data) => {
     return res.json();
   })
   .then(res => {
-    if(status !== 200) throw new Error(res);
-    console.log(res)
+    if(status !== 200) {
+      const error = {
+        isActive: true,
+        msg: res.message,
+        title: res.name,
+        type: FAILURE 
+      }
+
+      dispatch(setModal(error))
+      throw new Error(res)
+    };
+    
+    const success = {
+      isActive: true,
+      msg: res,
+      type: SUCCESS
+    }
+    dispatch(setModal(success));
+
+  })
+  .catch(err => {
+    console.error(err)
   })
 }

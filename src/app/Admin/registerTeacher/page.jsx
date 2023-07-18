@@ -4,6 +4,8 @@ import s from './page.module.css';
 import { inputHandler, submitHandler } from '../registersHandler.js';
 import { useState } from 'react';
 import { TEACHER } from '@/const';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalMsg from '@/components/Modals/ModalMsg/ModalMsg';
 
 const attributes = [
   {name: "Nombres del profesor", attribute: "name"},
@@ -12,6 +14,10 @@ const attributes = [
 ]
 
 const RegisterAdmin = () => {
+  
+  const dispatch = useDispatch();
+
+  const modal = useSelector(state => state.primarySlice.modal);
 
   const [inputs, setInputs] = useState({
     name: "",
@@ -20,25 +26,31 @@ const RegisterAdmin = () => {
   });
 
   return (
-    <form className={s.form}>
 
-    <p>
-      Al igual que con el alumno, al registrar al prefesor se mandará un mail con el modulo nodemailer con su 
-      usuario y contraseña
-    </p>
+    <>
+      {modal.isActive ? <ModalMsg {...modal} /> : null}
+      <form className={s.form}>
 
-      <div className={s.container}>
+      <p>
+        Al igual que con el alumno, al registrar al prefesor se mandará un mail con el modulo nodemailer con su 
+        usuario y contraseña
+      </p>
 
-        <CreateUsers attributes={attributes} title={"Registro de Profesor"} set={setInputs} values={inputs} handler={inputHandler}/>
+        <div className={s.container}>
 
-      </div>
+          <CreateUsers attributes={attributes} title={"Registro de Profesor"} set={setInputs} values={inputs} handler={inputHandler}/>
 
-      <input 
-        className={s.submit}
-        onClick={(e) => submitHandler(e, inputs, TEACHER)}
-        type="submit" value="Registrar" 
-      />
-    </form>
+        </div>
+
+        <input 
+          className={s.submit}
+          onClick={(e) => submitHandler(e, inputs, TEACHER, dispatch)}
+          type="submit" value="Registrar" 
+        />
+      </form>
+    
+    </>
+    
   )
 }
 

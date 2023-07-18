@@ -148,7 +148,7 @@ const CreateCourse = () => {
               <button className={s.submit} type="button" onClick={(e) => setDay(setInputs)}>Agregar un dia al curso</button>
           </div>
 
-          <button className={s.submit} type="button" onClick={(e) => submitHandler(e, inputs)}>Crear el curso</button>
+          <button className={s.submit} type="button" onClick={(e) => submitHandler(e, inputs, dispatch)}>Crear el curso</button>
 
         </div>
       

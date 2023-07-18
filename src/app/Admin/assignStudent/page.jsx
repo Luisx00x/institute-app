@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchStudents, submitAssign } from './assingStudentHandler';
 import { searchGrades } from '../createCourse/createCourseHandlers';
+import ModalMsg from '@/components/Modals/ModalMsg/ModalMsg';
 
 const studentsSelect = {name:"Seleccione a un alumno: " , attribute: "studentId" };
 const gradeSelect = {name: "Seleccione el grado del alumno: ", attribute: "gradeId"};
@@ -19,6 +20,7 @@ const AssignStudent = () => {
   });
 
   const dispatch = useDispatch();
+  const modal = useSelector(state => state.primarySlice.modal);
 
   useEffect( () => {
 
@@ -42,6 +44,8 @@ const AssignStudent = () => {
 
   return(
     <>
+      {modal.isActive ? <ModalMsg {...modal} /> : null}
+
       <div className={s.form}>
 
         <p>
@@ -94,7 +98,7 @@ const AssignStudent = () => {
         </section>
 
       <button className={s.submit}
-        onClick={(e) => submitAssign(e, inputs)}
+        onClick={(e) => submitAssign(e, inputs, dispatch)}
       >Agregar alumno a la sección</button>
       
       </div>

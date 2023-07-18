@@ -7,13 +7,6 @@ import ModalMsg from '@/components/Modals/ModalMsg/ModalMsg';
 
 export default function Home() {
 
-/*   const [modal, setModal] = useState({
-    isActive: false,
-    msg: "",
-    title: "",
-    type: undefined
-  }); */
-
   const modal = useSelector(state => state.primarySlice.modal);
 
   const user = useSelector(state => state.primarySlice.userLog);

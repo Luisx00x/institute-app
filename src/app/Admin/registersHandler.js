@@ -1,5 +1,6 @@
 import useFetch from "@/Hooks/useFetch";
-import { STUDENT, TEACHER } from "@/const";
+import { FAILURE, STUDENT, SUCCESS, TEACHER } from "@/const";
+import { setModal } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
 export function inputHandler (e, set){
@@ -12,7 +13,7 @@ export function inputHandler (e, set){
   })
 }
 
-export async function submitHandler (e, inputs, type){
+export async function submitHandler (e, inputs, type, dispatch){
   e.preventDefault(e);
 
   if(type === STUDENT) inputs = {...inputs, userRol: 2};
@@ -28,10 +29,25 @@ export async function submitHandler (e, inputs, type){
       return res.json();
     })
     .then(res => {
-      if(status === 200) console.log(res);
+      if(status === 200) {
+        const info = {
+          type: SUCCESS,
+          msg: res,
+          isActive: true
+        }
+        dispatch(setModal(info));
+      }
       else throw new Error(res);
     })
-    .catch(err => {console.log(err)})
+    .catch(err => {
+      const error = {
+        type: FAILURE,
+        title: err.name,
+        msg: err.message,
+        isActive: true
+      }
+      dispatch(setModal(error));
+    })
 
   }catch(err){
     console.error(err)
