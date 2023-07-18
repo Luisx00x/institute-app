@@ -6,7 +6,7 @@ export const Slice = createSlice({
   initialState: {
     userLog: null,
     modal: {
-      isActive: true,
+      isActive: false,
       title: "",
       msg: "",
       type: null
