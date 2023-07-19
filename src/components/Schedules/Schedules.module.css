@@ -1,18 +1,22 @@
 
 .gridContainer{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 200px);
   grid-auto-rows: max-content;
   background-color: rgb(235, 162, 162);
-  width: 100%;
+  text-align: center;
+  margin: 10% auto;
+  height: fit-content;
 }
 
 .gridLeft {
   grid-column: 1;
-  background-color: rgb(149, 149, 201);
+  background-color: rgb(241, 241, 241);
+  border: 1px solid black;
 }
 
 .gridRight{
   grid-column: 2;
-  background-color: rgb(191, 138, 241);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
 }

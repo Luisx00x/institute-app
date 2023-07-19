@@ -1,15 +1,31 @@
 import s from './Schedules.module.css';
 
-const Schedules = () => {
+const Schedules = ({shcedule}) => {
   return (
     <>
       <div className={s.gridContainer}>
         <div className={s.gridLeft}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta voluptatibus dolorem iure vero exercitationem quibusdam suscipit, quaerat aperiam sed aut accusantium totam at error quod ut eveniet doloremque. Velit, non.
+          <h3>Dia</h3>
         </div>
         <div className={s.gridRight}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores culpa non rerum praesentium ab cumque, facere aspernatur sunt laborum tempora aliquam veniam! Sint aut aperiam cupiditate sed possimus ad. Iure?
+          <h3>Hora</h3>
         </div>
+
+      {
+        shcedule.map( schedle => {
+          return (
+            <>
+              <div className={s.gridLeft}>
+                {schedle.day}
+              </div>
+              <div className={s.gridRight}>
+                {schedle.init}-{schedle.end}
+              </div>
+            </>
+          )
+        })
+      }
+
       </div>
 
     </>
