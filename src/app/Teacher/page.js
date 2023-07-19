@@ -1,10 +1,11 @@
 'use client'
 import Information from "@/components/information/Information";
-import { searchIndividual } from "@/globalHandlers";
+import { setTeacherInformation } from "@/globalHandlers";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+const thisYear = new Date().getFullYear();
 
 const TeacherUI = () => {
   
@@ -19,7 +20,7 @@ const TeacherUI = () => {
 
   useEffect( () => {
 
-    searchIndividual(8, 3, 3, dispatch);
+    setTeacherInformation(8, 3, 3, thisYear, dispatch);
 
   },[]);
 
