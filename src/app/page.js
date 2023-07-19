@@ -16,6 +16,7 @@ export default function Home() {
     if(user?.RolId === 1){
       router.push("/Admin");
     }
+    if(user?.RolId === 3) router.push("/Teacher");
   },[user])
 
   return (
