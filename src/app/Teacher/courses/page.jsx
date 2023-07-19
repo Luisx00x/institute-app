@@ -1,5 +1,6 @@
 'use client'
 
+import ShowStudents from "@/components/showStudents/ShowStudents";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -11,17 +12,18 @@ const Courses = () => {
   const dispatch = useDispatch();
   const teacherId = useSelector(state => state.primarySlice.userLog);
   
-  const teacherInformation = useSelector(state => state.teacher.courses);
-  const teacherTest = useSelector(state => state.teacher.teacher);
-  const teacherSection = useSelector(state => state.teacher.sections);
-  const teacherGrades = useSelector(state => state.teacher.grades);
-  console.log(teacherTest)
-  console.log(teacherInformation, "COURSES");
-  console.log(teacherSection, "SECTIONS")
-  console.log(teacherGrades, "GRADES")
+  const Courses = useSelector(state => state.teacher.courses);
+  const Test = useSelector(state => state.teacher.teacher);
+  const Section = useSelector(state => state.teacher.sections);
+  const Grades = useSelector(state => state.teacher.grades);
+  console.log(Test)
+  console.log(Courses, "COURSES");
+  console.log(Section, "SECTIONS")
+  console.log(Grades, "GRADES")
 
   return (
     <>
+      <ShowStudents aditional={Courses} />
     </>
   )
 }
