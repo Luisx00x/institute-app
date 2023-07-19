@@ -1,6 +1,11 @@
+'use client'
+import Link from 'next/link';
 import s from './StudentCard.module.css';
+import { usePathname } from 'next/navigation';
 
 const StudentCard = ({list, ...rest}) => {
+
+  const path = usePathname();
 
   return (
     
@@ -38,10 +43,10 @@ const StudentCard = ({list, ...rest}) => {
       <div key={rest.passList.id} className={s.container}>
         {
           rest.passList ?
-          <>
+          <Link href={`${path}/${rest.passList.id}`}>
             <label className={s.label}>id: {rest.passList.id}</label>
             <label className={s.label}>Materia: {rest.passList.courseName}</label>
-          </>
+          </Link>
           : null
         }
       </div>
