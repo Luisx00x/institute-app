@@ -1,13 +1,13 @@
 'use client'
-import { SUCCESS } from '@/const';
+import { FAILURE, SUCCESS } from '@/const';
 import ModalButton from '../ModalButton/ModalButton';
 import modals from '../Modals.module.css';
 import s from './ModalChange.module.css';
 import { useState } from 'react';
 
-const ModalChange = ({title, message, value}) => {
+const ModalChange = ({title, message, values}) => {
 
-  const [input, setInput] = useState(value);
+  const [input, setInput] = useState(values);
 
   return(
     <>
@@ -20,11 +20,19 @@ const ModalChange = ({title, message, value}) => {
 
           <p>{message}</p>
 
-          <input type="number" value={input} onChange={(e) => setInput(  prev => {
-            return e.target.value
+          <input type="number" name="absences" 
+          value={input.absences} 
+          min={0}
+
+          onChange={(e) => setInput(  prev => {
+            return {
+              ...prev,
+              [e.target.name]: parseInt(e.target.value)
+            }
           })} />
 
-          <ModalButton type={SUCCESS} text={"Guardar"} />
+          <ModalButton type={SUCCESS} text={"Guardar"} data={input} />
+          <ModalButton type={FAILURE} text={"Cancelar"} />
 
         </div>
 
