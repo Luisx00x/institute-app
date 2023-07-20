@@ -10,13 +10,13 @@ const AbsencesList = ({params}) => {
   
   const user = useSelector(state => state.primarySlice.userLog);
   const allSections = useSelector(state => state.teacher.courses);
-  const section = allSections.find( course => course.id == listId);
+  const course = allSections.find( course => course.id == listId);
 
   useEffect( () => {
     
     if(user?.RolId === 3){
       setData( prev => {
-        return section.Section.Students
+        return course.Section.Students
       });
     }
     
@@ -24,9 +24,7 @@ const AbsencesList = ({params}) => {
   
   return (
     <>
- {   console.log(data)}
-
-        <List listItems={data} />
+        <List listItems={data} course={course} />
     </>
   )
 } 

@@ -1,9 +1,26 @@
+'use client'
 import s from './List.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalChange from '../Modals/ModalChange/ModalChange';
+import { setListModal } from './ListHandler';
 
-const List = ({listItems}) => {
+const List = ({listItems, course}) => {
+
+  const modal = useSelector(state => state.primarySlice.modal);
+  const dispatch = useDispatch();
+  const message = "Por favor, ingrese la cantidad de inasistencias que posee el alumno";
+
   return(
-    <>
+    <> 
+
+    {
+      
+      
+      
       <div className={s.container}>
+
+      <h2>{course.courseName}</h2>
+      {console.log(course.id)}
 
         <div className={s.gridContainer}>
 
@@ -22,6 +39,11 @@ const List = ({listItems}) => {
           {
 
             listItems?.map( item => {
+
+              const absencesValue = (item.Absences.find( absences => absences.CourseId == course.id)).absences
+
+              if(modal.isActive) return (<ModalChange title={"Marcar inasistencias"} message={message} value={absencesValue} />)
+
               return (
                 <>
                   <div className={s.grid1}>
@@ -31,7 +53,13 @@ const List = ({listItems}) => {
                     {item.lastName}
                   </div>
                   <div className={s.grid3}>
-                    Aqui van las inasistencias
+                    {absencesValue}
+                  </div>
+                  <div className={s.grid4}>
+                    <div 
+                    className={s.changeAbsences}
+                    onClick={() => setListModal("Modificar inasistencias", dispatch)}
+                    >Marcar inasistencia</div>
                   </div>
                 </>
               )
@@ -40,8 +68,10 @@ const List = ({listItems}) => {
           }
 
         </div>
-
       </div>
+    
+    }
+
     </>
   )
 }
