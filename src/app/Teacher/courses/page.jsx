@@ -1,8 +1,7 @@
 'use client'
 
 import ShowStudents from "@/components/showStudents/ShowStudents";
-import { usePathname } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Courses = () => {
 

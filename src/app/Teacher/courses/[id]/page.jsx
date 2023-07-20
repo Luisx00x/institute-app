@@ -4,6 +4,7 @@ import { callData } from "./courseHandler";
 import { useSelector } from "react-redux";
 import Schedules from "@/components/Schedules/Schedules";
 import s from './page.module.css';
+import Link from "next/link";
 
 
 const Course = ({params}) => {
@@ -36,8 +37,6 @@ const Course = ({params}) => {
     grade = gradeSearch.grade
   }
 
-  console.log(grade)
-
   console.log(data, "DATA")
 
   return (
@@ -57,6 +56,9 @@ const Course = ({params}) => {
               <div>
                <h3>Seccion</h3>
                 <p>{section}</p>
+                <Link className={s.link} href={'#'}>
+                  <button>Ver listado de alumnos</button>
+                </Link>
               </div>
 
             </div>

@@ -51,7 +51,8 @@ export const setTeacherInformation = (user, rol, applicant, year, dispatch) => {
       res.map( course => {
         sections.push({
           id: course.Section.id,
-          sectionName: course.Section.sectionName
+          sectionName: course.Section.sectionName,
+          students: course.Section.Students
         })
 
         grades.push({
