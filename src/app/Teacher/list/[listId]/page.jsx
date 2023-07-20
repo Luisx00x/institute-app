@@ -20,7 +20,7 @@ const AbsencesList = ({params}) => {
       });
     }
     
-  },[])
+  },[allSections])
   
   return (
     <>

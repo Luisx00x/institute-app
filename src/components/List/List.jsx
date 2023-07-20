@@ -3,24 +3,32 @@ import s from './List.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalChange from '../Modals/ModalChange/ModalChange';
 import { setListModal } from './ListHandler';
+import { useEffect } from 'react';
+import { setTeacherInformation } from '@/globalHandlers';
 
 const List = ({listItems, course}) => {
+
+  const thisYear = new Date().getFullYear();
 
   const modal = useSelector(state => state.primarySlice.modal);
   const dispatch = useDispatch();
   const message = "Por favor, ingrese la cantidad de inasistencias que posee el alumno";
+  const user = useSelector(state => state.primarySlice.userLog);
+
+  useEffect( () => {
+
+    setTeacherInformation(user.id, user.RolId, user.RolId, thisYear, dispatch);
+
+  },[modal])
 
   return(
     <> 
 
     {
       
-      
-      
       <div className={s.container}>
 
       <h2>{course.courseName}</h2>
-      {console.log(course.id)}
 
         <div className={s.gridContainer}>
 
@@ -42,7 +50,10 @@ const List = ({listItems, course}) => {
 
               const absencesValue = (item.Absences.find( absences => absences.CourseId == course.id)).absences
 
-              if(modal.isActive) return (<ModalChange title={"Marcar inasistencias"} message={message} value={absencesValue} />)
+              if(modal.isActive) return (
+              <ModalChange title={"Marcar inasistencias"} message={message} 
+              values={{studentId: item.id, courseId: course.id ,absences: absencesValue}} />
+              )
 
               return (
                 <>
