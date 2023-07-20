@@ -13,6 +13,8 @@ const TeacherUI = () => {
   const user = useSelector(state => state.primarySlice.userLog);
   const dispatch = useDispatch();
 
+  console.log(user)
+
  /*  useEffect( () => {
     if(user?.RolId !== 3) router.push("/");
   }, [])
@@ -20,7 +22,7 @@ const TeacherUI = () => {
 
   useEffect( () => {
 
-    setTeacherInformation(8, 3, 3, thisYear, dispatch);
+    setTeacherInformation(user.id, user.RolId, user.RolId, thisYear, dispatch);
 
   },[]);
 

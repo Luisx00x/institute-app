@@ -11,10 +11,11 @@ export const callData = async (id, rolId, setData) => {
     return res.json();
   })
   .then( res => {
-    if(status === 200){
+    if(status === 200 || status === 304){
       setData( prev => {
         return res;
       })
+      return
     }
     throw new Error (res);
   })

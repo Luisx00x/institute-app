@@ -44,6 +44,23 @@ export const setTeacherInformation = (user, rol, applicant, year, dispatch) => {
       if(status !== 200){
         throw new Error(res);
       }
+      console.log(res, "RES")
+      
+      let sections = [], grades = [];
+      
+      res.map( course => {
+        sections.push({
+          id: course.Section.id,
+          sectionName: course.Section.sectionName
+        })
+
+        grades.push({
+          sectionId: course.Section.id,
+          grade: course.Section.Grade.grade
+        })
+      });
+      dispatch(setGrades(grades));
+      dispatch(setSections(sections));
       dispatch(setCourses(res));
     })
     .catch( err => {
