@@ -9,7 +9,7 @@ const teacherLayout = ({children}) =>{
   const menuRoutes = [
     {name: "Resumen", route: "/Teacher"},
     {name: "Ver materias", route: "/Teacher/courses"},
-    {name: "Dejar tarea", route: "/Teacher/RegisterStudent"},
+    {name: "Dejar tarea", route: "/Teacher/homeworks"},
     {name: "Enviar comunicado", route: "/Teacher/registerTeacher"},
     {name: "Subir clases", route: "/Teacher/createYear"},
     {name: "Inasistencias", route: "/Teacher/list"},
