@@ -69,3 +69,13 @@ export const setTeacherInformation = (user, rol, applicant, year, dispatch) => {
     })
 
 }
+
+export function inputHandler (e, set){
+  e.preventDefault();
+  set( prev => {
+    return {
+      ...prev,
+      [e.target.name]: e.target.value
+    }
+  })
+}
