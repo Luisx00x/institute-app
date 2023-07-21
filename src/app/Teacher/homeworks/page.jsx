@@ -1,26 +1,17 @@
-import UploadFiles from "@/components/UploadFiles/UploadFiles";
-import s from './page.module.css';
+'use client'
 
-const Homeworks = () => {
+import ShowStudents from "@/components/showStudents/ShowStudents";
+import { useSelector } from "react-redux";
+
+const HomeworkList = () => {
+
+  const Courses = useSelector(state => state.teacher.courses);
 
   return (
     <>
-
-      <div className={s.container}>
-
-        <UploadFiles />
-
-        <div className={s.test}>
-
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nisi quidem id fugit incidunt? Quia ea consequuntur, labore vel impedit sapiente qui hic excepturi reiciendis dolore nisi architecto fugit veniam?
-
-        </div>
-
-      </div>
-
-
+      <ShowStudents aditional={Courses} />
     </>
   )
 }
 
-export default Homeworks;
+export default HomeworkList;
