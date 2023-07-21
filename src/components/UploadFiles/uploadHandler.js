@@ -13,14 +13,17 @@ export const getFile = (e) => {
   return fileTemp;
 }
 
-export const submitFile = async (e, data, dispatch, setData) => {
+export const submitFile = (e, data, input, dispatch, setData, setInput) => {
 
   let status;
 
   if(!data) return
 
   const body = new FormData();
-  body.append('myFile', data.fileRaw, data.fileName);
+  body.append('newHomework', data.fileRaw, data.fileName);
+  body.append('title', input.inputValue);
+  body.append('courseId', input.courseId);
+  body.append('teacherId', input.teacherId);
 
   e.preventDefault();
   useFetch(`${LOGIN_URL}/uploads/homeworks`, "POST", body, true)
@@ -36,7 +39,8 @@ export const submitFile = async (e, data, dispatch, setData) => {
         title: "Envio de tarea",
         msg: res
       }
-      setData(prev => undefined)
+      setData(prev => undefined);
+      setInput(prev => "");
       return dispatch(setModal(modalBody));
     }
     throw new Error(res);
@@ -49,7 +53,8 @@ export const submitFile = async (e, data, dispatch, setData) => {
       msg: err.message
     }
     dispatch(setModal(errorBody));
-    setData(prev => undefined)
+    setData(prev => undefined);
+    setInput(prev => "");
   })
 
 }
