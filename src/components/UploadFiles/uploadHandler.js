@@ -19,33 +19,26 @@ export const submitFile = (e, data, input, dispatch, setData, setInput, type) =>
   
   if(!data) return
   
+  const body = new FormData();
+
   if(type === HOMEWORKS) {
   
     url = `${LOGIN_URL}/uploads/homeworks`;
-    const body = new FormData();
     body.append('newHomework', data.fileRaw, data.fileName);
-    body.append('title', input.inputValue);
-    body.append('courseId', input.courseId);
-    body.append('teacherId', input.teacherId);
 
-    finalBody = body;
-  
   }
   if(type === CLASSES) {
     url = `${LOGIN_URL}/uploads/classes`
-    const body = new FormData();
     body.append("newClass", data.fileRaw, data.fileName);
-    body.append("title", input.inputValue);
-    body.append("courseId", input.courseId);
 
-    finalBody = body;
-    
   };
 
-
+  body.append('title', input.inputValue);
+  body.append('courseId', input.courseId);
+  body.append('teacherId', input.teacherId);
 
   e.preventDefault();
-  useFetch(`${url}`, "POST", finalBody, true)
+  useFetch(`${url}`, "POST", body, true)
   .then(res => {
     status = res.status;
     return res.json();
