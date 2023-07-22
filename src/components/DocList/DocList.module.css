@@ -2,13 +2,15 @@
 .gridContainer{
   display: grid;
   grid-template-columns: repeat(2, 180px) 100px;
-  grid-template-rows: max-content;
+  grid-template-rows: auto;
+  background-color: white;
+  margin: 2%;
+  text-align: center;
 }
 
 .grid1{
   grid-column: 1;
   border: 1px solid black;
-  width: 100%;
 }
 
 .grid2{

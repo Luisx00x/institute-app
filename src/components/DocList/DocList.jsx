@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import s from './DocList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { HOMEWORKS } from '@/const';
 import { getHomeworks } from './DockListHandler';
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
@@ -50,7 +50,7 @@ const DocList = ({userId, courseId, listType}) => {
                   {element.asignation}
                 </div>
                 <div className={s.grid2}>
-                  <a href={`${LOGIN_URL}/${element.location}`}>{element.asignation}</a>
+                  <a href={`${LOGIN_URL}/${element.location}`} target='_blank'>{element.asignation}</a>
                 </div>
                 <div className={s.grid3}>
 
