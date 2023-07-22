@@ -8,7 +8,7 @@ import StudentCard from "./studentCard/StudentCard";
 import { STUDENT, TEACHER, YEAR } from '@/const';
 import { searchGrades, searchTeachers } from '@/app/Admin/createCourse/createCourseHandlers';
 
-const ShowStudents = ({type, display, aditional}) => {
+const ShowStudents = ({type, display, aditional, courseData}) => {
   
   const dispatch = useDispatch();
 
@@ -23,8 +23,6 @@ const ShowStudents = ({type, display, aditional}) => {
     if(type === YEAR) searchGrades(dispatch); 
 
   },[]);
-  
-  console.log(academyYear)
 
   return (    
     <div className={s.studentsContainer}>
@@ -65,7 +63,7 @@ const ShowStudents = ({type, display, aditional}) => {
         {
           aditional ?
           aditional.map( adition => {
-            return <StudentCard passList={adition} />
+            return <StudentCard passList={adition} courseData={courseData} />
           })
           : null
 

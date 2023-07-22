@@ -40,6 +40,19 @@ const StudentCard = ({list, ...rest}) => {
 
       </div>
       :
+      rest.courseData 
+      ?
+      <div key={rest.passList.id} className={s.container}>
+        {
+          rest.passList ?
+          <Link href={`${path}/${rest.passList.id}`}>
+            <label className={s.label}>id: {rest.passList.id}</label>
+            <label className={s.label}>Materia: {rest.passList.courseName}</label>
+          </Link>
+          : null
+        }
+      </div>
+      :
       <div key={rest.passList.id} className={s.container}>
         {
           rest.passList ?
