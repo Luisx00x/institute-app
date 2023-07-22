@@ -48,6 +48,8 @@ const AssignStudent = () => {
 
       <div className={s.form}>
 
+        {console.log(inputs, "INPUTS")}
+
         <p>
           Se selecciona un alumno de los que se encuentran registrados y activos en el sistema, se selecciona el grado en el cual se quiere agregar al alumno year
           luego la seccion a la cual se desea agregar. Al hacer esto el alumno se relaciona a la seccion del agrado en el año escolar en cuestion y a todas los cursos de dicha sección
@@ -98,7 +100,7 @@ const AssignStudent = () => {
         </section>
 
       <button className={s.submit}
-        onClick={(e) => submitAssign(e, inputs, dispatch)}
+        onClick={(e) => submitAssign(e, inputs, dispatch, setInputs)}
       >Agregar alumno a la sección</button>
       
       </div>
