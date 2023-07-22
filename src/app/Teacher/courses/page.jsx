@@ -16,7 +16,7 @@ const Courses = () => {
 
   return (
     <>
-      <ShowStudents aditional={Courses} />
+      <ShowStudents aditional={Courses} courseData={true}/>
     </>
   )
 }

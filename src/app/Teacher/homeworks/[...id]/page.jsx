@@ -2,7 +2,7 @@
 import UploadFiles from "@/components/UploadFiles/UploadFiles";
 import s from './page.module.css';
 import DocList from "@/components/DocList/DocList";
-import { HOMEWORKS } from "@/const";
+import { HOMEWORKS, HOMEWORKSLIST } from "@/const";
 
 
 const Homeworks = ({params}) => {
@@ -15,9 +15,9 @@ const Homeworks = ({params}) => {
 
       <div className={s.container}>
 
-        <UploadFiles courseId={parseInt(id)} teacherId={parseInt(teacherId)} />
+        <UploadFiles courseId={parseInt(id)} teacherId={parseInt(teacherId)} type={HOMEWORKS} />
 
-        <DocList listType={HOMEWORKS} userId={parseInt(teacherId)} courseId={parseInt(id)} />
+        <DocList listType={HOMEWORKS} userId={parseInt(teacherId)} courseId={parseInt(id)} tableValues={HOMEWORKSLIST} />
 
       </div>
 
