@@ -5,10 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalMsg from "../Modals/ModalMsg/ModalMsg.jsx";
 import { inputHandler } from "@/globalHandlers.js";
 
-const UploadFiles = ({courseId, teacherId}) => {
-
-  console.log(courseId, "COURSEID")
-  console.log(teacherId, "TEACHERID")
+const UploadFiles = ({courseId, teacherId, type}) => {
 
   const [data, setData] = useState();
   const [input, setInput] = useState({
@@ -22,7 +19,7 @@ const UploadFiles = ({courseId, teacherId}) => {
 
   return(
     <>
-    {console.log(input)}
+
       {
 
         modal.isActive ? <ModalMsg {...modal} />
@@ -35,7 +32,7 @@ const UploadFiles = ({courseId, teacherId}) => {
 
           <input type="file" name="hwSelect" id="hwSelect" onChange={(e) => setData( prev => getFile(e))} />
 
-          <button onClick={(e) => submitFile(e, data, input, dispatch, setData, setInput)}>Enviar</button>
+          <button onClick={(e) => submitFile(e, data, input, dispatch, setData, setInput, type)}>Enviar</button>
 
         </div>
 

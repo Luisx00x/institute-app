@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
-import { FAILURE, SUCCESS } from "@/const";
+import { CLASSES, FAILURE, HOMEWORKS, SUCCESS } from "@/const";
 import { setModal } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
@@ -13,20 +13,39 @@ export const getFile = (e) => {
   return fileTemp;
 }
 
-export const submitFile = (e, data, input, dispatch, setData, setInput) => {
+export const submitFile = (e, data, input, dispatch, setData, setInput, type) => {
 
-  let status;
-
+  let status, url, finalBody;
+  
   if(!data) return
+  
+  if(type === HOMEWORKS) {
+  
+    url = `${LOGIN_URL}/uploads/homeworks`;
+    const body = new FormData();
+    body.append('newHomework', data.fileRaw, data.fileName);
+    body.append('title', input.inputValue);
+    body.append('courseId', input.courseId);
+    body.append('teacherId', input.teacherId);
 
-  const body = new FormData();
-  body.append('newHomework', data.fileRaw, data.fileName);
-  body.append('title', input.inputValue);
-  body.append('courseId', input.courseId);
-  body.append('teacherId', input.teacherId);
+    finalBody = body;
+  
+  }
+  if(type === CLASSES) {
+    url = `${LOGIN_URL}/uploads/classes`
+    const body = new FormData();
+    body.append("newClass", data.fileRaw, data.fileName);
+    body.append("title", input.inputValue);
+    body.append("courseId", input.courseId);
+
+    finalBody = body;
+    
+  };
+
+
 
   e.preventDefault();
-  useFetch(`${LOGIN_URL}/uploads/homeworks`, "POST", body, true)
+  useFetch(`${url}`, "POST", finalBody, true)
   .then(res => {
     status = res.status;
     return res.json();
