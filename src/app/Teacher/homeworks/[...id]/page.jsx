@@ -1,5 +1,9 @@
+
 import UploadFiles from "@/components/UploadFiles/UploadFiles";
 import s from './page.module.css';
+import DocList from "@/components/DocList/DocList";
+import { HOMEWORKS } from "@/const";
+
 
 const Homeworks = ({params}) => {
 
@@ -13,11 +17,7 @@ const Homeworks = ({params}) => {
 
         <UploadFiles courseId={parseInt(id)} teacherId={parseInt(teacherId)} />
 
-        <div className={s.test}>
-
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nisi quidem id fugit incidunt? Quia ea consequuntur, labore vel impedit sapiente qui hic excepturi reiciendis dolore nisi architecto fugit veniam?
-
-        </div>
+        <DocList listType={HOMEWORKS} userId={parseInt(teacherId)} courseId={parseInt(id)} />
 
       </div>
 

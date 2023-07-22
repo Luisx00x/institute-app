@@ -5,4 +5,6 @@ export const YEAR = "year";
 export const SUCCESS = "success";
 export const FAILURE = "failure";
 
+export const HOMEWORKS = "homeworks";
+
 export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
