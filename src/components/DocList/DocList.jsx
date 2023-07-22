@@ -6,7 +6,7 @@ import { HOMEWORKS } from '@/const';
 import { getHomeworks } from './DockListHandler';
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
-const DocList = ({userId, courseId, listType}) => {
+const DocList = ({userId, courseId, listType, tableValues}) => {
 
   const [data, setData] = useState([]);
   const modal = useSelector(state => state.primarySlice.modal);
@@ -14,35 +14,40 @@ const DocList = ({userId, courseId, listType}) => {
 
   useEffect( () => {
     
-    if(user.RolId && listType === HOMEWORKS){
-      
-      getHomeworks(courseId, userId, user.RolId ,setData)
-      
-    }
+    if(user.RolId && listType === HOMEWORKS) getHomeworks(courseId, userId, user.RolId ,setData);
+    
+
   },[modal])
 
   
   return (
     <>
-    {console.log(data, "DATA")}
+        <div className={s.gridContainer}>
+      {
+        typeof data === "string"
+        ? 
+        <h3>{data}</h3>
+        :
+        <>
+          <div className={s.grid1}>
+            <h3>{tableValues.col1}</h3>
+          </div>
 
-      <div className={s.gridContainer}>
+          <div className={s.grid2}>
+            <h3>{tableValues.col2}</h3>
+          </div>
 
-        <div className={s.grid1}>
-          <h3>Tarea</h3>
-        </div>
-
-        <div className={s.grid2}>
-          <h3>Archivo</h3>
-        </div>
-
-        <div className={s.grid3}>
-          <h3>Opcion</h3>
-        </div>
+          <div className={s.grid3}>
+            <h3>Opcion</h3>
+          </div>
+        </>
+      }
 
         {
-          data.length 
+          typeof data === "string"
           ?
+          null
+          :
           data.map( element => {
             return (
               <>
@@ -58,8 +63,6 @@ const DocList = ({userId, courseId, listType}) => {
               </>
             )
           })
-          :
-          null
         }
 
 
