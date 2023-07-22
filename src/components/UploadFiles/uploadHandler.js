@@ -40,7 +40,12 @@ export const submitFile = (e, data, input, dispatch, setData, setInput) => {
         msg: res
       }
       setData(prev => undefined);
-      setInput(prev => "");
+      setInput(prev => {
+        return {
+          ...prev,
+          inputValue: ""
+        }
+      });
       return dispatch(setModal(modalBody));
     }
     throw new Error(res);
