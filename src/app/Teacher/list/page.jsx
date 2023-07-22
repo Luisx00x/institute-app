@@ -10,7 +10,7 @@ const Absences = () => {
     <>
       <h2>Ausencias</h2>
 
-      <ShowStudents aditional={Courses} />
+      <ShowStudents aditional={Courses} courseData={true}/>
 
     </>
   )
