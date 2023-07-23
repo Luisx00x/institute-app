@@ -2,6 +2,7 @@
 
 import ShowStudents from "@/components/showStudents/ShowStudents";
 import { useSelector } from "react-redux";
+import s from '../class/page.module.css';
 
 const Courses = () => {
 
@@ -9,14 +10,18 @@ const Courses = () => {
   const Test = useSelector(state => state.teacher.teacher);
   const Section = useSelector(state => state.teacher.sections);
   const Grades = useSelector(state => state.teacher.grades);
-  console.log(Test)
-  console.log(Courses, "COURSES");
-  console.log(Section, "SECTIONS")
-  console.log(Grades, "GRADES")
 
   return (
     <>
+
+    <div className={s.container}>
+
+      <h3>Seleccione una materia para ver los detalles</h3>
+
       <ShowStudents aditional={Courses} courseData={true}/>
+
+    </div>
+      
     </>
   )
 }

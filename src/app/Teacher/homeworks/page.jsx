@@ -2,6 +2,7 @@
 
 import ShowStudents from "@/components/showStudents/ShowStudents";
 import { useSelector } from "react-redux";
+import s from '../class/page.module.css';
 
 const HomeworkList = () => {
 
@@ -9,7 +10,13 @@ const HomeworkList = () => {
 
   return (
     <>
-      <ShowStudents aditional={Courses} />
+      <div className={s.container}>
+
+        <h3>Seleccione la materia en la cual desea asignar una tarea</h3>
+
+        <ShowStudents aditional={Courses} />
+      
+      </div>
     </>
   )
 }
