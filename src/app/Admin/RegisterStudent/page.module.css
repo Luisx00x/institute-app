@@ -2,8 +2,15 @@
 .container{
   display: flex;
   width: 100%;
-  margin-left: 5%;
   margin-top: 2%;
+}
+
+.formContainer{
+  background-color: #F8FbFb;
+  width: 100%;
+  border-radius: 10px;
+  margin-right: 2%;
+  padding: 1% 5%;
 }
 
 .form{
