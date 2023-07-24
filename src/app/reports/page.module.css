@@ -1,0 +1,321 @@
+
+.reportContainer{
+  width: 820px;
+  margin: 3% auto;
+  text-align: center;
+}
+
+.h2Title{
+  margin: 0;
+}
+
+.mainTitleContainer{
+  margin-bottom: 20px;
+}
+
+.gridData{
+  display: grid;
+  grid-template-columns: 160px repeat(3, 220px);
+  border: 1px solid black;
+}
+
+.label{
+  border: 1px solid black;
+  text-align: start;
+  padding-left: 5px;
+}
+
+.camp{
+  background-color: rgb(166, 166, 235);
+}
+
+.col1{
+  grid-column: 1;
+}
+
+.col2{
+  grid-column: 2;
+  background-color: #FFF;
+}
+
+.col3{
+  grid-column: 3;
+}
+
+.col4{
+  grid-column: 4;
+}
+
+.cols_3{
+  grid-column: 2/5;
+}
+
+/* Hasta aca la config de la cabecera */
+
+.califications{
+  width: 1000px;
+  margin: auto;
+}
+
+.gridLayout{
+  margin-top: 80px;
+  display: grid;
+  border: 1px solid black;
+  grid-template-columns: 100px 400px repeat(4, 100px) 100px;
+}
+
+.cells{
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px 5px;
+  background-color: rgb(166, 166, 235);
+  border-bottom: none;
+}
+
+.centerCell{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cell1{
+  grid-column: 1;
+  grid-row: 1/3;
+}
+
+.cell2{
+  grid-column: 2;
+  grid-row: 1/3;
+}
+
+.up{
+  grid-row: 1/2;
+}
+
+.down{
+  grid-row: 2/3;
+}
+
+.cell3{
+  grid-column: 3;
+}
+
+.cell4{
+  grid-column: 4;
+}
+
+.cell5{
+  grid-column: 5;
+}
+
+.cell6{
+  grid-column: 6;
+}
+
+.cell7{
+  grid-column: 7/8;
+  grid-row: 1/3;
+  outline: 1px solid;
+}
+
+/* Inicio css tercer componente */
+
+.courseContainer{
+  width: 1000px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.borders{
+  border: 1px solid black;
+}
+
+.skillsGrid{
+  display: grid;
+  border: 1px solid black;
+  grid-template-columns: 100px 800px 100px;
+  border-top: none;
+}
+
+.gridCol1{
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centerGrid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridCol2{
+  display: grid;
+  grid-template-columns: 400px repeat(8, 50px);
+  grid-column: 2/3;
+}
+
+.col2_1{
+  grid-column: 1/2;
+}
+
+.col2_2{
+  grid-column: 2/3;
+}
+
+.col2_3{
+  grid-column: 3/4;
+}
+
+.col2_4{
+  grid-column: 4/5;
+}
+
+.col2_5{
+  grid-column: 5/6;
+}
+
+.col2_6{
+  grid-column: 6/7;
+}
+
+.col2_7{
+  grid-column: 7/8;
+}
+
+.col2_8{
+  grid-column: 8/9;
+}
+
+.col2_9{
+  grid-column: 9/10;
+}
+
+.gridCol3{
+  grid-column: 3;
+}
+
+.colAssis1{
+  grid-column: 2/4;
+  grid-row: 1/4;
+  border-top: none;
+}
+
+.colAssis2{
+  grid-column: 4/6;
+  grid-row: 1/4;
+  border-top: none;
+}
+
+.colAssis3{
+  grid-column: 6/8;
+  grid-row: 1/4;
+  border-top: none;
+}
+
+.colAssis4{
+  grid-column: 8/10;
+  grid-row: 1/4;
+  border-top: none;
+}
+
+.bordersAssis{
+  border-top: none;
+}
+
+
+/* CSS cuarto componente */
+
+.repreContainer{
+  margin: auto;
+  width: 750px;
+  margin-bottom: 30px;
+}
+
+.repreGrid{
+  display: grid;
+  grid-template-columns: 550px repeat(4, 50px);
+  border: 1px solid black;
+}
+
+.cells{
+  text-align: center;
+  padding: 10px 5px;
+  background-color: rgb(166, 166, 235);
+}
+
+.centerGrid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.repreTitle{
+  grid-column: 1/6;
+  border: 1px solid black;
+  outline: 1px solid black;
+}
+
+.repreCol1{
+  padding: 10px 5px;
+  grid-column: 1/2;
+  border: 1px solid black;
+}
+
+.repreCol2{
+  grid-column: 2/3;
+  border: 1px solid black;
+}
+
+.repreCol3{
+  grid-column: 3/4;
+  border: 1px solid black;
+}
+
+.repreCol4{
+  grid-column: 4/5;
+  border: 1px solid black;
+}
+
+.repreCol5{
+  grid-column: 5/6;
+  border: 1px solid black;
+}
+
+/* Quinto componente */
+
+.tutorGrid{
+  border: 1px solid black;
+  width: 900px;
+  margin: auto;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 100px 800px;
+}
+
+.tutorTitle{
+  grid-column: 1/3;
+}
+
+.cells{
+  text-align: center;
+  padding: 10px 5px;
+  background-color: rgb(166, 166, 235);
+}
+
+.tutorB{
+  grid-column: 1/2;
+  padding: 10px 5px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.tutorCommnent{
+  grid-column: 2/3;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
