@@ -10,23 +10,64 @@ const CreateUsers = ({children, attributes, ...rest}) => {
       }
 
       <div className={s.flex}>
-        <div className={`${s.container} ${s.labels}`}>
+        <div className={`${s.container}`}>
           {
             attributes.map( (attribute,index) => {
-              return <label className={s.items} key={index} htmlFor={`input${index}`}>{attribute.name}</label>
+              if(attribute.attribute === "gender" || attribute.attribute === "level"){
+                
+                return (
+                  <div className={s.flexItems}>
+                    <label className={s.labels} key={index} htmlFor={`input${index}`}>{attribute.name}</label>
+                    <select 
+                    name={attribute.attribute} 
+                    className={s.items} 
+                    key={attribute.name} 
+                    value={rest.values[attribute.attribute]} 
+                    id={`input${index}`} 
+                    type="text" 
+                    onChange={(e) => rest.handler(e, rest.set)}
+                    >
+                      {
+                        attribute.options.map( (option,index) => {
+                          return (
+                            <>
+                              <option key={`${option}_${index}`} 
+                              value={index !== 0  ? option : ""}
+                              >{option}</option>
+                            </>
+                          )
+                        })
+                      }
+                    </select>         
+                  </div>
+                  )
+                  
+              }
+              return (
+              <div className={s.flexItems}>
+                <label className={s.labels} key={index} htmlFor={`input${index}`}>{attribute.name}</label>
+                <input 
+                name={attribute.attribute} 
+                className={s.items} 
+                key={attribute.name} 
+                value={rest.values[attribute.attribute]} 
+                id={`input${index}`} 
+                type="text" 
+                onChange={(e) => rest.handler(e, rest.set)}
+                />
+                
+              </div>
+              )
             })
           }
         </div>
 
-        <div className={s.container}>
+       {/*  <div className={s.container}>
           {
             attributes.map((attribute, index) => {
-              return <input name={attribute.attribute} className={s.items} key={attribute.name} value={rest.values[attribute.attribute]} id={`input${index}`} type="text" 
-              onChange={(e) => rest.handler(e, rest.set)}
-              />
             })
           }
-        </div>
+        </div> */}
         <div className={s.aditionals}>
           {children}
         </div>

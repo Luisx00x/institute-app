@@ -12,10 +12,10 @@ export const studentAttributes = [
   { name: "Nombres:", attribute: "names"},
   { name: "Fecha de nacimiento:", attribute: "birthdate"},
   { name: "Religión:", attribute: "religion"},
-  { name: "Género:", attribute: "gender"},
+  { name: "Género:", attribute: "gender", options: ["- Género -","M","F"]},
   { name: "Colegio de procedencia: ", attribute: "procedense"},
-  { name: "GRADO: ", attribute: "grade" },
-  { name: "Nivel Educativo", attribute: "level"}
+  { name: "GRADO: ", attribute: "grade"},
+  { name: "Nivel Educativo", attribute: "level", options: ["-Nivel-","Inicial","Primaria", "Secundaria"]}
 ];
 
 export const fatherAttributes = [
