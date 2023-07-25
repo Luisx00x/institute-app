@@ -46,6 +46,10 @@ export const motherAttributes = [
   {name: "RPM ó RPC:",attribute:"motherRPMorRPC"},
 ]
 
+export const initialAttributes = [
+  {name: "Grado", attribute: "gradeName" },
+  {name: "Seccion", attribute: "section"}
+];
 
 export const HOMEWORKS = "homeworks";
 export const CLASSES = "classes";
