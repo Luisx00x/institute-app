@@ -13,7 +13,7 @@ const teacherLayout = ({children}) =>{
     {name: "Enviar comunicado", route: "/Teacher/registerTeacher"},
     {name: "Subir clases", route: "/Teacher/class"},
     {name: "Asistencias", route: "/Teacher/list"},
-    {name: "Generar libreta bimestral", route: "/Teacher/assignStudent"}
+    {name: "Cargar calificación bimestreal", route: "/Teacher/assignStudent"}
   ]
 
   return (

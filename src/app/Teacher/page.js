@@ -8,23 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 const thisYear = new Date().getFullYear();
 
 const TeacherUI = () => {
-  
+
   const router = useRouter();
   const user = useSelector(state => state.primarySlice.userLog);
-  const dispatch = useDispatch();
-
-  console.log(user)
-
- /*  useEffect( () => {
-    if(user?.RolId !== 3) router.push("/");
-  }, [])
-   */
 
   useEffect( () => {
-
-    setTeacherInformation(user.id, user.RolId, user.RolId, thisYear, dispatch);
-
+    if(user?.RolId !== 3) router.push("/");
+  }, [])
+  
+  
+  useEffect( () => {
+    if(user?.RolId){
+      setTeacherInformation(user.id, user.RolId, user.RolId, thisYear, dispatch);
+    }
+    
   },[]);
+  
+  const dispatch = useDispatch();
+  
 
   return (
     <>
