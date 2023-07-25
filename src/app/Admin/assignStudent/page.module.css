@@ -24,3 +24,18 @@
   width: fit-content;
   font-weight: 900;
 }
+
+.parentsInfo{
+  background-color: #E3ecE4;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 5%;
+  border-radius: 6px;
+  margin: 2% auto;
+}
+
+.parentsInfo h4{
+  text-align: center;
+  margin: 3%;
+}
