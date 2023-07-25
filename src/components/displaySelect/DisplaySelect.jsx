@@ -51,7 +51,7 @@ if(level){
                     value={choice.id} >
                       {
                       rest.additionalFeat ? 
-                      `${choice[rest.additionalFeat]} ${choice[feature]}` 
+                      `${choice[rest.additionalFeat.father]} ${choice[rest.additionalFeat.mother]} ${choice[feature]}` 
                       : 
                       choice[feature]}
                     </option>
