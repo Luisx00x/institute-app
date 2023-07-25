@@ -24,6 +24,9 @@ const CreateCourse = () => {
   });
 
   const [level, setLevel] = useState();
+  const [levelOption, setLevelOption] = useState([]);
+
+  let setGrades;
 
   useEffect( ( ) => {
 
@@ -32,28 +35,34 @@ const CreateCourse = () => {
 
   },[]);
 
+  useEffect( () => {
+
+    if(level !== "false"){
+      const findGrades = gradesInTheYear.filter( grade => grade.level === level);
+      setLevelOption( prev => findGrades);
+    }else{
+      setLevelOption( prev => [])
+    }
+
+  },[level])
+
   //TODO necesito un effect para buscar los grados del nivel especificado
 
   const gradesInTheYear = useSelector(state => state.admin.allGrades);
 
   const allTeachers = useSelector(state => state.admin.Teachers);
-  let setGrades;
 
   if(inputs.gradeId){
     setGrades = gradesInTheYear.find( grade => grade.Sections[0].GradeId === parseInt(inputs.gradeId))  
     }
 
-  console.log(setGrades);
-  
-  //* Primer display: Grado
-  //* Segundo display: Sección
-  //* Tercer display: Profesor
+  console.log(gradesInTheYear);
   
   return (
     
     <form className={s.form}>
       
-          {console.log(level)}
+          {console.log(levelOption)}
 
       {gradesInTheYear.length ? 
       
@@ -81,7 +90,7 @@ const CreateCourse = () => {
           <div className={s.props}>
             <DisplaySelect 
             title={gradesSelect} 
-            choices={gradesInTheYear} 
+            choices={levelOption} 
             setValue={setInputs} 
             feature={'grade'} 
             />

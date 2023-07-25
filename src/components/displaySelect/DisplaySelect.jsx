@@ -2,7 +2,7 @@ import { selectLevelHandler, setSelectHandler } from './DisplaySelectHandlers.js
 
 const DisplaySelect = ({title, choices, feature, setValue, level, ... rest}) => {
 if(level){
-  console.log(choices)
+  
   return(
     <>  
         {
