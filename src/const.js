@@ -51,6 +51,15 @@ export const initialAttributes = [
   {name: "Seccion", attribute: "section"}
 ];
 
+export const courseAttribute = [
+  {name:"Nombre del curso" , attribute:"courseName"}
+]
+
+export const gradesSelect = {name:"Grado al cual pertencerá el curso: ", attribute: "gradeId"};
+export const sectionSelect = {name:"Seleccione la sección a sección del curso: ", attribute: "sectionId"};
+export const teacherSelect = {name:"Seleccione al profesor que dará el curso: ", attribute: "teacherId"};
+export const levelSelect = {name: "Seleccione un Nivel Educativo en el cual buscar las secciones: ", attribute: "level"};
+
 export const HOMEWORKS = "homeworks";
 export const CLASSES = "classes";
 

@@ -8,20 +8,8 @@ import { inputHandler } from "../registersHandler";
 import DisplaySelect from "@/components/displaySelect/DisplaySelect";
 import TimerSet from "@/components/timerSet/TimerSet";
 import { DAYS } from "@/const";
+import { courseAttribute, gradesSelect, sectionSelect, teacherSelect, levelSelect } from "@/const";
 
-const attributes = [
-  {name:"Nombre del curso" , attribute:"courseName"},
- /*  {name:"Hora de inicio", attribute: "init"},
-  {name:"Hora de salida", attribute: "end"},
-   */
-]
-
-const gradesSelect = {name:"Grado al cual pertencerá el curso: ", attribute: "gradeId"}
-const sectionSelect = {name:"Seleccione la sección a sección del curso: ", attribute: "sectionId"}
-const teacherSelect = {name:"Seleccione al profesor que dará el curso: ", attribute: "teacherId"}
-
-//TODO NECESITO 2 COMPONENTES: - UNO PARA DESPLEGAR LAS OPCIONES DE LOS ATRIBUTOS QUE LOS USAN
-//todo                         - UNO PARA MANEJAR LOS FORMATOS DE HORA
 
 const CreateCourse = () => {
 
@@ -33,7 +21,9 @@ const CreateCourse = () => {
     sectionId: null,
     teacherId: null,
     days: []
-  })
+  });
+
+  const [level, setLevel] = useState();
 
   useEffect( ( ) => {
 
@@ -42,7 +32,10 @@ const CreateCourse = () => {
 
   },[]);
 
+  //TODO necesito un effect para buscar los grados del nivel especificado
+
   const gradesInTheYear = useSelector(state => state.admin.allGrades);
+
   const allTeachers = useSelector(state => state.admin.Teachers);
   let setGrades;
 
@@ -59,21 +52,30 @@ const CreateCourse = () => {
   return (
     
     <form className={s.form}>
+      
+          {console.log(level)}
 
       {gradesInTheYear.length ? 
       
       <>
         <h3 className={s.title}>Año en curso</h3> 
         
-        
         <div className={s.container}>
 
           <div className={s.props}>
             <CreateUsers  
-            attributes={attributes} 
+            attributes={courseAttribute} 
             values={inputs} 
             set={setInputs} 
             handler={inputHandler} />
+          </div>
+
+          <div className={s.props}>
+            <DisplaySelect
+            title={levelSelect}
+            choices={[{id:1, level:"Inicial"},{id:2, level:"Primaria"},{id:3, level:"Secundaria"}]}
+            setValue={setLevel}
+            level={true} />
           </div>
 
           <div className={s.props}>
