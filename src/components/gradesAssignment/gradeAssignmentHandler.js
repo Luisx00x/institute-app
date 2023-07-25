@@ -5,7 +5,7 @@ export const initialHandler = (e, set) => {
     if(e.target.name === "section" && e.target.value.length > 0){
       return {
         ...prev,
-        section: e.target.value[0].toUpperCase()
+        section: e.target.value.toUpperCase()
       }
     }
 
@@ -20,12 +20,15 @@ export const initialHandler = (e, set) => {
 export const pushSection = (set) => {
   
   set( prev => {
-    
-    return {
-      ...prev,
-      sections: [...prev.sections, prev.section],
-      section: ""
-    } 
+    if(prev.section.length > 0){
+      return {
+        ...prev,
+        sections: [...prev.sections, prev.section],
+        section: ""
+      } 
+    }else{
+      return { ...prev }
+    }
 
   });
 
@@ -34,10 +37,18 @@ export const pushSection = (set) => {
 export const assingLevel = (set, values) => {
 
   const {gradeName, sections} = values
-
+ 
   set( prev => {
+ 
+    if(prev.length === 0) return [...prev, {gradeName, sections}]
 
-    return [...prev, {gradeName, sections}]
+    const findGrade = prev.find( grade => grade.gradeName === gradeName);
+
+    if(!findGrade){
+      return [...prev, {gradeName, sections}]
+    }else{
+      return prev
+    }
 
   });
 
