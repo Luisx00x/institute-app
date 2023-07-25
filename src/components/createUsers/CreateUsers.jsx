@@ -70,12 +70,13 @@ const CreateUsers = ({children, attributes, ...rest}) => {
           {
             rest.info ? 
             <div>
-              <p>Secciones agregadas para asignar: </p>
+              <h4>Secciones agregadas para asignar: </h4>
               
               {
                 rest.info.map( sec => `"${sec}"/`)
               }
 
+              <h3>Nota: Una vez agregadas todas las Secciones deseadas para un Grado, presionar Asignar para completar el registro del grado</h3>
             </div> 
             : null
           }
