@@ -9,7 +9,7 @@
 }
 
 .flexItems{
-  width: fit-content;
+  /* width: fit-content; */
   display: flex;
   flex-direction: column;
 }
@@ -41,4 +41,10 @@
 
 .aditionals{
   margin-left: 2%;
+}
+
+@media (min-width: 900px){
+  .flexItems{
+    margin: 0 5%
+  }
 }

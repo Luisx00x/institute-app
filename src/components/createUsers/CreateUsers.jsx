@@ -61,13 +61,7 @@ const CreateUsers = ({children, attributes, ...rest}) => {
             })
           }
         </div>
-
-       {/*  <div className={s.container}>
-          {
-            attributes.map((attribute, index) => {
-            })
-          }
-        </div> */}
+        
         <div className={s.aditionals}>
           {children}
         </div>
