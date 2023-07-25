@@ -63,6 +63,9 @@ export const levelSelect = {name: "Seleccione un Nivel Educativo en el cual busc
 export const HOMEWORKS = "homeworks";
 export const CLASSES = "classes";
 
+export const DAY = "days";
+export const SKILL = "skills";
+
 export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 export const CLASSLIST = {col1: "Sesión", col2: "Archivo"};
 export const HOMEWORKSLIST = {col1: "Asignación", col2:"Archivo"};

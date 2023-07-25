@@ -1,13 +1,13 @@
 'use client'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dayHandler, searchGrades, searchTeachers, setDay, submitHandler } from "./createCourseHandlers";
+import { dayHandler, searchGrades, searchTeachers, setData, setDay, submitHandler } from "./createCourseHandlers";
 import CreateUsers from "@/components/createUsers/CreateUsers";
 import s from './page.module.css';
 import { inputHandler } from "../registersHandler";
 import DisplaySelect from "@/components/displaySelect/DisplaySelect";
 import TimerSet from "@/components/timerSet/TimerSet";
-import { DAYS } from "@/const";
+import { DAY, DAYS, SKILL } from "@/const";
 import { courseAttribute, gradesSelect, sectionSelect, teacherSelect, levelSelect } from "@/const";
 
 
@@ -20,11 +20,13 @@ const CreateCourse = () => {
     gradeId: null,
     sectionId: null,
     teacherId: null,
-    days: []
+    days: [],
+    skills: []
   });
 
   const [level, setLevel] = useState();
   const [levelOption, setLevelOption] = useState([]);
+  const [skillValue, setSkillValue] = useState([]);
 
   let setGrades;
 
@@ -55,8 +57,6 @@ const CreateCourse = () => {
   if(inputs.gradeId){
     setGrades = gradesInTheYear.find( grade => grade.Sections[0].GradeId === parseInt(inputs.gradeId))  
     }
-
-  console.log(gradesInTheYear);
   
   return (
     
@@ -75,6 +75,40 @@ const CreateCourse = () => {
             values={inputs} 
             set={setInputs} 
             handler={inputHandler} />
+          </div>
+
+          <div className={s.daysCounter}>
+
+          {
+
+            inputs.skills.map( (skill, index) => {
+
+              return (
+
+                  <div className={s.newDay}>
+
+                  <label htmlFor={`skill${index}`}>Competencia: </label>
+                  
+                  <input 
+                  type="text" 
+                  value={skill} 
+                  name={index} 
+                  id={`skill${index}`} 
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setInputs( prev => {
+                      prev.skills[e.target.name] = e.target.value;
+                      return {...prev}
+                    })
+                  }}
+                  />
+                  </div>  
+              )
+            })
+
+          }
+
+          <button className={s.submit} type="button" onClick={(e) => setData(SKILL ,setInputs)}>Agregar una competencia al curso</button>
           </div>
 
           <div className={s.props}>
@@ -154,8 +188,10 @@ const CreateCourse = () => {
 
               }
 
-              <button className={s.submit} type="button" onClick={(e) => setDay(setInputs)}>Agregar un dia al curso</button>
+              <button className={s.submit} type="button" onClick={(e) => setData(DAY ,setInputs)}>Agregar un dia al curso</button>
           </div>
+
+          <h3>Competencias a ser evaluadas en el curso</h3>
 
           <button className={s.submit} type="button" onClick={(e) => submitHandler(e, inputs, dispatch)}>Crear el curso</button>
 

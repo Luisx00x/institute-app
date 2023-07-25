@@ -1,4 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
+import { DAY, SKILL } from "@/const";
 import { setAllGrades, setTeachers } from '@/redux/slice.js';
 
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
@@ -59,13 +60,21 @@ export const searchTeachers = async (dispatch) => {
 
 }
 
-export const setDay = (set) => {
+export const setData = (prop, set) => {
   set( prev => {
-    return {
-      ...prev,
-      days: [...prev.days, {day: "", init: "", end: ""}]
+    if(prop === DAY){
+      return {
+        ...prev,
+        days: [...prev.days, {day: "", init: "", end: ""}]
+      }
     }
-  })
+    if(prop === SKILL){
+      return {
+        ...prev,
+        skills: [...prev.skills, ""]
+      }
+    }
+  });
 }
 
 export const dayHandler = (e, set, index) => {
