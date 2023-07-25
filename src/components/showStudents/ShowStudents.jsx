@@ -30,7 +30,7 @@ const ShowStudents = ({type, display, aditional, courseData}) => {
       {
       type === STUDENT ? <h2>Lista de estudiantes activos</h2> 
       : type === TEACHER ? <h2>Lista de Profesores activos</h2> 
-      : type === YEAR ? <h2>Año escolar </h2>
+      : type === YEAR ? <h2>Grados en el Año escolar activo</h2>
       : null
       }
 

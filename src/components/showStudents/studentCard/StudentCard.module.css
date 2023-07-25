@@ -1,8 +1,8 @@
 .container{
   background-color: azure;
-  width: 100%;
   border: 1px solid black;
   padding: 2% 3%;
+  flex-basis: 40%;
 }
 
 .container:hover{
