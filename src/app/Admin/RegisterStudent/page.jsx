@@ -69,18 +69,20 @@ const RegisterStudent = () => {
           
           <div className={s.formContainer}>
 
-            <CreateUsers attributes={studentAttributes} title={"Datos del alumno"} set={setInputs} handler={inputHandler} values={inputs}>
-              
-              <button className={s.comprove}>Comprobar alumno</button>
-
-            </CreateUsers>
+            <CreateUsers attributes={studentAttributes} title={"Datos del alumno"} set={setInputs} handler={inputHandler} values={inputs}/>
+            
+            <div className={s.buttonContainer}>
+              <button className={s.checkButton}
+              onClick={(e) => {e.preventDefault()}}
+              >Comprobar alumno</button>
+            </div>
 
             <CreateUsers attributes={fatherAttributes} title={"Datos del Padre"} set={setInputs} handler={inputHandler} values={inputs} />
 
             <CreateUsers attributes={motherAttributes} title={"Datos de la Madre"} set={setInputs} handler={inputHandler} values={inputs} />
 
-            <div>
-                <label>Apoderado</label>
+            <div className={s.representativeCont}>
+                <label>Apoderado: </label>
                 <select onChange={(e) => inputHandler(e, setInputs)} name="representative" id="repSelect">
                   <option value="">-- Seleccione un representante --</option>
                   <option value="1">Padre</option>
@@ -88,12 +90,6 @@ const RegisterStudent = () => {
 
                 </select>
               </div>
-              {/* <div>
-                <label htmlFor="emailRepresentative">Email del Apoderado</label>
-                <input type="text" name="email" id="emailRepresentative"
-                onChange={(e) => inputHandler(e, setInputs) }
-                />
-              </div> */}
 
           </div>
           
