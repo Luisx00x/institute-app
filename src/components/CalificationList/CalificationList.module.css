@@ -16,8 +16,9 @@
  */
 .gridData{
   display: grid;
-  grid-template-columns: repeat(2, 1fr) 100px;
+  grid-template-columns: repeat(auto, 1fr) 100px;
   border: 1px solid black;
+  overflow: auto;
 }
 
 .label{

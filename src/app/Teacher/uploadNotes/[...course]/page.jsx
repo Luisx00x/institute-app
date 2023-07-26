@@ -1,8 +1,8 @@
 'use client'
 import CalificationList from "@/components/CalificationList/CalificationList";
-import ShowStudents from "@/components/showStudents/ShowStudents";
-import { STUDENT } from "@/const";
 import { useSelector } from "react-redux";
+import modals from '@/components/Modals/Modals.module.css';
+import s from './page.module.css';
 
 const Uploads = ({params}) => {
   
@@ -12,21 +12,17 @@ const Uploads = ({params}) => {
 
   const findSection = sections.find( section => section.id === parseInt(sectionId))
   //findSection.studends
+  console.log(findSection, "CALIFICATIONS")
 
   console.log(courses, "Courses")
 
   return (
     <> 
-    {/* <h2>aqui</h2> */}
-   {/*  courseId: {courseId}
-    teacherId: {teacherId}
-    sectionId: {sectionId}
-    gradeId: {gradeId}
- */}
-    {/* <h2>Seleccione al alumno al que desea calificar: </h2> */}
-
-    <CalificationList list={findSection.students} skills={courses} courseId={courseId} />
-
+      <div className={modals.modalContainer}>
+        <div className={s.calificationContainer}>
+         <CalificationList list={findSection.students} skills={courses} courseId={courseId} />
+        </div>
+      </div>
     </>
   )
 }
