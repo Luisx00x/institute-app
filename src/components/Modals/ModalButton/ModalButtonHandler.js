@@ -16,13 +16,14 @@ export const confirmModal = (e, dispatch) => {
 
 }
 
-export const submitInfo = (e, body, dispatch) => {
+export const submitInfo = (e, body, dispatch, url) => {
 
   e.preventDefault();
+  //FALTA AGREGARLE LA URL A AUSENCIAS
 
   let status
 
-  useFetch(`${LOGIN_URL}/teacher/absences`, "POST", body)
+  useFetch(`${LOGIN_URL}/${url}`, "POST", body)
   .then( res => {
     status = res.status;
     return res.json();

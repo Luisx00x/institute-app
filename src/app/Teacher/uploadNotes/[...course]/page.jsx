@@ -11,10 +11,6 @@ const Uploads = ({params}) => {
   const courses = useSelector(state => state.teacher.courses);
 
   const findSection = sections.find( section => section.id === parseInt(sectionId))
-  //findSection.studends
-  console.log(findSection, "CALIFICATIONS")
-
-  console.log(courses, "Courses")
 
   return (
     <> 

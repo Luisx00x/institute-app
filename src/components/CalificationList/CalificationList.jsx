@@ -4,11 +4,14 @@ import s from './CalificationList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalCal from '../Modals/ModalCal/ModalCal';
 import { calificationsChange } from './calificationsHandlers';
+import { useEffect } from 'react';
+import { setTeacherInformation } from '@/globalHandlers';
 
 const CalificationList = ({list, skills, courseId}) => {
 
 const router = useRouter();
 const modal = useSelector(state => state.primarySlice.modal);
+const user = useSelector(state => state.primarySlice.userLog);
 const abbrevsList = skills.find( abbrev => abbrev.id === parseInt(courseId)).Abbrev
 const abbreviation = abbrevsList[0].slice(0, abbrevsList[0].length-1);
 const bimesters = ["BM1","BM2","BM3","BM4"];
@@ -18,7 +21,17 @@ const califications = list.map( item => {
   return item.Califications.filter( cal => cal.CourseId === parseInt(courseId));
 })
 
-console.log(list, "LIST")
+const thisYear = new Date().getFullYear();
+
+useEffect( () => {
+  if(user?.RolId !== 3) router.push("/");
+},[]);
+
+useEffect( () => {
+  if(user?.RolId){
+    setTeacherInformation(user.id, user.RolId, user.RolId,thisYear, dispatch);
+  }
+},[modal])
 
 let count = 0;
 let count1 = 1;
@@ -32,14 +45,15 @@ return (
     :
     null
     }
-    <>
+    <div className={s.listContainer}>
     
-      <button onClick={(e) => {
+      <button 
+        className={s.closeButton}
+        onClick={(e) => {
         e.preventDefault();
         router.back();
         }}>Cerrar ventana de calificaciones</button>
   
-    {console.log(abbreviation, "ABB")}
         <div id="reportCard" className={s.reportContainer}>
         
         <div className={s.gridData}>
@@ -54,7 +68,7 @@ return (
             <b>Nombres</b>
           </div>
 
-          <div className={`${s.label} ${s.col2}`}>
+          <div className={`${s.label} ${s.col2} ${s.camp}`}>
             <b>Apellidos</b>
           </div>
 
@@ -76,7 +90,7 @@ return (
                 })
                 }
                 
-                <div style={{gridColumn:`${count+2}`}} className={s.label}>{abbreviation}-{index1+1}B</div>
+                <div style={{gridColumn:`${count+2}`}} className={`${s.label} ${s.camp}`}>{abbreviation}-{index1+1}B</div>
                 </>
               )
             })
@@ -104,7 +118,7 @@ return (
                 }
 
                 {
-                  <div className={s.label}>{califications[index][0].prom1}</div>
+                  <div className={`${s.label} ${s.prom}`}>{califications[index][0].prom1}</div>
                 }
                 
                 {
@@ -118,7 +132,7 @@ return (
                 }
 
                 {
-                  <div className={s.label}>{califications[index][0].prom2}</div>
+                  <div className={`${s.label} ${s.prom}`}>{califications[index][0].prom2}</div>
                 }
 
               {
@@ -132,7 +146,7 @@ return (
               }
 
               {
-                  <div className={s.label}>{califications[index][0].prom3}</div>
+                  <div className={`${s.label} ${s.prom}`}>{califications[index][0].prom3}</div>
               }
 
               {
@@ -146,7 +160,7 @@ return (
               }
 
               {
-                  <div className={s.label}>{califications[index][0].prom4}</div>
+                  <div className={`${s.label} ${s.prom}`}>{califications[index][0].prom4}</div>
               }
               
 
@@ -170,7 +184,7 @@ return (
         </div>
 
         </div>
-      </>
+      </div>
     
     </>
     

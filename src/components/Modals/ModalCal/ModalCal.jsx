@@ -1,16 +1,14 @@
 'use client'
 import modals from '@/components/Modals/Modals.module.css'
-import { useRouter } from 'next/navigation';
 import s from './ModalCal.module.css';
-import { useDispatch } from 'react-redux';
-import { BMhandler, closeModal, promHandlers } from './modalCalHandlers';
+import { BMhandler, promHandlers } from './modalCalHandlers';
 import { useEffect, useState } from 'react';
 import ModalButton from '../ModalButton/ModalButton';
 import { FAILURE, SUCCESS } from '@/const';
+const SUBMIT_CAL = process.env.NEXT_PUBLIC_CALIFICATIONS_URL; 
 
 const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
   
-  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
     B1: calif.B1,
     B2: calif.B2,
@@ -19,7 +17,8 @@ const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
     prom1: calif.prom1,
     prom2: calif.prom2,
     prom3: calif.prom3,
-    prom4: calif.prom4
+    prom4: calif.prom4,
+    calificationId: calif.id
   });
 
   useEffect( () => {
@@ -44,7 +43,7 @@ const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
         const evalB4 = prev.B4[index] == " " ? "" : prev.B4[index];
         bimester.B4.push(evalB4)
       });
-      console.log(bimester)
+
       return { 
         ...prev,
           ...bimester,
@@ -61,7 +60,6 @@ const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
     <>
 
       <div className={`${modals.modalContainer} ${s.overflow}`}>
-        <button onClick={(e) => closeModal(e, dispatch)}>Regresar </button>
         
         <div className={s.container}>
 
@@ -138,7 +136,7 @@ const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
           </div>
           
           <div className={s.buttonsContainer}>
-            <ModalButton type={SUCCESS} text={"Confirmar"} />
+            <ModalButton type={SUCCESS} text={"Confirmar"} url={SUBMIT_CAL} data={inputs}/>
             <ModalButton type={FAILURE} text={"Cancelar"} />
           </div>
         </div>

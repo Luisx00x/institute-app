@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { confirmModal, submitInfo } from "./ModalButtonHandler";
 import { SUCCESS } from '@/const';
 
-const ModalButton = ({text, type, data}) => {
+const ModalButton = ({text, type, data, url}) => {
 
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const ModalButton = ({text, type, data}) => {
       <button
       className={ type === SUCCESS ? s.success : s.failure}
       onClick={(e) => {
-        if(data) submitInfo(e, data, dispatch)
+        if(data) submitInfo(e, data, dispatch, url)
         else{
           confirmModal(e, dispatch)
         }

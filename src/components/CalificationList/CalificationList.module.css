@@ -5,15 +5,7 @@
   margin-top: 0;
   width: 100%;
 }
-/*
-.h2Title{
-  margin: 0;
-} */
 
-/* .mainTitleContainer{
-  margin-bottom: 20px;
-}
- */
 .gridData{
   display: grid;
   grid-template-columns: repeat(auto, 1fr) 100px;
@@ -27,6 +19,10 @@
   padding-left: 5px;
 }
 
+.prom{
+  background-color: #E3ecE4;
+}
+
 .camp{
   background-color: rgb(166, 166, 235);
 }
@@ -37,7 +33,6 @@
 
 .col2{
   grid-column: 2;
-  background-color: #FFF;
 }
 
 .col3{
@@ -49,6 +44,16 @@
   grid-column: 4;
 }
 
-.cols_3{
-  grid-column: 2/5;
+.listContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+ 
+  align-items: center;
+
+}
+
+.closeButton{
+  width: fit-content;
+  padding: 1%;
 }
