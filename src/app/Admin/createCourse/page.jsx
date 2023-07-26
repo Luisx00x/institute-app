@@ -21,12 +21,12 @@ const CreateCourse = () => {
     sectionId: null,
     teacherId: null,
     days: [],
-    skills: []
+    skills: [],
+    Abbrev: []
   });
 
   const [level, setLevel] = useState();
   const [levelOption, setLevelOption] = useState([]);
-  const [skillValue, setSkillValue] = useState([]);
 
   let setGrades;
 
@@ -65,6 +65,7 @@ const CreateCourse = () => {
       {gradesInTheYear.length ? 
       
       <>
+      {console.log(inputs)}
         <h3 className={s.title}>Año en curso</h3> 
         
         <div className={s.container}>
@@ -91,13 +92,28 @@ const CreateCourse = () => {
                   
                   <input 
                   type="text" 
-                  value={skill} 
+                  value={skill.skill} 
                   name={index} 
                   id={`skill${index}`} 
                   onChange={(e) => {
                     e.preventDefault();
                     setInputs( prev => {
-                      prev.skills[e.target.name] = e.target.value;
+                      prev.skills[e.target.name].skill = e.target.value;
+                      return {...prev}
+                    })
+                  }}
+                  />
+
+                  <label htmlFor={`skill${index}a`}> Abreviatura: </label>
+                  <input 
+                  type="text"
+                  value={skill.abbrev}
+                  name={index}
+                  id={`skill${index}a`}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setInputs( prev => {
+                      prev.skills[e.target.name].abbrev = e.target.value.toUpperCase();
                       return {...prev}
                     })
                   }}

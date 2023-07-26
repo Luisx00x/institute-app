@@ -71,7 +71,7 @@ export const setData = (prop, set) => {
     if(prop === SKILL){
       return {
         ...prev,
-        skills: [...prev.skills, ""]
+        skills: [...prev.skills, {skill: "", abbrev: ""}]
       }
     }
   });
@@ -97,12 +97,24 @@ export const dayHandler = (e, set, index) => {
 
 export const submitHandler = async (e, data) => {
 
+  let skills = []
+  let abbrev = []
+
+  data.skills.map( element => {
+    skills.push(element.skill);
+    abbrev.push(element.abbrev);
+  })
+  
+  const convertData = {...data, skills: skills, Abbrev: abbrev}
+
+  console.log(convertData)
+
   e.preventDefault();
   try{
 
     let status;
 
-    const fechingData = useFetch(`${LOGIN_URL}/courseCreation`, "POST", data)
+    const fechingData = useFetch(`${LOGIN_URL}/courseCreation`, "POST", convertData)
     .then( res => {
       status = res.status;
       return res.json();
