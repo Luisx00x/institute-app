@@ -57,7 +57,8 @@ export const setTeacherInformation = (user, rol, applicant, year, dispatch) => {
 
         grades.push({
           sectionId: course.Section.id,
-          grade: course.Section.Grade.grade
+          grade: course.Section.Grade.grade,
+          level: course.Section.Grade.level
         })
       });
       dispatch(setGrades(grades));
