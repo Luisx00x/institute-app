@@ -1,0 +1,53 @@
+ 
+.reportContainer{
+  margin: auto;
+  margin-left: 0;
+  margin-top: 0;
+  width: 100%;
+}
+/*
+.h2Title{
+  margin: 0;
+} */
+
+/* .mainTitleContainer{
+  margin-bottom: 20px;
+}
+ */
+.gridData{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 100px;
+  border: 1px solid black;
+}
+
+.label{
+  border: 1px solid black;
+  text-align: start;
+  padding-left: 5px;
+}
+
+.camp{
+  background-color: rgb(166, 166, 235);
+}
+
+.col1{
+  grid-column: 1;
+}
+
+.col2{
+  grid-column: 2;
+  background-color: #FFF;
+}
+
+.col3{
+  grid-column: 3;
+  text-align: center;
+}
+
+.col4{
+  grid-column: 4;
+}
+
+.cols_3{
+  grid-column: 2/5;
+}
