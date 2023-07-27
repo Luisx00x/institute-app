@@ -4,10 +4,16 @@ import ModalButton from '../ModalButton/ModalButton';
 import modals from '../Modals.module.css';
 import s from './ModalChange.module.css';
 import { useState } from 'react';
+const ABSENCES_URL = process.env.NEXT_PUBLIC_ABSENCES_URL;
 
-const ModalChange = ({title, message, values}) => {
+const ModalChange = ({studentId, title, message, values}) => {
 
-  const [input, setInput] = useState(values);
+  const setValues = {
+    ...values,
+    studentId: studentId
+  }
+
+  const [input, setInput] = useState(setValues);
 
   return(
     <>
@@ -31,7 +37,7 @@ const ModalChange = ({title, message, values}) => {
             }
           })} />
 
-          <ModalButton type={SUCCESS} text={"Guardar"} data={input} />
+          <ModalButton type={SUCCESS} text={"Guardar"} data={input} url={ABSENCES_URL} />
           <ModalButton type={FAILURE} text={"Cancelar"} />
 
         </div>

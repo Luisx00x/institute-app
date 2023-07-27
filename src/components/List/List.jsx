@@ -21,11 +21,21 @@ const List = ({listItems, course}) => {
 
   },[modal])
 
+  const studentsList = listItems?.filter( item => item.Absences.find( absence => absence.CourseId == course.id))
+  console.log(studentsList, "STUDENTLIST")
   return(
     <> 
 
     {
-      
+      modal.isActive
+      ?
+      <ModalChange {...modal} title={"Marcar inasistencias"} message={message} 
+      values={{courseId: course.id}} />
+      :
+      null
+    }
+  
+    {    
       <div className={s.container}>
 
       <h2>{course.courseName}</h2>
@@ -47,31 +57,42 @@ const List = ({listItems, course}) => {
           {
 
             listItems?.map( item => {
+              {console.log(item, "LIST")}
+              const absencesValue = (item.Absences.find( absences => absences.CourseId == course.id))
 
-              const absencesValue = (item.Absences.find( absences => absences.CourseId == course.id)).absences
+              {console.log(absencesValue, "ABSENCESVALUES")}
 
-              if(modal.isActive) return (
+              /* if(modal.isActive) return (
               <ModalChange title={"Marcar inasistencias"} message={message} 
               values={{studentId: item.id, courseId: course.id ,absences: absencesValue}} />
-              )
+              ) */
 
               return (
                 <>
-                  <div className={s.grid1}>
-                    {item.name}
-                  </div>
-                  <div className={s.grid2}>
-                    {item.lastName}
-                  </div>
-                  <div className={s.grid3}>
-                    {absencesValue}
-                  </div>
-                  <div className={s.grid4}>
-                    <div 
-                    className={s.changeAbsences}
-                    onClick={() => setListModal("Modificar inasistencias", dispatch)}
-                    >Marcar inasistencia</div>
-                  </div>
+
+                  {
+                    absencesValue 
+                    ?
+                    <>
+                      <div className={s.grid1}>
+                        {item.names}
+                      </div>
+                      <div className={s.grid2}>
+                        {item.fatherLastName} {item.motherLastName}
+                      </div>
+                      <div className={s.grid3}>
+                        {absencesValue.absences}
+                      </div>
+                      <div className={s.grid4}>
+                        <div 
+                        className={s.changeAbsences}
+                        onClick={() => setListModal("Modificar inasistencias", item.id, dispatch)}
+                        >Marcar inasistencia</div>
+                      </div>
+                    </>
+                    :
+                    null
+                  }
                 </>
               )
             })
@@ -80,7 +101,7 @@ const List = ({listItems, course}) => {
 
         </div>
       </div>
-    
+      
     }
 
     </>
