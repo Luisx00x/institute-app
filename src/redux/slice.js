@@ -48,7 +48,8 @@ export const TeacherSlice = createSlice({
     teacher: {},
     courses: [],
     sections: [],
-    grades: []
+    grades: [],
+    sectionReleases: []
 
   },
   reducers: {
@@ -63,6 +64,9 @@ export const TeacherSlice = createSlice({
     },
     setGrades: (state, action) => {
       state.grades = action.payload
+    },
+    setSectionReleases: (state, action) => {
+      state.sectionReleases = action.payload
     }
   }
 })
@@ -71,4 +75,4 @@ export const { setUser, setModal } = Slice.actions;
 
 export const { setAllGrades, setTeachers, setStudents } = AdminSlice.actions;
 
-export const { setCourses, setTeacher, setSections, setGrades } = TeacherSlice.actions;
+export const { setCourses, setTeacher, setSections, setGrades, setSectionReleases } = TeacherSlice.actions;
