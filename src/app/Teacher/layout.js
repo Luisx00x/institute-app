@@ -10,7 +10,7 @@ const teacherLayout = ({children}) =>{
     {name: "Resumen", route: "/Teacher"},
     {name: "Ver materias", route: "/Teacher/courses"},
     {name: "Dejar tarea", route: "/Teacher/homeworks"},
-    {name: "Enviar comunicado", route: "/Teacher/registerTeacher"},
+    {name: "Enviar comunicado", route: "/Teacher/releases"},
     {name: "Subir clases", route: "/Teacher/class"},
     {name: "Asistencias", route: "/Teacher/list"},
     {name: "Cargar calificación bimestreal", route: "/Teacher/uploadNotes"}
