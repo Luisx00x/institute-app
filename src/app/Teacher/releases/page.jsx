@@ -2,14 +2,18 @@
 import TabMenu from '@/components/TabMenu/TabMenu';
 import { useState } from 'react';
 import s from './page.module.css';
+import { useSelector } from 'react-redux';
+import ShowStudents from '@/components/showStudents/ShowStudents';
 
 const ReleasesMenu = () => {
 
   const [tabActive, setTabActive] = useState(1);
   const tabOptions = ["Cominicados para secciones completas", "Comunicados para un alumno", "Comunicado para apoderados"]
+  const courses = useSelector(state => state.teacher.courses);
 
   return (
     <>
+  
       <section className={s.componentContainer}>
 
         <h4>releases menu</h4>
@@ -19,7 +23,13 @@ const ReleasesMenu = () => {
               tabActive == 1
               ?
             <>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sapiente maxime enim expedita quis qui debitis, porro nam repudiandae aut possimus minima asperiores repellat, quibusdam eaque beatae illum recusandae eum.
+
+              <div>
+
+                <ShowStudents aditional={courses} display={true} />
+
+              </div>
+            
             </>
               :
               tabActive == 2
