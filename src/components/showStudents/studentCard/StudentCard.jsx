@@ -56,7 +56,7 @@ const StudentCard = ({list, ...rest}) => {
       <div key={rest.passList.id} className={s.container}>
         {
           rest.passList ?
-          <Link href={`${path}/${rest.passList.id}/${rest.passList.TeacherId}/${rest.passList.Section.id}/${rest.passList.Section.Grade.id}`}>
+          <Link className={s.links} href={`${path}/${rest.passList.id}/${rest.passList.TeacherId}/${rest.passList.Section.id}/${rest.passList.Section.Grade.id}`}>
             <label className={s.label}>Materia: {rest.passList.courseName}</label>
             <label className={s.label}>Sección: {rest.passList.Section.sectionName}</label>
             <label className={s.label}>Grado: {rest.passList.Section.Grade.grade}</label>
