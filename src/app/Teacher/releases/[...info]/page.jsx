@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './page.module.css';
 import { useEffect } from 'react';
 import Releases from '@/components/Releases/Releases';
-import { findOneStudentInfo, searchSectionReleases, searchSectionStudents } from './releasesHandler';
+import { findOneStudentInfo, findParentReleaes, searchSectionReleases, searchSectionStudents } from './releasesHandler';
 import { useRouter } from 'next/navigation';
 import ShowStudents from '@/components/showStudents/ShowStudents';
-import { SECTION, STUDENT } from '@/const';
+import { REPRESENTATIVE, SECTION, STUDENT } from '@/const';
 
 const ReleaseDetails = ({params}) => {
   
@@ -21,18 +21,20 @@ const ReleaseDetails = ({params}) => {
   useEffect( () => {
     
     if(releaseType == "section") searchSectionReleases(dispatch, sectionId);
-    if(releaseType == "student") searchSectionStudents(dispatch, sectionId);
-    if(studentId) findOneStudentInfo(dispatch, studentId);
+    if(releaseType == "student" || releaseType == "parents") searchSectionStudents(dispatch, sectionId);
+    if(studentId && releaseType == "student") findOneStudentInfo(dispatch, studentId);
+    if(studentId && releaseType == "parents") findParentReleaes(dispatch, studentId);
     
   },[modal])
   
   const sectionStudents = useSelector(state => state.teacher.sectionStudents);
   const sectionReleases = useSelector(state => state.teacher.sectionReleases);
   const studentReleases = useSelector(state => state.teacher.studentReleses);
-
+  const parentReleases = useSelector(state => state.teacher.parentReleases);
   
   return (
     <>
+
     {
       releaseType === "section"
       ?
@@ -46,13 +48,13 @@ const ReleaseDetails = ({params}) => {
       :
       releaseType === "student" && studentId
       ?
-      <div className={s.listContainer}>
+        <div className={s.listContainer}>
 
-      <div className={s.backButton} onClick={() => router.back()}>Regresar</div>
-    
-      <Releases releases={studentReleases} submitData={{sender: teacherId, userRol: user.RolId, studentId, type: STUDENT}} />
-      
-    </div>
+          <div className={s.backButton} onClick={() => router.back()}>Regresar</div>
+        
+          <Releases releases={studentReleases} submitData={{sender: teacherId, userRol: user.RolId, studentId, type: STUDENT}} />
+        
+        </div>
       :
       releaseType === "student"
       ?
@@ -68,11 +70,27 @@ const ReleaseDetails = ({params}) => {
 
         </div>
       :
-      releaseType === "representative"
+      releaseType === "parents" && studentId
       ?
         <div className={s.listContainer}>
-          //TODO AQUI VA EL RENDERIZADO DE LA LISTA PARA STUDIANTES
-          aqui va los comunicados de apoderados
+
+          <div className={s.backButton} onClick={() => router.back()}>Regresar</div>
+        
+          <Releases releases={parentReleases} studentId={studentId} submitData={{sender: teacherId, userRol: user.RolId, studentId, representative:true, type: REPRESENTATIVE}} />
+        
+        </div>
+      :
+      releaseType === "parents"
+      ?
+        <div className={s.listContainer}>
+          
+          {
+            sectionStudents
+            ?
+            <ShowStudents aditional={sectionStudents.Students} display={true} search={"students"} oneStep={true} />
+            :
+            null
+          }
 
         </div>
       :

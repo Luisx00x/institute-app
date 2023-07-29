@@ -42,9 +42,18 @@ const ReleasesMenu = () => {
                 additionalParam={"student"}
                 />
             </>
-            :
-            null  
-            }
+              :
+              tabActive == 3
+              ?
+                <ShowStudents
+                aditional={courses}
+                display={true}
+                search={"course"}
+                additionalParam={"parents"}
+                />
+              :
+              null  
+              }
         </TabMenu>
 
       </section>

@@ -1,9 +1,10 @@
 import useFetch from "@/Hooks/useFetch";
-import { setSectionReleases, setSectionStudents, setStudentReleases } from "@/redux/slice";
+import { setParentReleases, setSectionReleases, setSectionStudents, setStudentReleases } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const SEARCH_SECTION = process.env.NEXT_PUBLIC_SECTION_SEARCH_RELEASES;
 const SECTION_STUDENTS = process.env.NEXT_PUBLIC_SECTION_STUDENTS;
 const STUDENT_RELEASES = process.env.NEXT_PUBLIC_FIND_STUDENT_RELEASES;
+const PARENT_RELEASES = process.env.NEXT_PUBLIC_FIND_PARENT_RELEASES;
 
 export const searchSectionReleases = (dispatch, sectionId) => {
 
@@ -53,5 +54,20 @@ export const findOneStudentInfo = (dispatch, studentId) => {
     throw new Error(res);
   })
 
+}
+
+export const findParentReleaes = (dispatch, id) => {
+
+  let status;
+
+  useFetch(`${LOGIN_URL}/${PARENT_RELEASES}?studentId=${id}`)
+  .then( res => {
+    status = res.status;
+    return res.json();
+  })
+  .then( res => {
+    if(status == 200 || status == 304) return dispatch(setParentReleases(res));
+    throw new Error(res);
+  })
 
 }
