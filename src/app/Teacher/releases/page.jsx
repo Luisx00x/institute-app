@@ -26,7 +26,7 @@ const ReleasesMenu = () => {
 
               <div>
 
-                <ShowStudents aditional={courses} display={true} />
+                <ShowStudents aditional={courses} display={true} additionalParam={"section"} />
 
               </div>
             
@@ -35,7 +35,12 @@ const ReleasesMenu = () => {
               tabActive == 2
               ?
             <>
-              Soy la tab 2
+                <ShowStudents 
+                aditional={courses} 
+                display={true} 
+                search={"course"}
+                additionalParam={"student"}
+                />
             </>
             :
             null  
