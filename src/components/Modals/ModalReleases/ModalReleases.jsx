@@ -8,13 +8,15 @@ import { inputHandler } from '@/globalHandlers';
 import { getReleaseFile } from '../ModalButton/ModalButtonHandler';
 const CREATE_RELEASE = process.env.NEXT_PUBLIC_CREATE_RELEASE;
 
-const ModalReleases = ({title, sender, userRol, sectionId}) => {
+const ModalReleases = ({title, sender, userRol, sectionId, studentId, type}) => {
 
   const [inputs, setInputs] = useState({
     sender,
     userRol,
     sectionId,
     title: "",
+    type,
+    studentId
   });
 
   const [data, setData] = useState()

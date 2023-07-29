@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
-import { FAILURE, SUCCESS } from "@/const";
+import { FAILURE, SECTION, STUDENT, SUCCESS } from "@/const";
 import { setModal } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const CREATE_RELEASE = process.env.NEXT_PUBLIC_CREATE_RELEASE;
@@ -63,7 +63,10 @@ export const submitReleaseFile = (e, data, input, dispatch, setData, setInput, u
   body.append('title', input.title);
   body.append('sender', input.sender);
   body.append('userRol', input.userRol);
-  body.append('sectionId', input.sectionId);
+
+  if(input.type === STUDENT) body.append(`studentId`, input.studentId);
+  if(input.type === SECTION) body.append(`sectionId`, input.sectionId);
+ /*  body.append('sectionId', input.sectionId); */
 
   e.preventDefault();
   useFetch(`${sendUrl}`, "POST", body, true)
