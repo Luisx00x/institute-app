@@ -74,16 +74,16 @@ export const submitReleaseFile = (e, data, input, dispatch, setData, setInput, u
   .then( res => {
     if(status === 200){
       const modalBody = {
-        isActive: true,
-        type: SUCCESS,
-        title: "Envio de tarea",
-        msg: res
+        isActive: false,
+        type: null,
+        title: "",
+        msg: ""
       }
       setData(prev => undefined);
       setInput(prev => {
         return {
           ...prev,
-          inputValue: ""
+          title: ""
         }
       });
       return dispatch(setModal(modalBody));

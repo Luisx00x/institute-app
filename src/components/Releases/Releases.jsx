@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './Releases.module.css';
 import { newRelease } from './releasesHandlers';
 import ModalReleases from '../Modals/ModalReleases/ModalReleases';
+const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
 const Releases = ({releases, submitData}) => {
 
@@ -56,7 +57,7 @@ const Releases = ({releases, submitData}) => {
                   {release.sender}
                 </div>
                 <div className={s.gridCol3}>
-                  {release.location}
+                  <a href={`${LOGIN_URL}/${release.location}`} target='_blank'>{release.title}</a>
                 </div>
               </>
             )

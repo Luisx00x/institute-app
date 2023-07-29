@@ -4,7 +4,6 @@ import s from './ModalButton.module.css';
 import { useDispatch } from "react-redux";
 import { confirmModal, submitInfo, submitReleaseFile } from "./ModalButtonHandler";
 import { SUCCESS } from '@/const';
-import { submitFile } from '@/components/UploadFiles/uploadHandler';
 
 const ModalButton = ({text, type, data, setData, url, uploadFile, input, setInput}) => {
 
