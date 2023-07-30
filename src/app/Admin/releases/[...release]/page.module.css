@@ -1,0 +1,24 @@
+.listContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  width: 100%;
+  padding-right: 1%;
+}
+
+.backButton{
+  padding: 2%;
+  margin: 0 auto;
+  margin-top: 1%;
+  background-color: rgb(66, 66, 190);
+  border-radius: 15px;
+  transition: 0.2s;
+  cursor: default;
+  user-select: none;
+}
+
+.backButton:hover{
+  background-color: rgb(41, 97, 129);
+  color: white;
+}
