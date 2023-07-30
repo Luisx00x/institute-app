@@ -2,6 +2,7 @@
 export const STUDENT = "student";
 export const TEACHER = "teacher";
 export const SECTION = "section";
+export const ALLSECTIONS = "allSections";
 export const REPRESENTATIVE = "representative";
 export const YEAR = "year";
 export const SUCCESS = "success";
@@ -71,3 +72,4 @@ export const SKILL = "skills";
 export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 export const CLASSLIST = [{col: "Sesión", value: "className" }, {col: "Archivo", value: "location"}];
 export const HOMEWORKSLIST = [{col: "Asignación", value: "asignation"}, {col: "Archivo", value: "location"}];
+export const ADMIN = "admin"
