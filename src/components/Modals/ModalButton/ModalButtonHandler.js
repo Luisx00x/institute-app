@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
-import { FAILURE, REPRESENTATIVE, SECTION, STUDENT, SUCCESS } from "@/const";
+import { ADMIN, ALLSECTIONS, FAILURE, REPRESENTATIVE, SECTION, STUDENT, SUCCESS } from "@/const";
 import { setModal } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const CREATE_RELEASE = process.env.NEXT_PUBLIC_CREATE_RELEASE;
@@ -61,11 +61,17 @@ export const submitReleaseFile = (e, data, input, dispatch, setData, setInput, u
   body.append('newRelease', data.fileRaw, data.fileName);
 
   body.append('title', input.title);
-  body.append('sender', input.sender);
+  if(input.sender === ADMIN){
+    body.append('sender', "Administración")
+  }
+  else{
+    body.append('sender', input.sender);
+  }
   body.append('userRol', input.userRol);
 
   if(input.type === STUDENT) body.append(`studentId`, input.studentId);
   if(input.type === SECTION) body.append(`sectionId`, input.sectionId);
+  if(input.type === ALLSECTIONS) body.append(`sectionId`, "all");
   if(input.type === REPRESENTATIVE) {
     body.append(`studentId`, input.studentId);
     body.append(`representative`, input.representativeId);
