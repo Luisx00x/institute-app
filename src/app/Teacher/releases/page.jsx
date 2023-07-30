@@ -8,7 +8,7 @@ import ShowStudents from '@/components/showStudents/ShowStudents';
 const ReleasesMenu = () => {
 
   const [tabActive, setTabActive] = useState(1);
-  const tabOptions = ["Cominicados para secciones completas", "Comunicados para un alumno", "Comunicado para apoderados"]
+  const tabOptions = ["Cominicados para todo el curso", "Comunicados para un alumno", "Comunicado para apoderados"]
   const courses = useSelector(state => state.teacher.courses);
 
   return (
