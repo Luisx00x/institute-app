@@ -69,5 +69,5 @@ export const DAY = "days";
 export const SKILL = "skills";
 
 export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-export const CLASSLIST = {col1: "Sesión", col2: "Archivo"};
-export const HOMEWORKSLIST = {col1: "Asignación", col2:"Archivo"};
+export const CLASSLIST = [{col: "Sesión", value: "className" }, {col: "Archivo", value: "location"}];
+export const HOMEWORKSLIST = [{col: "Asignación", value: "asignation"}, {col: "Archivo", value: "location"}];
