@@ -8,7 +8,7 @@ import StudentCard from "./studentCard/StudentCard";
 import { STUDENT, TEACHER, YEAR } from '@/const';
 import { searchGrades, searchTeachers } from '@/app/Admin/createCourse/createCourseHandlers';
 
-const ShowStudents = ({type, display, aditional, courseData, oneStep, search, additionalParam}) => {
+const ShowStudents = ({type, display, aditional, courseData, oneStep, search, additionalParam, sectionReleases}) => {
   
   const dispatch = useDispatch();
 
@@ -61,12 +61,7 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
         }
 
         {
-          /* aditional && oneStep
-          ?
-            aditional.map( adition => {
-              return <StudentCard passList={adition} oneStep={true} search={search}/>
-            })
-          : */
+  
           aditional && oneStep
           ?
           aditional.map( adition => {
@@ -76,7 +71,7 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
           aditional 
           ?
           aditional.map( adition => {
-            return <StudentCard passList={adition} courseData={courseData} search={search} additionalParam={additionalParam} />
+            return <StudentCard passList={adition} courseData={courseData} search={search} additionalParam={additionalParam} sectionReleases={sectionReleases} />
           })
           :
           null

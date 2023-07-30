@@ -81,14 +81,24 @@ const StudentCard = ({list, search, oneStep, additionalParam, ...rest}) => {
       :
       <div key={rest.passList.id} className={s.container}>
         {
-          rest.passList ?
+          rest.passList && rest.sectionReleases
+          ?
+          <Link className={s.links} href={`${path}/${additionalParam ? `${additionalParam}/` : "/"}${rest.passList.id}/${rest.passList.GradeId}`}>
+            <label className={s.label}>Sección: {rest.passList.sectionName}</label>
+            <label className={s.label}>Grado: {rest.passList.Grade.grade}</label>
+            <label className={s.label}>Nivel Educativo: {rest.passList.Grade.level}</label>
+          </Link>
+          :
+          rest.passList 
+          ?
           <Link className={s.links} href={`${path}/${additionalParam ? `${additionalParam}/` : "/"}${rest.passList.id}/${rest.passList.TeacherId}/${rest.passList.Section.id}/${rest.passList.Section.Grade.id}`}>
             <label className={s.label}>Materia: {rest.passList.courseName}</label>
             <label className={s.label}>Sección: {rest.passList.Section.sectionName}</label>
             <label className={s.label}>Grado: {rest.passList.Section.Grade.grade}</label>
             <label className={s.label}>Nivel Educativo: {rest.passList.Section.Grade.level}</label>
           </Link>
-          : null
+          : 
+          null
         }
       </div>
     }
