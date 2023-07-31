@@ -31,6 +31,7 @@ export const AdminSlice = createSlice({
     allSectionReleases: [],
     studentReleases: [],
     parentReleases: [],
+    coursesReleases: [],
     sectionStudents: [],
     allCourses: []
   },
@@ -58,6 +59,9 @@ export const AdminSlice = createSlice({
     },
     setAdminParentReleases: (state, action) => {
       state.parentReleases = action.payload
+    },
+    setAdminCoursesReleases: (state, action) => {
+      state.coursesReleases = action.payload
     }
   }
 });
@@ -112,7 +116,8 @@ export const {
   setAdminSectionStudents,
   setAdminStudentReleases,
   setAllCourses,
-  setAdminParentReleases
+  setAdminParentReleases,
+  setAdminCoursesReleases
    } = AdminSlice.actions;
 
 export const { 

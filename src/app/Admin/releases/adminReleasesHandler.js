@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch"
-import { setAdminParentReleases, setAdminSectionStudents, setAdminStudentReleases, setAllCourses, setAllSectionReleases } from "@/redux/slice";
+import { setAdminCoursesReleases, setAdminParentReleases, setAdminSectionStudents, setAdminStudentReleases, setAllCourses, setAllSectionReleases } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const ALL_SECTIONS = process.env.NEXT_PUBLIC_ALL_SECTIONS;
 const ALL_SECTIONS_RELEASES = process.env.NEXT_PUBLIC_FIND_ALL_SECTIONS_RELEASES;
@@ -7,6 +7,7 @@ const SECTION_STUDENTS = process.env.NEXT_PUBLIC_SECTION_STUDENTS;
 const STUDENT_RELEASES = process.env.NEXT_PUBLIC_FIND_STUDENT_RELEASES;
 const All_COURSES = process.env.NEXT_PUBLIC_ALL_COURSES;
 const PARENT_RELEASES = process.env.NEXT_PUBLIC_FIND_PARENT_RELEASES;
+const ALL_COURSES_RELEASES = process.env.NEXT_PUBLIC_ALL_COURSES_RELEASES;
 
 let status;
 
@@ -114,6 +115,24 @@ export const findAdminParentReleases = (dispatch, id) => {
   .then( res => {
     if(status == 200 || status == 304) return dispatch(setAdminParentReleases(res));
     throw new Error(res);
+  })
+
+}
+
+export const getAdminCoursesReleases = (dispatch, year) => {
+
+  let status
+
+  useFetch(`${LOGIN_URL}/${ALL_COURSES_RELEASES}?year=${year}`)
+  .then(res => {
+    status = res.status;
+    return res.json();
+  })
+  .then( res => {
+    if(status == 200 || status == 304){
+      return dispatch(setAdminCoursesReleases(res));
+    }
+    throw new Error(res)
   })
 
 }

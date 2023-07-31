@@ -22,11 +22,10 @@ const AdminReleases = () => {
   const courses = useSelector(state => state.admin.allCourses);
   const [sections, setAllSections] = useState([]);
   const [tabActive, setTabActive] = useState(1);
-  const tabOptions = ["Cominicados para secciones completas", "Comunicados para un alumno", "Comunicado para apoderados"]
+  const tabOptions = ["Comunicados para secciones completas", "Comunicado para un curso", "Comunicados para un alumno", "Comunicado para apoderados"]
 
   return (
     <>
-    {console.log(courses)}
       <section className={s.componentContainer}>
 
         <h4>releases menu</h4>
@@ -87,6 +86,18 @@ const AdminReleases = () => {
             </>
               :
               tabActive == 2
+                ?
+              <>
+                 <ShowStudents 
+                 aditional={courses} 
+                 display={true} 
+                 additionalParam={"course"} 
+                 sectionReleases={true}
+                 />
+              </>
+                :
+
+              tabActive == 3
               ?
             <>
                 <ShowStudents 
