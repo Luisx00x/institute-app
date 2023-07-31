@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './page.module.css';
 import { useEffect } from 'react';
 import Releases from '@/components/Releases/Releases';
-import { findOneStudentInfo, findParentReleaes, searchSectionReleases, searchSectionStudents } from './releasesHandler';
+import { findOneStudentInfo, findParentReleaes, searchCoursesReleases, searchSectionStudents } from './releasesHandler';
 import { useRouter } from 'next/navigation';
 import ShowStudents from '@/components/showStudents/ShowStudents';
-import { REPRESENTATIVE, SECTION, STUDENT } from '@/const';
+import { COURSE, REPRESENTATIVE, SECTION, STUDENT } from '@/const';
 
 const ReleaseDetails = ({params}) => {
   
@@ -20,7 +20,7 @@ const ReleaseDetails = ({params}) => {
   
   useEffect( () => {
     
-    if(releaseType == "section") searchSectionReleases(dispatch, sectionId);
+    if(releaseType == "course") searchCoursesReleases(dispatch, courseId);
     if(releaseType == "student" || releaseType == "parents") searchSectionStudents(dispatch, sectionId);
     if(studentId && releaseType == "student") findOneStudentInfo(dispatch, studentId);
     if(studentId && releaseType == "parents") findParentReleaes(dispatch, studentId);
@@ -28,21 +28,21 @@ const ReleaseDetails = ({params}) => {
   },[modal])
   
   const sectionStudents = useSelector(state => state.teacher.sectionStudents);
-  const sectionReleases = useSelector(state => state.teacher.sectionReleases);
+  const coursesReleases = useSelector(state => state.teacher.coursesReleases);
   const studentReleases = useSelector(state => state.teacher.studentReleses);
   const parentReleases = useSelector(state => state.teacher.parentReleases);
   
   return (
     <>
-
+{console.log(coursesReleases)}
     {
-      releaseType === "section"
+      releaseType === "course"
       ?
         <div className={s.listContainer}>
 
           <div className={s.backButton} onClick={() => router.back()}>Regresar</div>
         
-          <Releases releases={sectionReleases} submitData={{sender: teacherId, userRol: user.RolId, sectionId, type: SECTION }} />
+          <Releases releases={coursesReleases} submitData={{sender: teacherId, userRol: user.RolId, courseId, type: COURSE }} />
           
         </div> 
       :

@@ -13,7 +13,6 @@ const ReleasesMenu = () => {
 
   return (
     <>
-  
       <section className={s.componentContainer}>
 
         <h4>releases menu</h4>
@@ -26,7 +25,7 @@ const ReleasesMenu = () => {
 
               <div>
 
-                <ShowStudents aditional={courses} display={true} additionalParam={"section"} />
+                <ShowStudents aditional={courses} display={true} additionalParam={"course"} />
 
               </div>
             

@@ -54,7 +54,7 @@ export const TeacherSlice = createSlice({
     sections: [],
     grades: [],
     sectionStudents: [],
-    sectionReleases: [],
+    coursesReleases: [],
     studentReleses: [],
     parentReleases: []
   },
@@ -71,8 +71,8 @@ export const TeacherSlice = createSlice({
     setGrades: (state, action) => {
       state.grades = action.payload
     },
-    setSectionReleases: (state, action) => {
-      state.sectionReleases = action.payload
+    setCoursesReleases: (state, action) => {
+      state.coursesReleases = action.payload
     },
     setSectionStudents: (state, action) => {
       state.sectionStudents = action.payload
@@ -95,7 +95,7 @@ export const {
   setTeacher, 
   setSections, 
   setGrades, 
-  setSectionReleases, 
+  setCoursesReleases, 
   setSectionStudents,
   setStudentReleases,
   setParentReleases 

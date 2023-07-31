@@ -1,10 +1,11 @@
 import useFetch from "@/Hooks/useFetch";
-import { setParentReleases, setSectionReleases, setSectionStudents, setStudentReleases } from "@/redux/slice";
+import { setParentReleases, setSectionReleases, setSectionStudents, setStudentReleases, setCoursesReleases } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const SEARCH_SECTION = process.env.NEXT_PUBLIC_SECTION_SEARCH_RELEASES;
 const SECTION_STUDENTS = process.env.NEXT_PUBLIC_SECTION_STUDENTS;
 const STUDENT_RELEASES = process.env.NEXT_PUBLIC_FIND_STUDENT_RELEASES;
 const PARENT_RELEASES = process.env.NEXT_PUBLIC_FIND_PARENT_RELEASES;
+const FIND_COURSES_RELEASES = process.env.NEXT_PUBLIC_FIND_COURSES_RELEASES;
 
 export const searchSectionReleases = (dispatch, sectionId) => {
 
@@ -18,6 +19,24 @@ export const searchSectionReleases = (dispatch, sectionId) => {
   .then( res => {
     if(status == 200 || status == 304){
       return dispatch(setSectionReleases(res));
+    }
+    throw new Error(res)
+  })
+
+}
+
+export const searchCoursesReleases = (dispatch, courseId) => {
+
+  let status
+
+  useFetch(`${LOGIN_URL}/${FIND_COURSES_RELEASES}?courseId=${courseId}`)
+  .then(res => {
+    status = res.status;
+    return res.json();
+  })
+  .then( res => {
+    if(status == 200 || status == 304){
+      return dispatch(setCoursesReleases(res));
     }
     throw new Error(res)
   })

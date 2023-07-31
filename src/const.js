@@ -2,6 +2,7 @@
 export const STUDENT = "student";
 export const TEACHER = "teacher";
 export const SECTION = "section";
+export const COURSE = "course";
 export const ALLSECTIONS = "allSections";
 export const REPRESENTATIVE = "representative";
 export const YEAR = "year";
