@@ -1,28 +1,32 @@
 'use client'
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from './page.module.css';
 import TabMenu from "@/components/TabMenu/TabMenu";
 import ShowStudents from "@/components/showStudents/ShowStudents";
-import { findCourses, getAllSections } from "./adminReleasesHandler";
+import { findCourses, getAllCourses, getAllSections } from "./adminReleasesHandler";
 import { inputHandler } from "@/globalHandlers";
 
 const AdminReleases = () => {
 
   const modal = useSelector(state => state.primarySlice.modal);
+  const dispatch = useDispatch();
   
   useEffect( () => {
-  
+    
     getAllSections("", setAllSections);
+    getAllCourses(dispatch, "");
     
   },[modal])
   
+  const courses = useSelector(state => state.admin.allCourses);
   const [sections, setAllSections] = useState([]);
   const [tabActive, setTabActive] = useState(1);
   const tabOptions = ["Cominicados para secciones completas", "Comunicados para un alumno", "Comunicado para apoderados"]
 
   return (
     <>
+    {console.log(courses)}
       <section className={s.componentContainer}>
 
         <h4>releases menu</h4>
@@ -97,10 +101,11 @@ const AdminReleases = () => {
               tabActive == 3
               ?
                 <ShowStudents
-                aditional={courses}
+                aditional={sections}
                 display={true}
                 search={"course"}
                 additionalParam={"parents"}
+                sectionReleases={true}
                 />
               :
               null  

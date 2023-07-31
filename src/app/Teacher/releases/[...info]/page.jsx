@@ -34,7 +34,7 @@ const ReleaseDetails = ({params}) => {
   
   return (
     <>
-{console.log(coursesReleases)}
+
     {
       releaseType === "course"
       ?

@@ -28,7 +28,11 @@ export const AdminSlice = createSlice({
     allGrades: [],
     Teachers: [],
     Students: [],
-    allSectionReleases: []
+    allSectionReleases: [],
+    studentReleases: [],
+    parentReleases: [],
+    sectionStudents: [],
+    allCourses: []
   },
   reducers: {
     setAllGrades: (state, action) => {
@@ -42,6 +46,18 @@ export const AdminSlice = createSlice({
     },
     setAllSectionReleases: (state, action) => {
       state.allSectionReleases = action.payload
+    },
+    setAdminSectionStudents: (state, action) => {
+      state.sectionStudents = action.payload
+    },
+    setAdminStudentReleases: (state, action) => {
+      state.studentReleases = action.payload
+    },
+    setAllCourses: (state, action) => {
+      state.allCourses = action.payload
+    },
+    setAdminParentReleases: (state, action) => {
+      state.parentReleases = action.payload
     }
   }
 });
@@ -88,7 +104,16 @@ export const TeacherSlice = createSlice({
 
 export const { setUser, setModal } = Slice.actions;
 
-export const { setAllGrades, setTeachers, setStudents, setAllSectionReleases } = AdminSlice.actions;
+export const { 
+  setAllGrades, 
+  setTeachers, 
+  setStudents, 
+  setAllSectionReleases,
+  setAdminSectionStudents,
+  setAdminStudentReleases,
+  setAllCourses,
+  setAdminParentReleases
+   } = AdminSlice.actions;
 
 export const { 
   setCourses,
