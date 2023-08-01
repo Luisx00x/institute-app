@@ -136,7 +136,7 @@ const ModalCal = ({student, calif, abbreviation, skillsLength}) => {
           </div>
           
           <div className={s.buttonsContainer}>
-            <ModalButton type={SUCCESS} text={"Confirmar"} url={SUBMIT_CAL} data={inputs}/>
+            <ModalButton type={SUCCESS} text={"Confirmar"} url={SUBMIT_CAL} data={inputs} uploadFile={false}/>
             <ModalButton type={FAILURE} text={"Cancelar"} />
           </div>
         </div>
