@@ -7,7 +7,8 @@ import Sidebar from '@/components/sidebar/Sidebar';
 const layout = ({children}) =>{
 
   const menuRoutes = [
-    {name: "Horario", route: "/student"},
+    {name: "Inicio", route: "/student"},
+    {name: "Horario", route: "/student/schedules"},
     {name: "Subir tarea", route: "/Admin/createYear"},
     {name: "Ver comunicados", route: "/Admin/registerTeacher"},
     {name: "Ver libreta de calificaciones", route: "/Admin/RegisterStudent"},

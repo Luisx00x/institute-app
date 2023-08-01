@@ -1,19 +1,27 @@
 'use client'
+import { useDispatch, useSelector } from 'react-redux';
 import s from './page.module.css';
-import ShowSchedules from "@/components/ShowSchedules/ShowSchedules";
+import { useEffect } from 'react';
+import { studentSection } from './studentHandlers';
+
 
 const StudentUI = () => {
+  
+  const user = useSelector(state => state.primarySlice.userLog);
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+
+    studentSection(dispatch, user.id, "");
+
+  },[])
+
+  const section = useSelector(state => state.student.sectionInfo);
+
   return (
     <>
-        <div className={s.container}>
-
-          <div className={s.title}>
-            <h3>Horario de clases</h3>
-          </div>
-          <ShowSchedules />
-
-        </div>
-
+    {console.log(section)}
+        Bienvenido
     </>
   )
 }
