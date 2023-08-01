@@ -1,7 +1,8 @@
-
+'use client'
+import { useSelector } from 'react-redux';
 import s from './page.module.css';
 
-const Materias = [
+/* const Materias = [
   {
     id:1, 
     course: "Matematica", 
@@ -173,14 +174,19 @@ const Materias = [
       }
     ],
   }
-];
+]; */
 
 const Page = () => {
+
+  const studentInfo = useSelector(state => state.student.studentInfo);
+  const sectionInfo = useSelector(state => state.student.sectionInfo);
+  const califications = useSelector(state => state.student.califications);
 
   let count;
   return (
     <>
-      
+    {console.log(studentInfo)}
+    {console.log(califications, "CALIFICACIONS")}      
       {/* Primer componente */}
 
       <div id="reportCard" className={s.reportContainer}>
@@ -215,7 +221,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            "Primaria"
+            {studentInfo.level}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -223,7 +229,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.col2}`}>
-            "6" °
+            {studentInfo.grade} °
           </div>
           
           <div className={`${s.label} ${s.col3} ${s.camp}`}>
@@ -231,7 +237,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.col4}`}>
-            "aqui la seccion"
+            {sectionInfo.sectionName}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -239,7 +245,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            "PrimerNombre SegundoNombre TercerNombre CuartoNombre"
+            {studentInfo.names} {studentInfo.fatherLastName} {studentInfo.motherLastName}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -247,7 +253,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            "002996750"
+            {studentInfo.DNI}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -326,7 +332,7 @@ const Page = () => {
         <div className={s.skillsGrid}>
 
         {
-          Materias?.map( curso => {
+          califications?.map( curso => {
             count = 1;
             return (
               <>
@@ -360,7 +366,7 @@ const Page = () => {
                             </div>
 
                             <div className={`${s.col2_8} ${s.borders} ${s.centerGrid}`} >
-
+                              {ele.cal4}
                             </div>
 
                           </>
@@ -368,19 +374,19 @@ const Page = () => {
                       })
                     }
                       <div className={`${s.col2_3} ${s.borders} ${s.centerGrid}`} style={{gridRow:`1/${count}`}}>
-                        prom1
+                        {curso.proms.prom1}
                       </div>
 
                       <div className={`${s.col2_5} ${s.centerGrid} ${s.borders}`} style={{gridRow:`1/${count}`}} >
-                        prom2
+                        {curso.proms.prom2}
                       </div>
 
                       <div className={`${s.col2_7} ${s.centerGrid} ${s.borders}`} style={{gridRow:`1/${count}`}}>
-                        prom3
+                        {curso.proms.prom3}
                       </div>
 
                       <div className={`${s.col2_9} ${s.centerGrid} ${s.borders}`} style={{gridRow:`1/${count}`}}>
-                        prom4
+                        {curso.proms.prom4}
                       </div>
 
                   </div>
