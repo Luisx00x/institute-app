@@ -1,6 +1,9 @@
 'use client'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './page.module.css';
+import { useEffect } from 'react';
+import { studentCalifications } from '../student/reportCard/reportCardHandlers';
+import { studentSection, studentInfo as searchStudentInfo} from '../student/studentHandlers';
 
 /* const Materias = [
   {
@@ -176,7 +179,19 @@ import s from './page.module.css';
   }
 ]; */
 
-const Page = () => {
+const Page = ({params}) => {
+
+  const [route, sectionId, studentId, userId] = params.reports;
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+
+    studentCalifications(dispatch, studentId, sectionId);
+    studentSection(dispatch, userId, "");
+    searchStudentInfo(dispatch, userId, "");
+
+
+  },[])
 
   const studentInfo = useSelector(state => state.student.studentInfo);
   const sectionInfo = useSelector(state => state.student.sectionInfo);
@@ -184,9 +199,7 @@ const Page = () => {
 
   let count;
   return (
-    <>
-    {console.log(studentInfo)}
-    {console.log(califications, "CALIFICACIONS")}      
+    <>  
       {/* Primer componente */}
 
       <div id="reportCard" className={s.reportContainer}>
@@ -221,7 +234,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            {studentInfo.level}
+            {studentInfo?.level}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -229,7 +242,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.col2}`}>
-            {studentInfo.grade} °
+            {studentInfo?.grade} °
           </div>
           
           <div className={`${s.label} ${s.col3} ${s.camp}`}>
@@ -237,7 +250,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.col4}`}>
-            {sectionInfo.sectionName}
+            {sectionInfo?.sectionName}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -245,7 +258,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            {studentInfo.names} {studentInfo.fatherLastName} {studentInfo.motherLastName}
+            {studentInfo?.names} {studentInfo?.fatherLastName} {studentInfo?.motherLastName}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
@@ -253,7 +266,7 @@ const Page = () => {
           </div>
 
           <div className={`${s.label} ${s.cols_3}`}>
-            {studentInfo.DNI}
+            {studentInfo?.DNI}
           </div>
 
           <div className={`${s.label} ${s.col1} ${s.camp}`}>
