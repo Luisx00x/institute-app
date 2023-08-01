@@ -7,15 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Schedules = () => {
 
-  const dispatch = useDispatch();
-  const sectionInfo = useSelector(state => state.student.sectionInfo);
-
-  useEffect( () => {
-
-    getSchedules(dispatch, sectionInfo.id);
-
-  },[])
-
   const schedules = useSelector(state => state.student.schedules);
 
   return (
@@ -25,7 +16,13 @@ const Schedules = () => {
           <div className={s.title}>
             <h3>Horario de clases</h3>
           </div>
-          <ShowSchedules schedules={schedules} />
+          {
+            schedules && schedules[0].hasOwnProperty("schedules")
+            ?
+            <ShowSchedules schedules={schedules} />
+            :
+            <h3>No tienes un horario asignado</h3>
+          }
 
         </div>
     </>
