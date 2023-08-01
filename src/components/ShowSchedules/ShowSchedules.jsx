@@ -1,41 +1,42 @@
 import s from './schedules.module.css';
 
-const matematica = {schedules:[{day: "Lunes", init: "09:10", end: "10:45"},{day: "Miercoles", init: "07:30", end: "09:00" }], Course: "matematica"}
+/* const matematica = {schedules:[{day: "Lunes", init: "09:10", end: "10:45"},{day: "Miercoles", init: "07:30", end: "09:00" }], Course: "matematica"}
 const quimica = {schedules:[{day:"Lunes", init: "07:30", end: "09:00"}, {day: "Jueves", init: "10:45", end: "11:30"}], Course: "quimica"}
 const fisica = {schedules:[{day:"Lunes", init: "13:45", end: "15:30"}], Course: "Fisica"}
 
-const materias = [matematica, quimica, fisica];
+const materias = [matematica, quimica, fisica]; */
 
-const Lunes = [];
-const Martes = [];
-const Miercoles = [];
-const Jueves = [];
-const Viernes = [];
-
-materias.forEach( materia => {
-  materia.schedules.forEach(schedule => {
-    if(schedule.day == "Lunes"){
-      Lunes.push([schedule.init, schedule.end, materia.Course]);
-    }
-    if(schedule.day == "Martes"){
-      Martes.push([schedule.init, schedule.end, materia.Course]);
-    }
-    if(schedule.day == "Miercoles"){
-      Miercoles.push([schedule.init, schedule.end, materia.Course]);
-    }
-    if(schedule.day == "Jueves"){
-      Jueves.push([schedule.init, schedule.end, materia.Course]);
-    }
-    if(schedule.day == "Viernes"){
-      Viernes.push([schedule.init, schedule.end, materia.Course]);
-    }
-  })
-}) 
 
 //const sortLunes = Lunes.sort( (a,b) => parseInt(a[0].slice(0,2)) - parseInt(b[0].slice(0,2)));
 
 
-const ShowSchedules = () => {
+const ShowSchedules = ({schedules}) => {
+  const Lunes = [];
+  const Martes = [];
+  const Miercoles = [];
+  const Jueves = [];
+  const Viernes = [];
+  
+  schedules.forEach( materia => {
+    materia.schedules.forEach(schedule => {
+      if(schedule.day == "Lunes"){
+        Lunes.push([schedule.init, schedule.end, materia.Course]);
+      }
+      if(schedule.day == "Martes"){
+        Martes.push([schedule.init, schedule.end, materia.Course]);
+      }
+      if(schedule.day == "Miercoles"){
+        Miercoles.push([schedule.init, schedule.end, materia.Course]);
+      }
+      if(schedule.day == "Jueves"){
+        Jueves.push([schedule.init, schedule.end, materia.Course]);
+      }
+      if(schedule.day == "Viernes"){
+        Viernes.push([schedule.init, schedule.end, materia.Course]);
+      }
+    })
+  }) 
+
   return (
     <>
         <div className={s.gridSchedules}>
