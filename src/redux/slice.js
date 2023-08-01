@@ -111,7 +111,8 @@ export const StudentSlice = createSlice({
   initialState: {
     sectionInfo: null,
     schedules: null,
-    studentInfo: null
+    studentInfo: null,
+    califications: null
   },
   reducers: {
     setSectionInfo: (state, action) => {
@@ -122,6 +123,9 @@ export const StudentSlice = createSlice({
     },
     setStudentInfo: (state, action) => {
       state.studentInfo = action.payload
+    },
+    setCalifications: (state, action) => {
+      state.califications = action.payload
     }
   }
 })
@@ -154,5 +158,6 @@ export const {
 export const {
   setSectionInfo,
   setSchedules,
-  setStudentInfo
+  setStudentInfo,
+  setCalifications
 } = StudentSlice.actions;
