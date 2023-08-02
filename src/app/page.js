@@ -18,6 +18,7 @@ export default function Home() {
     }
     if(user?.RolId === 3) router.push("/Teacher");
     if(user?.RolId === 2) router.push("/student");
+    if(user?.RolId === 4) router.push("/parents");
   },[user])
 
   return (
