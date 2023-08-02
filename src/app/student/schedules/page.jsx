@@ -1,9 +1,7 @@
 'use client'
 import ShowSchedules from "@/components/ShowSchedules/ShowSchedules";
 import s from './page.module.css';
-import { useEffect } from "react";
-import { getSchedules } from "./schedulesHandlers";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Schedules = () => {
 
