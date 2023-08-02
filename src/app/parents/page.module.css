@@ -1,0 +1,38 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin: 2%;
+  align-items: center;
+  padding-bottom: 3%;
+}
+
+.container h2{
+  width: fit-content;
+}
+
+.itemsContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px
+}
+
+.studentLink{
+  background-color: #E3ecE4;
+  padding: 2% 4%;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.studentLink:hover{
+  background-color: #0B699C;
+  color: #FFF;
+}
+
+.link{
+  text-decoration: none;
+}
