@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-const ReportCard = () => {
+const ReportCard = ({user}) => {
 
   const dispatch = useDispatch();
   const studentInfo = useSelector(state => state.student.studentInfo);
   const sectionInfo = useSelector(state => state.student.sectionInfo);
-  const user = useSelector(state => state.primarySlice.userLog);
+  const userId = user || useSelector(state => state.primarySlice.userLog?.id);
   let obj_url;
   const report = useSelector(state => state.student.report);
   
@@ -42,7 +42,7 @@ const ReportCard = () => {
         <h3>Libreta de calificaciones</h3>
 
         {
-          studentInfo.defaulter
+          studentInfo?.defaulter
           ?
           <section>
             <h5>Te encuentras moroso.</h5>
@@ -50,11 +50,11 @@ const ReportCard = () => {
           </section>
           :
           <section className={s.showContainer}>
-            <Link className={s.reportButton} href={`/report/report/${sectionInfo.id}/${studentInfo.id}/${user.id}`} target='_blank'>
+            <Link className={s.reportButton} href={`/report/report/${sectionInfo?.id}/${studentInfo?.id}/${userId}`} target='_blank'>
                 Ver calificaciones en pantalla completa
             </Link>
           
-            <div className={s.reportButton} onClick={(e) => callReport(dispatch, e, studentInfo.id, sectionInfo.id, user.id)}>
+            <div className={s.reportButton} onClick={(e) => callReport(dispatch, e, studentInfo?.id, sectionInfo?.id, userId)}>
               Ver calificaciones en PDF
             </div>
           </section>
