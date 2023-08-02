@@ -9,7 +9,7 @@ const layout = ({children}) =>{
   const menuRoutes = [
     {name: "Inicio", route: "/student"},
     {name: "Horario", route: "/student/schedules"},
-    {name: "Subir tarea", route: "/Admin/createYear"},
+    {name: "Subir tarea", route: "/student/homeworks"},
     {name: "Ver comunicados", route: "/student/releases"},
     {name: "Ver libreta de calificaciones", route: "/student/reportCard"},
   ]
