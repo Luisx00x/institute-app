@@ -142,7 +142,8 @@ export const ParentSlice = createSlice({
   name: "student",
   initialState: {
     parentInfo: null,
-    parentStudents: null
+    parentStudents: null,
+    studentUId: null
   },
   reducers: {
     setParentInfo: (state, action) => {
@@ -150,6 +151,9 @@ export const ParentSlice = createSlice({
     },
     setParentStudents: (state, action) => {
       state.parentStudents = action.payload
+    },
+    setStudentUId: (state, action) => {
+      state.studentUId = action.payload
     }
   }
 })
@@ -190,5 +194,6 @@ export const {
 
 export const {
   setParentInfo,
-  setParentStudents
+  setParentStudents,
+  setStudentUId
 } = ParentSlice.actions;
