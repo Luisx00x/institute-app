@@ -8,11 +8,13 @@ const layout = ({children}) =>{
 
   const path = usePathname();
 
+  const param = path.split("/")[2]
+
   const menuRoutes = [
-    {name: "Inicio", route: `${path}`},
-    {name: "Horario", route: `${path}/schedules`},
-    {name: "Ver comunicados", route: `${path}/releases`},
-    {name: "Ver libreta de calificaciones", route: `${path}/reportCard`},
+    {name: "Inicio", route: `/parents/${param}`},
+    {name: "Horario", route: `/parents/${param}/schedules`},
+    {name: "Ver comunicados", route: `/parents/${param}/releases`},
+    {name: "Ver libreta de calificaciones", route: `/parents/${param}/reportCard`},
   ]
 
   return (
