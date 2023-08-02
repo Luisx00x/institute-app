@@ -50,7 +50,7 @@ const ReportCard = () => {
           </section>
           :
           <section className={s.showContainer}>
-            <Link className={s.reportButton} href={`/reports/${sectionInfo.id}/${studentInfo.id}/${user.id}`}>
+            <Link className={s.reportButton} href={`/report/report/${sectionInfo.id}/${studentInfo.id}/${user.id}`} target='_blank'>
                 Ver calificaciones en pantalla completa
             </Link>
           
