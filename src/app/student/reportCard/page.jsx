@@ -4,26 +4,39 @@ import s from './page.module.css';
 import { callReport, studentCalifications } from './reportCardHandlers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const ReportCard = () => {
 
   const dispatch = useDispatch();
   const studentInfo = useSelector(state => state.student.studentInfo);
   const sectionInfo = useSelector(state => state.student.sectionInfo);
-
-  useEffect( () => {
+  const user = useSelector(state => state.primarySlice.userLog);
+  let obj_url;
+  const report = useSelector(state => state.student.report);
   
+  useEffect( () => {
+    
     studentCalifications(dispatch, studentInfo.id, sectionInfo.id )
-
+    
   },[])
+  
+  useEffect( ( ) => {
+    
+    if(report){ 
+      const frame = document.getElementById("calificationsFrame");
+      obj_url = URL.createObjectURL(report);
+      frame.setAttribute("src", obj_url);
+    }
+
+  },[report])
 
   const router = useRouter();
   const califications = useSelector(state => state.student.califications);
 
   return (
     <>
-    {console.log(studentInfo, "STUDENTINFO")}
-    {console.log(sectionInfo, "SECTIONINFO")}
+
       <div className={s.container}>
 
         <h3>Libreta de calificaciones</h3>
@@ -36,9 +49,23 @@ const ReportCard = () => {
             <p>Para tener acceso a la libreta de calificaciones, ponte al día con los pagos de manutención</p>
           </section>
           :
-          <div className={s.reportButton} onClick={(e) => router.push('http://localhost:3000/reports')}>
-            Ver calificaciones
-          </div>
+          <section className={s.showContainer}>
+            <Link className={s.reportButton} href={`/reports/${sectionInfo.id}/${studentInfo.id}/${user.id}`}>
+                Ver calificaciones en pantalla completa
+            </Link>
+          
+            <div className={s.reportButton} onClick={(e) => callReport(dispatch, e, studentInfo.id, sectionInfo.id, user.id)}>
+              Ver calificaciones en PDF
+            </div>
+          </section>
+        }
+
+        {
+          report
+          ?
+          <iframe className={s.frame} id={"calificationsFrame"}></iframe>
+          :
+          null
         }
       
       </div>

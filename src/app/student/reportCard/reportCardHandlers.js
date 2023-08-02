@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch"
-import { setCalifications } from "@/redux/slice";
+import { setCalifications, setReport } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const STUDENT_CALIFICATIONS = process.env.NEXT_PUBLIC_STUDENT_CALIFICATIONS;
 const CALL_REPORT = process.env.NEXT_PUBLIC_CALL_REPORT;
@@ -21,20 +21,20 @@ export const studentCalifications = (dispatch, studentId, sectionId) => {
 
 }
 
-export const callReport = (e) => {
+export const callReport = (dispatch, e, studentId, sectionId, userId) => {
 
   e.preventDefault();
   let status;
 
-  const body = { url: REPORT_URL}
+  const body = { url: `${REPORT_URL}/${sectionId}/${studentId}/${userId}`}
 
   useFetch(`${LOGIN_URL}/${CALL_REPORT}`, "POST", body)
   .then( res => {
-    if(res.status == 200 || 304)
-    throw new Error(res);
+    status = res.status;
+    return res.blob();
   })
   .then( res => {
-    if(status == 200 || status == 304) return ;
+    if(status == 200 || status == 304) return dispatch(setReport(res));
     throw new Error(res);
   })
 
