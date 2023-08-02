@@ -1,8 +1,9 @@
 import useFetch from "@/Hooks/useFetch"
-import { setSectionInfo, setStudentInfo } from "@/redux/slice";
+import { setSectionInfo, setStudentCourses, setStudentInfo } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const STUDENT_SECTION = process.env.NEXT_PUBLIC_STUDENT_SECTION;
 const STUDENT_INFO = process.env.NEXT_PUBLIC_STUDENT_INFO;
+const STUDENT_COURSES = process.env.NEXT_PUBLIC_STUDENT_COURSES;
 
 export const studentSection = (dispatch, userId, year) => {
 
@@ -32,6 +33,25 @@ export const studentInfo = (dispatch, userId, year) => {
   .then( res => {
     if(status == 200 || status == 304) return dispatch(setStudentInfo(res)); 
     throw new Error(res);
+  })
+
+}
+
+export const studentCourses = (dispatch, sectionId) => {
+
+  let status;
+
+  useFetch(`${LOGIN_URL}/${STUDENT_COURSES}?sectionId=${sectionId}`)
+  .then( res => {
+    status = res.status;
+    return res.json();
+  })
+  .then( res => {
+    if(status == 200 || status == 304) return dispatch(setStudentCourses(res));
+    throw new Error(res);
+  })
+  .catch( error => {
+    console.error(error);
   })
 
 }

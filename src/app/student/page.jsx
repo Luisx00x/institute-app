@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from './page.module.css';
 import { useEffect } from 'react';
-import { studentInfo, studentSection } from './studentHandlers';
+import { studentCourses, studentInfo, studentSection } from './studentHandlers';
 import { getSchedules } from './schedules/schedulesHandlers';
 
 
@@ -24,6 +24,7 @@ const StudentUI = () => {
   useEffect( () => {
     
     if(sectionInfo) getSchedules(dispatch, sectionInfo.id, "")
+    if(sectionInfo) studentCourses(dispatch, sectionInfo.id)
 
   },[sectionInfo])
 
