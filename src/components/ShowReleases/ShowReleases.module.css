@@ -12,7 +12,17 @@
   border: 1px solid black;
 }
 
+.gridCourseContainer{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid black;
+}
+
 .gridContainer div{
+  border: 1px solid black;
+}
+
+.gridCourseContainer div{
   border: 1px solid black;
 }
 
@@ -30,4 +40,8 @@
 
 .gridCol4{
   grid-column: 4;
+}
+
+.gridCol5{
+  grid-column: 5;
 }
