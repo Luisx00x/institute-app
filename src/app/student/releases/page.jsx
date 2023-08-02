@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchReleases } from "./releasesHandlers";
 import TabMenu from "@/components/TabMenu/TabMenu";
 
-const StudentReleases = () => {
+const StudentReleases = ({parent}) => {
   
   const dispatch = useDispatch();
   const releases = useSelector(state => state.student.releases);
   const studentId = useSelector(state => state.student.studentInfo?.id);
   const sectionId = useSelector(state => state.student.sectionInfo?.id);
   const [activeTab, setActiveTab] = useState(1);
-  const tabOptions = ["Secciones", "Cursos", "Personales"]
+  const tabOptions = !parent ? ["Secciones", "Cursos", "Personales"] : ["Secciones","Cursos", "Personales", "Apoderados"]
 
   useEffect( () => {
     
@@ -36,6 +36,10 @@ const StudentReleases = () => {
           activeTab == 3
           ?
           <ShowReleases releases={releases?.student} />
+          :
+          activeTab == 4
+          ?
+          <ShowReleases releases={releases?.representative} />
           :
           null
         }
