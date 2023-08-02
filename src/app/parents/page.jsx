@@ -29,7 +29,7 @@ const ParentsHome = () => {
 
   return (
     <>
-
+{console.log(students)}
       <div className={s.container}>
 
         <h2>Por favor, seleccione al alumno del cual desea ver información</h2>
