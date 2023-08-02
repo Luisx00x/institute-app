@@ -11,7 +11,7 @@ const layout = ({children}) =>{
     {name: "Horario", route: "/student/schedules"},
     {name: "Subir tarea", route: "/Admin/createYear"},
     {name: "Ver comunicados", route: "/Admin/registerTeacher"},
-    {name: "Ver libreta de calificaciones", route: "/studetn/reportCard"},
+    {name: "Ver libreta de calificaciones", route: "/student/reportCard"},
   ]
 
   return (

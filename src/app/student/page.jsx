@@ -17,7 +17,7 @@ const StudentUI = () => {
   useEffect( () => {
 
     if(user) studentSection(dispatch, user.id, "");
-        if(user) studentInfo(dispatch, user.id, "")
+    if(user) studentInfo(dispatch, user.id, "")
     
   },[])
   
@@ -27,12 +27,9 @@ const StudentUI = () => {
 
   },[sectionInfo])
 
-
-
-
   return (
     <>
-    {console.log(studentInformation)}
+   
         Bienvenido
     </>
   )
