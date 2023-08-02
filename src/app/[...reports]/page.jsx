@@ -199,7 +199,7 @@ const Page = ({params}) => {
 
   let count;
   return (
-    <>  
+    <div className={s.reportCardContainer}>  
       {/* Primer componente */}
 
       <div id="reportCard" className={s.reportContainer}>
@@ -597,7 +597,7 @@ const Page = ({params}) => {
       </div>
 
       {/* Quinto componente fin */}
-    </>
+    </div>
   )
 }
 
