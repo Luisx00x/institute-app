@@ -47,23 +47,23 @@ const List = ({listItems, course}) => {
 
         <div className={s.gridContainer}>
 
-          <div className={s.grid1}>
+          <div className={`${s.grid1} ${s.labels}`}>
             <h3>Nombres</h3>
           </div>
 
-          <div className={s.grid2}>
+          <div className={`${s.grid2} ${s.labels}`}>
             <h3>Apellidos</h3>
           </div>
 
-          <div className={s.grid3}>
+          <div className={`${s.grid3} ${s.labels}`}>
             <h3>Faltas justificadas</h3>
           </div>
 
-          <div className={s.grid4}>
+          <div className={`${s.grid4} ${s.labels}`}>
             <h3>Faltas Injustificadas</h3>
           </div>
 
-          <div className={s.grid5}>
+          <div className={`${s.grid5} ${s.labels}`}>
             <h3>Tardanzas</h3>
           </div>
           {
