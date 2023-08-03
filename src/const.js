@@ -8,6 +8,7 @@ export const REPRESENTATIVE = "representative";
 export const YEAR = "year";
 export const SUCCESS = "success";
 export const FAILURE = "failure";
+export const UPHOMEWORK = "upHomework";
 
 export const studentAttributes = [
   { name: "DNI:", attribute: "studentDNI" },
