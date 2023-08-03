@@ -29,7 +29,7 @@ const ParentsHome = () => {
 
   return (
     <>
-{console.log(students)}
+
       <div className={s.container}>
 
         <h2>Por favor, seleccione al alumno del cual desea ver información</h2>
@@ -42,7 +42,7 @@ const ParentsHome = () => {
           students.map( student => {
             return (
 
-              <Link className={s.link} href={`${path}/${student.id}`}>
+              <Link key={student.id} className={s.link} href={`${path}/${student.id}`}>
                 <div className={s.studentLink}>
                   <p>Nombre: {student.names} {student.fatherLastName} {student.motherLastName}</p>
                   <p>DNI: {student.DNI}</p>
