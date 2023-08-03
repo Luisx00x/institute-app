@@ -30,6 +30,7 @@ const ReportCard = ({user}) => {
       const frame = document.getElementById("calificationsFrame");
       obj_url = URL.createObjectURL(report);
       frame.setAttribute("src", obj_url);
+      URL.revokeObjectURL(obj_url)
     }
 
   },[report])
@@ -39,7 +40,7 @@ const ReportCard = ({user}) => {
 
   return (
     <>
-
+{console.log(report, "REPORT")}
       <div className={s.container}>
 
         <h3>Libreta de calificaciones</h3>
