@@ -22,3 +22,10 @@
   grid-column: 3;
   border: 1px solid black;
 }
+
+.sendAnswerButton{
+  margin: 2%;
+  padding: 2% 4%;
+  background-color: #0B699C;
+  border-radius: 10px;
+}

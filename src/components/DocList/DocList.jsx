@@ -1,16 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react';
 import s from './DocList.module.css';
-import { useSelector } from 'react-redux';
-import { CLASSES, HOMEWORKS } from '@/const';
-import { getHomeworks, getSessions } from './DockListHandler';
+import { useDispatch, useSelector } from 'react-redux';
+import { CLASSES, HOMEWORKS, STUDENT } from '@/const';
+import { getHomeworks, getSessions, modalActivation } from './DockListHandler';
+import ModalAnswer from '../Modals/ModalAnswer/ModalAnswer';
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
-const DocList = ({userId, courseId, listType, tableValues}) => {
+const DocList = ({userId, courseId, listType, tableValues, call}) => {
 
   const [data, setData] = useState([]);
   const modal = useSelector(state => state.primarySlice.modal);
   const user = useSelector(state => state.primarySlice.userLog);
+  const dispatch = useDispatch();
 
   useEffect( () => {
     
@@ -24,7 +26,12 @@ const DocList = ({userId, courseId, listType, tableValues}) => {
   
   return (
     <>
-    {console.log(tableValues[1].col)}
+
+      {
+        modal.isActiveAlter
+        ?
+        <ModalAnswer {...modal} />
+        :
         <div className={s.gridContainer}>
       {
         typeof data === "string"
@@ -52,6 +59,7 @@ const DocList = ({userId, courseId, listType, tableValues}) => {
           null
           :
           data.map( element => {
+            console.log(element, "ELEMENTO")
             return (
               <>
                 <div className={s.grid1}>
@@ -61,6 +69,14 @@ const DocList = ({userId, courseId, listType, tableValues}) => {
                   <a href={`${LOGIN_URL}/${element[tableValues[1].value]}`} target='_blank'>{element[tableValues[0].value]}</a>
                 </div>
                 <div className={s.grid3}>
+                  
+                  {
+                    call === STUDENT
+                    ?
+                      <div className={s.sendAnswerButton} onClick={(e) => modalActivation(e, dispatch, element.id)}>Subir respuesta</div>
+                    :
+                    null
+                  }
 
                 </div>
               </>
@@ -69,6 +85,10 @@ const DocList = ({userId, courseId, listType, tableValues}) => {
         }
 
       </div>
+
+
+      }
+
 
     </>
   )

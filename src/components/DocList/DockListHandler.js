@@ -1,3 +1,5 @@
+import { setModal } from "@/redux/slice";
+
 const { default: useFetch } = require("@/Hooks/useFetch")
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const GET_SESSIONS = process.env.NEXT_PUBLIC_GET_SESSIONS;
@@ -39,4 +41,16 @@ export const getSessions = (courseId, teacherId, rol, setData) => {
   .catch( err => {
     console.error(err)
   })
+}
+
+export const modalActivation = (e,dispatch, homeworkId) => {
+
+  const modal = {
+    isActiveAlter: true,
+    homeworkId
+  }
+
+  e.preventDefault();
+  dispatch(setModal(modal))
+
 }
