@@ -1,5 +1,5 @@
 import DocList from "@/components/DocList/DocList";
-import { HOMEWORKS, HOMEWORKSLIST } from "@/const";
+import { HOMEWORKS, HOMEWORKSLIST, STUDENT } from "@/const";
 
 const CourseHomeworks = ({params}) => {
 
@@ -10,7 +10,7 @@ const CourseHomeworks = ({params}) => {
       
       <div>
 
-        <DocList listType={HOMEWORKS} userId={teacherId} courseId={id} tableValues={HOMEWORKSLIST} />
+        <DocList listType={HOMEWORKS} userId={teacherId} courseId={id} tableValues={HOMEWORKSLIST} call={STUDENT} />
 
       </div>
 
