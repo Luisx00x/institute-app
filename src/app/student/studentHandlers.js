@@ -18,6 +18,9 @@ export const studentSection = (dispatch, userId, year) => {
     if(status == 200 || status == 304) return dispatch(setSectionInfo(res)); 
     throw new Error(res);
   })
+  .catch( err => {
+    console.error(err)
+  })
 
 }
 
