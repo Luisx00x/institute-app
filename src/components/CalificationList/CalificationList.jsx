@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import s from './CalificationList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalCal from '../Modals/ModalCal/ModalCal';
-import { calificationsChange } from './calificationsHandlers';
+import { calificationsChange, getCalifications } from './calificationsHandlers';
 import { useEffect } from 'react';
 import { setTeacherInformation } from '@/globalHandlers';
 
@@ -16,6 +16,8 @@ const abbrevsList = skills.find( abbrev => abbrev.id === parseInt(courseId)).Abb
 const abbreviation = abbrevsList[0].slice(0, abbrevsList[0].length-1);
 const bimesters = ["BM1","BM2","BM3","BM4"];
 const dispatch = useDispatch();
+
+const updateCalifications = useSelector(state => state.teacher.califications);
 
 const califications = list.map( item => {
   return item.Califications.filter( cal => cal.CourseId === parseInt(courseId));
@@ -31,6 +33,12 @@ useEffect( () => {
   if(user?.RolId){
     setTeacherInformation(user.id, user.RolId, user.RolId,thisYear, dispatch);
   }
+},[updateCalifications])
+
+useEffect( () => {
+
+  getCalifications(dispatch, courseId);
+
 },[modal])
 
 let count = 0;
