@@ -3,6 +3,7 @@ import { setTutorSections } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const TUTOR_SECTIONS = process.env.NEXT_PUBLIC_TUTOR_SECTIONS;
 const SECTION_STUDENTS = process.env.NEXT_PUBLIC_SECTION_STUDENTS;
+const SECTION_ABSENCES = process.env.NEXT_PUBLIC_SECTION_ABSENCES;
 
 export const tutorSections = (dispatch, userId) => {
   
@@ -40,4 +41,27 @@ export const sectionSelected = (setData, sectionId) => {
     console.error(err)
   })
 
+}
+
+export const searchAbsences = (setData, students, sectionId) => {
+
+  let status;
+
+  const body = {
+    students,
+    sectionId
+  }
+
+  useFetch(`${LOGIN_URL}/${SECTION_ABSENCES}`, 'POST', body, false)
+  .then( res => {
+    status = res.status;
+    return res.json();
+  })
+  .then( res => {
+    if(status == 200 || status == 304) return setData( prev => res);
+    throw new Error(res);
+  })
+  .catch( res => {
+    console.error(res)
+  })
 }
