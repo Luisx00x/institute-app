@@ -1,5 +1,5 @@
 import useFetch from "@/Hooks/useFetch";
-import { ADMIN, ALLSECTIONS, COURSE, FAILURE, REPRESENTATIVE, SECTION, STUDENT, SUCCESS } from "@/const";
+import { ADMIN, ALLSECTIONS, COURSE, FAILURE, REPRESENTATIVE, SECTION, STUDENT, SUCCESS, UPHOMEWORK } from "@/const";
 import { setModal } from "@/redux/slice";
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 const CREATE_RELEASE = process.env.NEXT_PUBLIC_CREATE_RELEASE;
@@ -58,16 +58,28 @@ export const submitReleaseFile = (e, data, input, dispatch, setData, setInput, u
 
   const body = new FormData();
 
-  body.append('newRelease', data.fileRaw, data.fileName);
+  if(input.type === UPHOMEWORK){
+    body.append('newAnswer', data.fileRaw, data.fileName);
+  }else{
+    body.append('newRelease', data.fileRaw, data.fileName);
+  }
 
-  body.append('title', input.title);
-  if(input.sender === ADMIN){
-    body.append('sender', "Administración")
+  if(input.title){
+    body.append('title', input.title);
   }
-  else{
-    body.append('sender', input.sender);
+
+  if(input.sender){
+    if(input.sender === ADMIN){
+      body.append('sender', "Administración")
+    }
+    else{
+      body.append('sender', input.sender);
+    }
   }
-  body.append('userRol', input.userRol);
+  
+  if(input.userRol){
+    body.append('userRol', input.userRol);
+  }
 
   if(input.type === COURSE) body.append(`courseId`, input.courseId);
   if(input.type === STUDENT) body.append(`studentId`, input.studentId);
@@ -76,6 +88,10 @@ export const submitReleaseFile = (e, data, input, dispatch, setData, setInput, u
   if(input.type === REPRESENTATIVE) {
     body.append(`studentId`, input.studentId);
     body.append(`representative`, input.representativeId);
+  }
+  if(input.type === UPHOMEWORK){
+    body.append(`studentId`, input.studentId);
+    body.append(`homeworkId`, input.homeworkId);
   }
 
   e.preventDefault();

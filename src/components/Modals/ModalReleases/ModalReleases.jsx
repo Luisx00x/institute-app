@@ -39,7 +39,7 @@ const ModalReleases = ({title, sender, userRol, sectionId, studentId, courseId, 
 
           <div>
             <label>Archivo: </label>
-            <input type="file" name="" onChange={(e) => setData( prev => getReleaseFile(e))}/>
+            <input type="file" name="file" onChange={(e) => setData( prev => getReleaseFile(e))}/>
           </div>
 
           <div>
