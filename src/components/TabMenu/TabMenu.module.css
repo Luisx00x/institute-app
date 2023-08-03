@@ -5,7 +5,6 @@
   margin: 1% auto;
   margin-right: 1%;
   width: 100%;
-  height: 100%;
 }
 
 .releaseOptions{
@@ -43,7 +42,7 @@
 
 .releaseContent{
   grid-row: 2;
-  background-color: lightgreen;
+  background-color: #0B699C;
   display: flex;
   flex-wrap: wrap;
 }

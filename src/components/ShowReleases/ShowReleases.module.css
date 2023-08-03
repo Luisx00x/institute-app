@@ -2,8 +2,8 @@
 .releasesContainer{
   width: 100%;
   margin: 1%;
-  margin-left: 0;
   background-color: white;
+  height: fit-content;
 }
 
 .gridContainer{

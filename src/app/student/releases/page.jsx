@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchReleases } from "./releasesHandlers";
 import TabMenu from "@/components/TabMenu/TabMenu";
+import s from './page.module.css';
 
 const StudentReleases = ({parent}) => {
   
@@ -22,6 +23,8 @@ const StudentReleases = ({parent}) => {
   
   return (
     <>
+
+    <div className={s.tabContainer}>
 
       <TabMenu active={activeTab} tabs={tabOptions} activeOption={setActiveTab} >
         {
@@ -45,6 +48,8 @@ const StudentReleases = ({parent}) => {
         }
 
       </TabMenu>
+
+    </div>
     </>
   )
 }
