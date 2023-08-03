@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import s from './SectionList.module.css';
 
 const SectionList = ({sections}) => {
   
@@ -7,18 +8,21 @@ const SectionList = ({sections}) => {
   
   return (
     <>
+
+      <div className={s.container}>
       {
         sections?.map( section => {
           return(
-            <Link href={`${path}/${section.id}`}>
+            <Link className={s.link} href={`${path}/${section.id}`}>
               <div>Nivel: {section.Grade.level}</div>
               <div>Grado: {section.Grade.grade}</div>
               <div>Sección: {section.sectionName}</div>
             </Link>
           )
         })
-
+        
       }
+      </div>
     </>
   )
 }
