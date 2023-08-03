@@ -4,6 +4,7 @@ import { getFile, submitFile } from "./uploadHandler.js";
 import { useDispatch, useSelector } from "react-redux";
 import ModalMsg from "../Modals/ModalMsg/ModalMsg.jsx";
 import { inputHandler } from "@/globalHandlers.js";
+import s from './UploadFiles.module.css';
 
 const UploadFiles = ({courseId, teacherId, type}) => {
 
@@ -24,7 +25,7 @@ const UploadFiles = ({courseId, teacherId, type}) => {
 
         modal.isActive ? <ModalMsg {...modal} />
         :
-        <div>
+        <div className={s.uploadContainer}>
 
           <label>Ingrese un nombre para la asignación</label>
 

@@ -15,45 +15,49 @@ const ReleasesMenu = () => {
     <>
       <section className={s.componentContainer}>
 
-        <h4>releases menu</h4>
+        <h4>Comunicados</h4>
 
-        <TabMenu active={tabActive} tabs={tabOptions} activeOption={setTabActive}>
-            {
-              tabActive == 1
-              ?
-            <>
+        <div className={s.tabContainer}>
 
-              <div>
+          <TabMenu active={tabActive} tabs={tabOptions} activeOption={setTabActive}>
+              {
+                tabActive == 1
+                ?
+              <>
 
-                <ShowStudents aditional={courses} display={true} additionalParam={"course"} />
+                <>
 
-              </div>
-            
-            </>
-              :
-              tabActive == 2
-              ?
-            <>
-                <ShowStudents 
-                aditional={courses} 
-                display={true} 
-                search={"course"}
-                additionalParam={"student"}
-                />
-            </>
-              :
-              tabActive == 3
-              ?
-                <ShowStudents
-                aditional={courses}
-                display={true}
-                search={"course"}
-                additionalParam={"parents"}
-                />
-              :
-              null  
-              }
-        </TabMenu>
+                  <ShowStudents aditional={courses} display={true} additionalParam={"course"} />
+
+                </>
+              
+              </>
+                :
+                tabActive == 2
+                ?
+              <>
+                  <ShowStudents 
+                  aditional={courses} 
+                  display={true} 
+                  search={"course"}
+                  additionalParam={"student"}
+                  />
+              </>
+                :
+                tabActive == 3
+                ?
+                  <ShowStudents
+                  aditional={courses}
+                  display={true}
+                  search={"course"}
+                  additionalParam={"parents"}
+                  />
+                :
+                null  
+                }
+          </TabMenu>
+
+        </div>
 
       </section>
     </>

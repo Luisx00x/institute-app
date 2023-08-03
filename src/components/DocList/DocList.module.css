@@ -1,11 +1,11 @@
 
 .gridContainer{
   display: grid;
-  grid-template-columns: repeat(2, 180px) 100px;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
   background-color: white;
-  margin: 2%;
   text-align: center;
+  width: 100%;
+  margin: 2% 2% auto 2%;
 }
 
 .grid1{
