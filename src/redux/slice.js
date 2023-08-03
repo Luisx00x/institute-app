@@ -170,6 +170,22 @@ export const ParentSlice = createSlice({
   }
 })
 
+export const TutorSlice = createSlice({
+  name: "tutor",
+  initialState: {
+    tutorCourses: null,
+    tutorSections: null
+  },
+  reducers: {
+    setTutorCourses: (state, action) => {
+      state.tutorCourses = action.payload
+    },
+    setTutorSections: (state, action) => {
+      state.tutorSections = action.payload
+    }
+  }
+})
+
 export const { setUser, setModal } = Slice.actions;
 
 export const { 
@@ -212,3 +228,8 @@ export const {
   setParentStudents,
   setStudentUId
 } = ParentSlice.actions;
+
+export const {
+  setTutorCourses,
+  setTutorSections
+} = TutorSlice.actions;
