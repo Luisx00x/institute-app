@@ -9,3 +9,17 @@ export const absencesChange = (e, setInput) => {
   })
 
 }
+
+export const changeSelect = (e, setInput) => {
+
+  const values = e.target.name.split("/")
+
+  console.log(values)
+
+  setInput ( prev => {  
+    return {
+      ...prev,
+      [values[1]]: e.target.value
+    }
+  })
+}
