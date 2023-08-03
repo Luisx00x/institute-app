@@ -1,30 +1,30 @@
 'use client'
 import { useEffect, useState } from "react";
-import { sectionSelected } from "../../tutorHandlers";
+import { searchAbsences, sectionSelected } from "../../tutorHandlers";
+import StudentList from "@/components/StudentsList/StudentsList";
 
 const TutorSectionSelect = ({params}) => {
 
   const sectionId = params.section;
   const [section, setSection] = useState();
+  const [absences, setAbsences] = useState();
 
   
   useEffect( () => {
     
-    sectionSelected(setSection, sectionId)
+    sectionSelected(setSection, sectionId);
     
   },[])
+
+  useEffect( () => {
+
+    if(section) searchAbsences(setAbsences, section, sectionId);
+
+  },[section])
   
   return (
     <>
-    {console.log(section)}
-
-        <h3>Behavior</h3>
-
-        
-
-      
-
-    
+        <StudentList students={section} absences={absences}/>
     </>
   )
 }
