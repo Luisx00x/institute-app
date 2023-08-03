@@ -32,7 +32,9 @@ const ChildOption = ({params}) => {
 
   return(
     <>
-        {console.log(sectionInfo)}
+        
+
+        
     </>
   )
 }
