@@ -76,7 +76,8 @@ export const TeacherSlice = createSlice({
     sectionStudents: [],
     coursesReleases: [],
     studentReleses: [],
-    parentReleases: []
+    parentReleases: [],
+    absences: []
   },
   reducers: {
     setTeacher: (state, action) => {
@@ -102,6 +103,9 @@ export const TeacherSlice = createSlice({
     },
     setParentReleases: (state, action) => {
       state.parentReleases = action.payload
+    },
+    setAbsences: (state, action) => {
+      state.absences = action.payload
     }
   }
 })
@@ -184,7 +188,8 @@ export const {
   setCoursesReleases, 
   setSectionStudents,
   setStudentReleases,
-  setParentReleases 
+  setParentReleases,
+  setAbsences
 } = TeacherSlice.actions;
 
 export const {

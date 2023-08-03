@@ -2,7 +2,7 @@
 import s from './List.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalChange from '../Modals/ModalChange/ModalChange';
-import { setListModal } from './ListHandler';
+import { getAbsences, setListModal } from './ListHandler';
 import { useEffect } from 'react';
 import { setTeacherInformation } from '@/globalHandlers';
 
@@ -13,18 +13,25 @@ const List = ({listItems, course}) => {
   const modal = useSelector(state => state.primarySlice.modal);
   const dispatch = useDispatch();
   const user = useSelector(state => state.primarySlice.userLog);
+  const absences = useSelector(state => state.teacher.absences);
 
   useEffect( () => {
 
     setTeacherInformation(user.id, user.RolId, user.RolId, thisYear, dispatch);
 
+  },[absences])
+
+  useEffect( () => {
+
+    getAbsences(dispatch, course.id)
+
   },[modal])
 
   const studentsList = listItems?.filter( item => item.Absences.find( absence => absence.CourseId == course.id))
-  console.log(studentsList, "STUDENTLIST")
+
   return(
     <> 
-
+{console.log(absences)}
     {
       modal.isActive
       ?
@@ -36,7 +43,7 @@ const List = ({listItems, course}) => {
     {    
       <div className={s.container}>
 
-      <h2>{course.courseName}</h2>
+      <h2>{course?.courseName}</h2>
 
         <div className={s.gridContainer}>
 

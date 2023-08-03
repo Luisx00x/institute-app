@@ -60,7 +60,7 @@ const ModalChange = ({studentId, justifiedFault, absences, delays, title, messag
             onChange={(e) => absencesChange(e, setInput)} />
           </div>
 
-          <ModalButton type={SUCCESS} text={"Guardar"} data={input} url={ABSENCES_URL} />
+          <ModalButton type={SUCCESS} text={"Guardar"} data={input} url={ABSENCES_URL} uploadFile={false}/>
           <ModalButton type={FAILURE} text={"Cancelar"} />
 
         </div>
