@@ -16,5 +16,8 @@ export const getSchedules = (dispatch, sectionId, year) => {
     if(status == 200 || status == 304) return dispatch(setSchedules(res));
     throw new Error(res);
   })
+  .catch( err => {
+    console.error(err)
+  })
 
 }

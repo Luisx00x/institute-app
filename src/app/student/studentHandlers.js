@@ -35,7 +35,11 @@ export const studentInfo = (dispatch, userId, year) => {
   })
   .then( res => {
     if(status == 200 || status == 304) return dispatch(setStudentInfo(res)); 
+    console.log(res)
     throw new Error(res);
+  })
+  .catch( err => {
+    console.error(err)
   })
 
 }

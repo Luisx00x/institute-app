@@ -16,5 +16,8 @@ export const searchReleases = (dispatch, studentId, sectionId) => {
     if(status == 200 || status == 304) return dispatch(setReleases(res));
     throw new Error(res);
   })
+  .catch( err => {
+    console.error(err)
+  })
 
 }
