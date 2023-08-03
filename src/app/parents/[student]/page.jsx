@@ -34,7 +34,6 @@ const ChildOption = ({params}) => {
     <>
         
 
-        
     </>
   )
 }
