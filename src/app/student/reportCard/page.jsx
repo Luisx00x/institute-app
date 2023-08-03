@@ -17,7 +17,10 @@ const ReportCard = ({user}) => {
   
   useEffect( () => {
     
-    studentCalifications(dispatch, studentInfo.id, sectionInfo.id )
+    if(studentInfo && sectionInfo){
+      studentCalifications(dispatch, studentInfo.id, sectionInfo.id )
+
+    }
     
   },[])
   
