@@ -36,3 +36,34 @@
 .col6{
   grid-column: 6;
 }
+
+.col7{
+  grid-column: 7;
+}
+
+.col8{
+  grid-column: 8;
+}
+
+.col9{
+  grid-column: 9;
+}
+
+.col10{
+  grid-column: 10;
+}
+
+.submitButton{
+  padding: 3%;
+  border-radius: 6px;
+  background-color: #E3ecE4;
+  cursor: default;
+  user-select: none;
+  transition: 0.2s;
+}
+
+.submitButton:hover{
+  background-color: #0B699C;
+  border: 1px solid #E3ecE4;
+  color: #FFF;
+}

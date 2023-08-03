@@ -9,6 +9,7 @@ export const YEAR = "year";
 export const SUCCESS = "success";
 export const FAILURE = "failure";
 export const UPHOMEWORK = "upHomework";
+export const CALIFICATIONS = ["A","B","C","D","E","F"];
 
 export const studentAttributes = [
   { name: "DNI:", attribute: "studentDNI" },
@@ -71,7 +72,7 @@ export const CLASSES = "classes";
 export const DAY = "days";
 export const SKILL = "skills";
 
-export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
 export const CLASSLIST = [{col: "Sesión", value: "className" }, {col: "Archivo", value: "location"}];
 export const HOMEWORKSLIST = [{col: "Asignación", value: "asignation"}, {col: "Archivo", value: "location"}];
 export const ADMIN = "admin"
