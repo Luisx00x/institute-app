@@ -5,8 +5,5 @@ export const logout = (dispatch) => {
   dispatch(setSectionInfo(null));
   dispatch(setSchedules(null));
   dispatch(setReleases(null));
-  dispatch(setParentInfo(null));
-  dispatch(setParentStudents(null));
-  dispatch(setStudentUId(null))
-
+  dispatch(setReport(null));
 }
