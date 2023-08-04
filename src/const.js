@@ -10,6 +10,7 @@ export const SUCCESS = "success";
 export const FAILURE = "failure";
 export const UPHOMEWORK = "upHomework";
 export const CALIFICATIONS = ["A","B","C","D","E","F"];
+export const REVIEW = "review";
 
 export const studentAttributes = [
   { name: "DNI:", attribute: "studentDNI" },
