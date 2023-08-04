@@ -174,7 +174,8 @@ export const TutorSlice = createSlice({
   name: "tutor",
   initialState: {
     tutorCourses: null,
-    tutorSections: null
+    tutorSections: null,
+    attendanceNotes: null
   },
   reducers: {
     setTutorCourses: (state, action) => {
@@ -182,6 +183,9 @@ export const TutorSlice = createSlice({
     },
     setTutorSections: (state, action) => {
       state.tutorSections = action.payload
+    },
+    setAttendanceNotes: (state, action) => {
+      state.attendanceNotes = action.payload
     }
   }
 })
@@ -231,5 +235,6 @@ export const {
 
 export const {
   setTutorCourses,
-  setTutorSections
+  setTutorSections,
+  setAttendanceNotes
 } = TutorSlice.actions;
