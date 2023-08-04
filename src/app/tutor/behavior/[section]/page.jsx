@@ -2,14 +2,15 @@
 import { useEffect, useState } from "react";
 import { searchAbsences, searchNotes, sectionSelected } from "../../tutorHandlers";
 import StudentList from "@/components/StudentsList/StudentsList";
+import { useDispatch, useSelector } from "react-redux";
 
 const TutorSectionSelect = ({params}) => {
 
   const sectionId = params.section;
   const [section, setSection] = useState();
   const [absences, setAbsences] = useState();
-  const [notes, setNotes] = useState();
-
+  const notes = useSelector(state => state.tutor.attendanceNotes);
+  const dispatch = useDispatch();
   
   useEffect( () => {
     
@@ -20,7 +21,7 @@ const TutorSectionSelect = ({params}) => {
   useEffect( () => {
 
     if(section) searchAbsences(setAbsences, section, sectionId);
-    if(section) searchNotes(setNotes, section, sectionId)
+    if(section) searchNotes(dispatch, section, sectionId)
 
   },[section])
   
