@@ -9,7 +9,8 @@ export const submitCalifications = (dispatch, studentId, sectionId, notes) => {
     title: "Calificacion del Bimestre",
     absences: notes.absences,
     justifiedFault: notes.justifiedFault,
-    delays: notes.delays
+    delays: notes.delays,
+    attendanceId: notes.id
   }
 
   dispatch(setModal(modal));

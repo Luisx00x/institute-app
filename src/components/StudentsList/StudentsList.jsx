@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './StudentsList.module.css';
 import { submitCalifications } from './StudentListHandler';
 import ModalChange from '../Modals/ModalChange/ModalChange';
+import { useEffect } from 'react';
+import { searchNotes } from '@/app/tutor/tutorHandlers';
 
 const StudentList = ({students, absences, section, notes}) => {
   
@@ -10,6 +12,11 @@ const StudentList = ({students, absences, section, notes}) => {
   const modal = useSelector(state => state.primarySlice.modal);
   const options = ["DNI","Nombres y Apellidos","Faltas justificadas Totales","Faltas Injustificadas Totales","Tardanzas Totales","Opciones"]
 
+  useEffect( () => {
+
+    searchNotes(dispatch, students, section)
+
+  },[modal])
 
   const formatStudents = students?.map( student => {
     
@@ -27,9 +34,6 @@ const StudentList = ({students, absences, section, notes}) => {
 
   return (
     <>
-    {
-      console.log(formatStudents)
-    }
     {
       modal.isActive
       ?
