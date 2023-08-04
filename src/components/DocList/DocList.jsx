@@ -2,17 +2,20 @@
 import { useEffect, useState } from 'react';
 import s from './DocList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { CLASSES, HOMEWORKS, STUDENT } from '@/const';
+import { CLASSES, HOMEWORKS, REVIEW, STUDENT, TEACHER } from '@/const';
 import { getHomeworks, getSessions, modalActivation } from './DockListHandler';
 import ModalAnswer from '../Modals/ModalAnswer/ModalAnswer';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
-const DocList = ({userId, courseId, listType, tableValues, call}) => {
+const DocList = ({userId, courseId, listType, tableValues, call, options}) => {
 
   const [data, setData] = useState([]);
   const modal = useSelector(state => state.primarySlice.modal);
   const user = useSelector(state => state.primarySlice.userLog);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect( () => {
     
@@ -74,6 +77,10 @@ const DocList = ({userId, courseId, listType, tableValues, call}) => {
                     call === STUDENT
                     ?
                       <div className={s.sendAnswerButton} onClick={(e) => modalActivation(e, dispatch, element.id)}>Subir respuesta</div>
+                    :
+                    call === TEACHER && options === REVIEW
+                    ?
+                        <div className={s.sendAnswerButton} onClick={() => router.push('/Teacher/review')}>Ver respuestas</div>
                     :
                     null
                   }

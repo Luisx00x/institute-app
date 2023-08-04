@@ -28,4 +28,13 @@
   padding: 2% 4%;
   background-color: #0B699C;
   border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+}
+
+.sendAnswerButton:hover{
+  background-color: #265857;
+  outline: 1px solid #FFF;
+  color: #FFF;
 }
