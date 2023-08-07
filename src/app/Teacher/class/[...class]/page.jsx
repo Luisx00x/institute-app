@@ -2,6 +2,7 @@ import UploadFiles from '@/components/UploadFiles/UploadFiles';
 import s from '../../homeworks/[...id]/page.module.css';
 import DocList from '@/components/DocList/DocList';
 import { CLASSES, CLASSLIST } from '@/const';
+
 const UploadClasses = ({params}) => {
 
   const [courseId, teacherId] = params.class;
