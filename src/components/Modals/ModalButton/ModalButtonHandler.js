@@ -18,7 +18,7 @@ export const confirmModal = (e, dispatch) => {
 
 }
 
-export const submitInfo = (e, body, dispatch, url) => {
+export const submitInfo = (e, body, dispatch, url, msg) => {
 
   e.preventDefault();
   //FALTA AGREGARLE LA URL A AUSENCIAS
@@ -32,8 +32,8 @@ export const submitInfo = (e, body, dispatch, url) => {
   })
   .then( res => {
     if(res === 400 || res === 404) throw new Error(res)
-    console.log(res);
-    dispatch(setModal(confirm))
+    if(msg) return dispatch(setModal({...res, isActive:true, alterModal: true, type: SUCCESS}))
+    dispatch(confirm);
   })
 
 }
