@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CLASSES, HOMEWORKS, REVIEW, STUDENT, TEACHER } from '@/const';
 import { getHomeworks, getSessions, modalActivation } from './DockListHandler';
 import ModalAnswer from '../Modals/ModalAnswer/ModalAnswer';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { setReviewsParam } from '@/redux/slice';
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
 const DocList = ({userId, courseId, listType, tableValues, call, options}) => {
@@ -14,6 +14,7 @@ const DocList = ({userId, courseId, listType, tableValues, call, options}) => {
   const [data, setData] = useState([]);
   const modal = useSelector(state => state.primarySlice.modal);
   const user = useSelector(state => state.primarySlice.userLog);
+  const reviewsParam = useSelector(state => state.teacher.reviewsParam);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -62,7 +63,7 @@ const DocList = ({userId, courseId, listType, tableValues, call, options}) => {
           null
           :
           data.map( element => {
-            console.log(element, "ELEMENTO")
+
             return (
               <>
                 <div className={s.grid1}>
@@ -80,7 +81,13 @@ const DocList = ({userId, courseId, listType, tableValues, call, options}) => {
                     :
                     call === TEACHER && options === REVIEW
                     ?
-                        <div className={s.sendAnswerButton} onClick={() => router.push('/Teacher/review')}>Ver respuestas</div>
+                        <div 
+                        className={s.sendAnswerButton} 
+                        onClick={() => {
+                          dispatch(setReviewsParam({ homeworkId: element.id }))
+                          router.push('/Teacher/review')
+                        }}
+                        >Ver respuestas</div>
                     :
                     null
                   }

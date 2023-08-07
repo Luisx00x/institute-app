@@ -78,7 +78,8 @@ export const TeacherSlice = createSlice({
     studentReleses: [],
     parentReleases: [],
     absences: [],
-    califications: []
+    califications: [],
+    reviewsParam: null
   },
   reducers: {
     setTeacher: (state, action) => {
@@ -110,6 +111,9 @@ export const TeacherSlice = createSlice({
     },
     setTeacherCalifications: (state, action) => {
       state.califications = action.payload
+    },
+    setReviewsParam: (state, action) => {
+      state.reviewsParam = action.payload
     }
   }
 })
@@ -214,7 +218,8 @@ export const {
   setStudentReleases,
   setParentReleases,
   setAbsences,
-  setTeacherCalifications
+  setTeacherCalifications,
+  setReviewsParam
 } = TeacherSlice.actions;
 
 export const {
