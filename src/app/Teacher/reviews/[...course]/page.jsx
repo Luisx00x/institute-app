@@ -5,6 +5,7 @@ import DocList from "@/components/DocList/DocList";
 const HomeworkSelect = ({params}) => {
 
   const [courseId, teacherId] = params.course;
+
   
   return (
     <>
