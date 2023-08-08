@@ -22,7 +22,8 @@ const ModalAnswer = ({homeworkId}) => {
 
           <div className={s.container}>
           
-            <div>Abjuntar tarea: </div>
+            <h3>Abjuntar tarea: </h3>
+            <span>Selecciona la respuesta que deseas subir para esta asignación</span>
             <input 
             type="file" 
             name="homeworkAnswer" 
