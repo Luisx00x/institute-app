@@ -39,7 +39,11 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
         { 
           type === STUDENT ?
           students?.map( student => {
-            return <StudentCard list={student} /> 
+            return (
+              <div key={student.id}>
+                <StudentCard list={student} /> 
+              </div>
+            )
           })
           : null
         }
@@ -47,7 +51,12 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
         {
           type === TEACHER
           ? teachers?.map( teacher => {
-            return <StudentCard list={teacher} />
+            return (
+              <div key={teacher.id}>
+                <StudentCard list={teacher} />
+              </div>
+            )
+            
           })
           : null
         }
@@ -55,7 +64,11 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
         {
           type === YEAR
           ? academyYear?.map( grade => {
-            return <StudentCard list={grade} alt={true} />
+            return (
+              <div key={grade.id}>
+                <StudentCard list={grade} alt={true} />
+              </div>
+            )
           })
           : null
         }
@@ -64,14 +77,22 @@ const ShowStudents = ({type, display, aditional, courseData, oneStep, search, ad
   
           aditional && oneStep
           ?
-          aditional.map( adition => {
-            return <StudentCard passList={adition} oneStep={true} search={search} additionalParam={additionalParam} />
+          aditional.map( (adition,index) => {
+            return (
+              <div key={`${adition.id}${index}`}>
+                <StudentCard passList={adition} oneStep={true} search={search} additionalParam={additionalParam} />
+              </div>
+            ) 
           })
           :
           aditional 
           ?
-          aditional.map( adition => {
-            return <StudentCard passList={adition} courseData={courseData} search={search} additionalParam={additionalParam} sectionReleases={sectionReleases} />
+          aditional.map( (adition, index)=> {
+            return (
+              <div key={`${adition.id}${index}`}>
+                <StudentCard passList={adition} courseData={courseData} search={search} additionalParam={additionalParam} sectionReleases={sectionReleases} />
+              </div>
+            )            
           })
           :
           null

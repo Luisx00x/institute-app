@@ -28,8 +28,6 @@ const AdminReleases = () => {
     <>
       <section className={s.componentContainer}>
 
-        <h4>releases menu</h4>
-
         <TabMenu active={tabActive} tabs={tabOptions} activeOption={setTabActive}>
             {
               tabActive == 1
