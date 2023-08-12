@@ -38,19 +38,20 @@ const GradesAssignment = ({attributes, title, collection, setCollection}) => {
               })
             }
           </div>
-      </div>
 
-      <div>
+        <div>
 
-        <button className={s.button} type="button"
-        onClick={() => {
-          assingLevel(setCollection, initial);
-          //reinicia los valores
-          setInitial( prev => {
-            return { gradeName: "", section: "", sections: []}
-          })
-        }}
-        >Asignar</button>
+          <button className={s.button} type="button"
+          onClick={() => {
+            assingLevel(setCollection, initial);
+            //reinicia los valores
+            setInitial( prev => {
+              return { gradeName: "", section: "", sections: []}
+            })
+          }}
+          >Asignar</button>
+
+        </div>
 
       </div>
 
