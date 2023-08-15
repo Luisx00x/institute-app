@@ -1,6 +1,6 @@
 import { selectLevelHandler, setSelectHandler } from './DisplaySelectHandlers.js';
 
-const DisplaySelect = ({title, choices, feature, setValue, level, ... rest}) => {
+const DisplaySelect = ({title, choices, feature, setValue, value, level, ... rest}) => {
 if(level){
   
   return(
@@ -9,7 +9,7 @@ if(level){
           choices ?
           <>
           <label htmlFor={`${title.name}`}>{title.name}</label>
-          <select name={`${title.attribute}`} id={`${title.name}`} onChange={(e) => selectLevelHandler(e, setValue)}>
+          <select value={value} name={`${title.attribute}`} id={`${title.name}`} onChange={(e) => selectLevelHandler(e, setValue)}>
 
             <option value={false} >-- Seleccione un Nivel --</option>
             
@@ -39,7 +39,7 @@ if(level){
             choices ?
             <>
             <label htmlFor={`${title.name}`}>{title.name}</label>
-            <select name={`${title.attribute}`} id={`${title.name}`} onChange={(e) => setSelectHandler(e, setValue)}>
+            <select value={value} name={`${title.attribute}`} id={`${title.name}`} onChange={(e) => setSelectHandler(e, setValue)}>
 
               <option value={false} >-- Seleccione un grado --</option>
               
