@@ -18,19 +18,8 @@ const TimerSet = ({set, inputName, index}) => {
 
   return (
     <div className={s.timer}>
-{console.log(format)}
-      <div className={s.blocks}>
 
-        {/* <input type="number" min={0} max={23}
-        name="hour"
-        onKeyDown={(e) => validateHour = validateInput(e, validateHour) }
-        value={format.hour}
-        onChange={(e) => {
-          timeInputHandler(e, setFormat, validateHour);
-          formatingData(set, inputName, format, index);
-        } }
-        />
-        <span>Hora</span> */}
+      <div className={s.blocks}>
 
         <select 
         name={`hour`} 
@@ -71,19 +60,6 @@ const TimerSet = ({set, inputName, index}) => {
 
       <div className={s.blocks}>
 
-       {/*  <input 
-        type="number"
-         min={0} max={59} 
-         name="min" 
-         onKeyDown={(e) => validateMin = validateInput(e, validateMin) }
-         onChange={(e) => {
-          timeInputHandler(e, setFormat, validateMin);
-          formatingData(set, inputName, format, index);
-        } }
-         value={format.min}
-        />
-        <span>Minutos</span>
- */}
       <select 
       name={`min`} 
       id={`selectMin${index}`}
