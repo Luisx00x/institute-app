@@ -151,6 +151,7 @@ const CreateCourse = () => {
                 title={levelSelect}
                 choices={[{id:1, level:"Inicial"},{id:2, level:"Primaria"},{id:3, level:"Secundaria"}]}
                 setValue={setLevel}
+                value={level}
                 level={true} />
               </div>
     
@@ -158,7 +159,8 @@ const CreateCourse = () => {
                 <DisplaySelect 
                 title={gradesSelect} 
                 choices={levelOption} 
-                setValue={setInputs} 
+                setValue={setInputs}
+                value={inputs.gradeId} 
                 feature={'grade'} 
                 />
               </div>
@@ -168,6 +170,7 @@ const CreateCourse = () => {
                 title={sectionSelect} 
                 choices={setGrades ? setGrades.Sections : null} 
                 setValue={setInputs}
+                value={inputs.sectionId}
                 feature={'sectionName'}
                 />
               </div>
@@ -177,6 +180,7 @@ const CreateCourse = () => {
                 title={teacherSelect}
                 choices={allTeachers}
                 setValue={setInputs}
+                value={inputs.teacherId}
                 feature={"name"}
                 additionalFeat={"lastName"}
                 />
