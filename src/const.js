@@ -77,3 +77,7 @@ export const DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
 export const CLASSLIST = [{col: "Sesión", value: "className" }, {col: "Archivo", value: "location"}];
 export const HOMEWORKSLIST = [{col: "Asignación", value: "asignation"}, {col: "Archivo", value: "location"}];
 export const ADMIN = "admin"
+
+export const HOURS_AM = ["07","08","09","10","11"];
+export const HOURS_PM = ["12","01","02","03","04","05","06","07"];
+export const MINUTES = ["00","05","10","15","20","25","30","35","40","45","50","55"];

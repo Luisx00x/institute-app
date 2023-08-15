@@ -181,6 +181,11 @@ const CreateCourse = () => {
                 additionalFeat={"lastName"}
                 />
               </div>
+
+              <div>
+
+
+              </div>
     
               <h3>Ingresar Días y Hora para el Curso</h3>
     
@@ -207,14 +212,18 @@ const CreateCourse = () => {
                             }
                           </select>
     
-                          <div className={s.props}>
-                            <p>Hora de entrada</p>
-                            <TimerSet set={setInputs} inputName={"init"} index={index} />
-                          </div>
-    
-                          <div className={s.props}>
-                            <p>Hora de salida</p>
-                            <TimerSet set={setInputs} inputName={"end"} index={index} />
+                          <div className={s.hourContainer}>
+
+                            <div className={`${s.props} ${s.hourSet}`}>
+                              <p>Hora de entrada</p>
+                              <TimerSet set={setInputs} inputName={"init"} index={index} />
+                            </div>
+      
+                            <div className={`${s.props} ${s.hourSet}`}>
+                              <p>Hora de salida</p>
+                              <TimerSet set={setInputs} inputName={"end"} index={index} />
+                            </div>
+
                           </div>
     
                           </div>  
@@ -223,8 +232,9 @@ const CreateCourse = () => {
     
                   }
     
-                  <button className={s.submit} type="button" onClick={(e) => setData(DAY ,setInputs)}>Agregar un dia al curso</button>
               </div>
+              
+              <button className={s.submit} type="button" onClick={(e) => setData(DAY ,setInputs)}>Agregar otro dia al curso</button>
     
               <h3>Competencias a ser evaluadas en el curso</h3>
     

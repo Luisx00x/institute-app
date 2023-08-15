@@ -32,10 +32,16 @@
   border-radius: 15px;
 }
 
+.newDay{
+  border-radius: 4px;
+  padding: 2% 3%;
+  background-color: #0B699C;
+  margin-bottom: 10px;
+}
+
 .daysCounter{
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: rgb(158, 209, 230);
   padding: 5%;
   border-radius: 6px;
@@ -60,4 +66,16 @@
 
 .abbr{
   width: 40px;
+}
+
+.hourContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.hourSet{
+  width: fit-content;
 }
