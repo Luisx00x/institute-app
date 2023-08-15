@@ -62,6 +62,7 @@ const CreateCourse = () => {
   
   return (
     <>
+    
       {
         modal.isActive
         ?
@@ -220,12 +221,12 @@ const CreateCourse = () => {
 
                             <div className={`${s.props} ${s.hourSet}`}>
                               <p>Hora de entrada</p>
-                              <TimerSet set={setInputs} inputName={"init"} index={index} />
+                              <TimerSet set={setInputs} value={inputs.days} inputName={"init"} index={index} />
                             </div>
       
                             <div className={`${s.props} ${s.hourSet}`}>
                               <p>Hora de salida</p>
-                              <TimerSet set={setInputs} inputName={"end"} index={index} />
+                              <TimerSet set={setInputs} value={inputs.days} inputName={"end"} index={index} />
                             </div>
 
                           </div>
