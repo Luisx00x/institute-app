@@ -34,9 +34,23 @@ export const formatingData = (setData, input, time, index) => {
 
   setData( prev => {
 
-    let newHour = {
-      ...prev.days[index],
-      [input]: `${hour}:${min}`
+    let newHour;
+
+    if(period == "pm" && hour != "12"){
+
+      const periodHour = parseInt(hour) + 12;
+      console.log(hour,"PERIOT")
+      newHour = {
+        ...prev.days[index],
+        [input]: `${periodHour}:${min}`
+      }
+    } else {
+
+      newHour = {
+        ...prev.days[index],
+        [input]: `${hour}:${min}`
+      }
+
     }
 
     const array = prev.days;
