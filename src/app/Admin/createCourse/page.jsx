@@ -74,7 +74,7 @@ const CreateCourse = () => {
           
           <>
     
-            <h3 className={s.title}>Año en curso</h3> 
+            <h2 className={s.title}>Año en curso</h2> 
             
             <div className={s.container}>
     
@@ -89,7 +89,8 @@ const CreateCourse = () => {
               <div className={s.daysCounter}>
     
               {
-    
+                inputs.skills.length
+                ?
                 inputs.skills.map( (skill, index) => {
     
                   return (
@@ -135,17 +136,20 @@ const CreateCourse = () => {
     
                         </div>
                           
-                        <button className={s.cancelSkill} onClick={(e) => deleteSkill(e, setInputs)}>X</button>
+                        <button className={s.cancelSkill} onClick={(e) => deleteSkill(e, SKILL, index, setInputs)}>X</button>
                       
                       </div>
     
                   )
                 })
+                :
+                <h3>No se ha asignado ninguna competencia al curso</h3>
     
               }
     
-              <button className={s.submit} type="button" onClick={(e) => setData(SKILL ,setInputs)}>Agregar una competencia al curso</button>
               </div>
+
+              <button className={s.submit} type="button" onClick={(e) => setData(SKILL ,setInputs)}>Agregar una competencia al curso</button>
     
               <div className={s.props}>
                 <DisplaySelect
@@ -192,56 +196,66 @@ const CreateCourse = () => {
 
               </div>
     
-              <h3>Ingresar Días y Hora para el Curso</h3>
+              <h2>Ingresar Días y Hora para el Curso</h2>
     
               <div className={s.daysCounter}>
                   {
-    
+                    inputs.days.length
+                    ?
                     inputs.days.map( (day, index) => {
     
                       return (
                   
                           <div className={s.newDay}>
     
-                          <label htmlFor={`day${index}`}>Ingrese un día: </label>
-                          <select 
-                          name={`day${index}`} 
-                          id={`day${index}`}
-                          onClick={(e) => dayHandler(e, setInputs, index)}
-                          >
-                              <option value="">Seleccione un dia para el curso</option>
-                            {
-                              DAYS.map( day => {
-                                return <option value={day}>{day}</option>
-                              })
-                            }
-                          </select>
-    
-                          <div className={s.hourContainer}>
+                          <div className={s.topElement}>
 
-                            <div className={`${s.props} ${s.hourSet}`}>
-                              <p>Hora de entrada</p>
-                              <TimerSet set={setInputs} value={inputs.days} inputName={"init"} index={index} />
+                            <div>
+                              <label htmlFor={`day${index}`}>Ingrese un día: </label>
+                              <select 
+                              name={`day${index}`} 
+                              id={`day${index}`}
+                              onChange={(e) => dayHandler(e, setInputs, index)}
+                              value={day.day}
+                              >
+                                  <option value="">Seleccione un dia para el curso</option>
+                                {
+                                  DAYS.map( day => {
+                                    return <option value={day}>{day}</option>
+                                  })
+                                }
+                              </select>
                             </div>
-      
-                            <div className={`${s.props} ${s.hourSet}`}>
-                              <p>Hora de salida</p>
-                              <TimerSet set={setInputs} value={inputs.days} inputName={"end"} index={index} />
-                            </div>
+
+                            <button className={s.cancelSkill} onClick={(e) => deleteSkill(e, DAY, index, setInputs)}>X</button>
 
                           </div>
     
+                            <div className={s.hourContainer}>
+
+                              <div className={`${s.props} ${s.hourSet}`}>
+                                <p>Hora de entrada</p>
+                                <TimerSet set={setInputs} value={inputs.days} inputName={"init"} index={index} />
+                              </div>
+        
+                              <div className={`${s.props} ${s.hourSet}`}>
+                                <p>Hora de salida</p>
+                                <TimerSet set={setInputs} value={inputs.days} inputName={"end"} index={index} />
+                              </div>
+
+                            </div>
+      
                           </div>  
                       )
                     })
+                    :
+                    <h3>No se ha asignado ningún día al curso</h3>
     
                   }
     
               </div>
               
               <button className={s.submit} type="button" onClick={(e) => setData(DAY ,setInputs)}>Agregar otro dia al curso</button>
-    
-              <h3>Competencias a ser evaluadas en el curso</h3>
     
               <button className={s.submit} type="button" onClick={(e) => submitHandler(e, inputs, dispatch, setInputs)}>Crear el curso</button>
     
@@ -251,7 +265,7 @@ const CreateCourse = () => {
     
           :
           
-          <h3>No ha creado un año escolar para el período actual, por favor, primero dirigase a crear año escolar y luego cree los cursos</h3>}
+          <h2>No ha creado un año escolar para el período actual, por favor, primero dirigase a crear año escolar y luego cree los cursos</h2>}
               
     
         </form>

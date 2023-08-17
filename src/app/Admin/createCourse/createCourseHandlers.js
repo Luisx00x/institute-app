@@ -143,13 +143,13 @@ export const submitHandler = async (e, data, dispatch, setInputs) => {
 
 }
 
-export const deleteSkill = (e, setInputs) => {
+export const deleteSkill = (e, element, index, setInputs) => {
 
   e.preventDefault();
 
   setInputs( prev => {
     
-    prev.skills.pop();
+    prev[element].splice(index,1);
 
     return {
       ...prev

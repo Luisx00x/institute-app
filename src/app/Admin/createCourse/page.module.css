@@ -59,9 +59,14 @@
 }
 
 .cancelSkill{
-  background-color: rgb(255, 10, 10);
+  background-color: rgb(255, 3, 3);
   color: #FFF;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancelSkill:hover{
+  background-color: rgb(211, 20, 20);
 }
 
 .abbr{
@@ -78,4 +83,10 @@
 
 .hourSet{
   width: fit-content;
+}
+
+.topElement{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }
