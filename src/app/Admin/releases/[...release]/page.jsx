@@ -35,7 +35,6 @@ const AdminReleaseDetails = ({params}) => {
 
   return (
     <>
-    {console.log(coursesReleases)}
       {
          releaseType === "course"
           ?
