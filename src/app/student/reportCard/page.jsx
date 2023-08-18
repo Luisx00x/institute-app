@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import s from './page.module.css';
 import { callReport, studentCalifications } from './reportCardHandlers';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const ReportCard = ({user}) => {
@@ -35,12 +34,9 @@ const ReportCard = ({user}) => {
 
   },[report])
 
-  const router = useRouter();
-  const califications = useSelector(state => state.student.califications);
-
   return (
     <>
-{console.log(report, "REPORT")}
+
       <div className={s.container}>
 
         <h3>Libreta de calificaciones</h3>
