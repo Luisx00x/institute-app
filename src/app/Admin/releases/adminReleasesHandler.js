@@ -119,7 +119,7 @@ export const findAdminParentReleases = (dispatch, id) => {
 
 }
 
-export const getAdminCoursesReleases = (dispatch, year) => {
+export const getAdminCoursesReleases = (dispatch, year, courseId) => {
 
   let status
 
@@ -130,7 +130,8 @@ export const getAdminCoursesReleases = (dispatch, year) => {
   })
   .then( res => {
     if(status == 200 || status == 304){
-      return dispatch(setAdminCoursesReleases(res));
+      const response = res.filter( element => element.CourseId == courseId);
+      return dispatch(setAdminCoursesReleases(response));
     }
     throw new Error(res)
   })

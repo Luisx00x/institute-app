@@ -22,7 +22,7 @@ const AdminReleaseDetails = ({params}) => {
     if(releaseType == "student" || releaseType == "parents") searchAdminSectionStudents(dispatch, sectionId);
     if(releaseType == "student" && studentId) findStudentReleases(dispatch, studentId);
     if(releaseType == "parents" && studentId) findAdminParentReleases(dispatch, studentId);
-    if(releaseType == "course") getAdminCoursesReleases(dispatch, "");
+    if(releaseType == "course") getAdminCoursesReleases(dispatch, "", courseId);
     
   },[modal])
   
@@ -35,6 +35,7 @@ const AdminReleaseDetails = ({params}) => {
 
   return (
     <>
+    {console.log(coursesReleases)}
       {
          releaseType === "course"
           ?
