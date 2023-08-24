@@ -4,6 +4,7 @@ import s from './page.module.css';
 import { useEffect } from 'react';
 import { studentCalifications } from '../../student/reportCard/reportCardHandlers';
 import { studentSection, studentInfo as searchStudentInfo} from '../../student/studentHandlers';
+import { searchAttencance } from './reportHandler';
 
 const Page = ({params}) => {
 
@@ -15,6 +16,7 @@ const Page = ({params}) => {
     studentCalifications(dispatch, studentId, sectionId);
     studentSection(dispatch, userId, "");
     searchStudentInfo(dispatch, userId, "");
+    searchAttencance(dispatch, studentId);
 
 
   },[])
@@ -22,6 +24,7 @@ const Page = ({params}) => {
   const studentInfo = useSelector(state => state.student.studentInfo);
   const sectionInfo = useSelector(state => state.student.sectionInfo);
   const califications = useSelector(state => state.student.califications);
+  const attendance = useSelector(state => state.student.attendance);
 
   let count;
   return (
@@ -100,7 +103,7 @@ const Page = ({params}) => {
           </div>
   
           <div className={`${s.label} ${s.cols_3}`}>
-            "primerNombre SegundoNombre TercerNombre CuartoNombre"
+            {attendance?.tutorNames} {attendance?.tutorLastNames}
           </div>
 
         </div>
@@ -246,21 +249,32 @@ const Page = ({params}) => {
 
           <div className={`${s.gridCol2}`}>
             
-            <div className={`${s.col2_1} ${s.borders} ${s.bordersAssis}`}>
+            <div className={`${s.col2_1} ${s.bordersAssis} ${s.assistance}`}>
               Tardanza
             </div>
-            <div className={`${s.col2_1} ${s.borders}`}>
+            <div className={`${s.col2_1} ${s.assistance}`}>
               Falta Justificada
             </div>
-            <div className={`${s.col2_1} ${s.borders}`}>
+            <div className={`${s.col2_1} ${s.assistance}`}>
               Falta injustificada
             </div>
       
-            <div className={`${s.colAssis1} ${s.borders} ${s.centerGrid}`}>
-
-            </div>
-
-            <div className={`${s.colAssis2} ${s.borders} ${s.centerGrid}`}>
+            {/* 1er Bimestre */}
+            
+              {
+                attendance
+                ?
+                attendance?.delays.map( (delay,index) => {
+                  return <div className={`${s.colAssis1} ${s.borders} ${s.centerGrid}`}>
+                    {delay}
+                  </div>
+                })
+                :
+                null
+              }
+           
+            {/* 2do Bimestre */}
+            {/* <div className={`${s.colAssis2} ${s.borders} ${s.centerGrid}`}>
 
             </div>
 
@@ -270,7 +284,7 @@ const Page = ({params}) => {
 
             <div className={`${s.colAssis4} ${s.borders} ${s.centerGrid}`}>
               
-            </div>
+            </div> */}
 
           </div>
 
