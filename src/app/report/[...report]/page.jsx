@@ -259,13 +259,14 @@ const Page = ({params}) => {
               Falta injustificada
             </div>
       
-            {/* 1er Bimestre */}
+            {/* Tardanzas */}
             
               {
                 attendance
                 ?
                 attendance?.delays.map( (delay,index) => {
-                  return <div className={`${s.colAssis1} ${s.borders} ${s.centerGrid}`}>
+                  const assignedClass = "colAssis" + (1+index);
+                  return <div className={`${s[assignedClass]} ${s.borders} ${s.centerGrid} ${s.delays}`}>
                     {delay}
                   </div>
                 })
@@ -273,23 +274,42 @@ const Page = ({params}) => {
                 null
               }
            
-            {/* 2do Bimestre */}
-            {/* <div className={`${s.colAssis2} ${s.borders} ${s.centerGrid}`}>
+            {/* Faltas justificadas */}
+           
+              {
+                attendance
+                ?
+                attendance?.justifiedFault.map( (fault, index) => {
+                  const assignedClass = "colAssis" + (1+index);
+                  return <div className={`${s[assignedClass]} ${s.borders} ${s.centerGrid} ${s.justified}`}>
+                    {fault}
+                  </div>
+                })
+                :
+                null
+              }
+            {/* Faltas injustificadas */}
 
-            </div>
-
-            <div className={`${s.colAssis3} ${s.borders} ${s.centerGrid}`}>
-
-            </div>
-
-            <div className={`${s.colAssis4} ${s.borders} ${s.centerGrid}`}>
-              
-            </div> */}
+            {
+              attendance
+              ?
+              attendance?.absences.map( (absence, index) => {
+                const assignedClass = "colAssis" + (1+index);
+                return (
+                  <div className={`${s[assignedClass]} ${s.borders} ${s.centerGrid} ${s.absences}`}>
+                    {absence}
+                  </div>
+                )
+              })
+              :
+              null
+            }
 
           </div>
 
+            {/* Cuadro para la nota final de assitencia */}
             <div className={`${s.gridCol3} ${s.borders} ${s.bordersAssis}`}>
-
+              Nota final assitencia
             </div>
 
         </div>
