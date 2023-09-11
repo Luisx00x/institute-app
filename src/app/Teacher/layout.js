@@ -2,20 +2,10 @@
 import s from '@/app/Admin/layout.module.css'
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
+import { TEACHER_ROUTES as menuRoutes } from '@/routes';
 
 
 const teacherLayout = ({children}) =>{
-
-  const menuRoutes = [
-    {name: "Resumen", route: "/Teacher"},
-    {name: "Ver materias", route: "/Teacher/courses"},
-    {name: "Dejar tarea", route: "/Teacher/homeworks"},
-    {name: "Calificar tareas", route: "/Teacher/reviews"},
-    {name: "Enviar comunicado", route: "/Teacher/releases"},
-    {name: "Subir clases", route: "/Teacher/class"},
-    {name: "Asistencias", route: "/Teacher/list"},
-    {name: "Cargar calificación bimestreal", route: "/Teacher/uploadNotes"}
-  ]
 
   return (
     <>
