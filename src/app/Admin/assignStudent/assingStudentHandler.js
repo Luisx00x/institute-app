@@ -29,7 +29,7 @@ export const searchStudents = (dispatch) => {
 
 }
 
-export const submitAssign = (e, data, dispatch) => {
+export const submitAssign = (e, data, dispatch, setInputs) => {
 
   e.preventDefault();
 
@@ -59,6 +59,13 @@ export const submitAssign = (e, data, dispatch) => {
       type: SUCCESS
     }
     dispatch(setModal(success));
+    setInputs( prev => {
+      return {
+        studentId: null,
+        gradeId: null,
+        sectionId: null
+      }
+    })
 
   })
   .catch(err => {

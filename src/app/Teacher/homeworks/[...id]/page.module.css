@@ -1,0 +1,13 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-right: 2%;
+  width: 100%;
+}
+
+.test{
+  background-color: rgb(182, 177, 177);
+}

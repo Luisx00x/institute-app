@@ -1,0 +1,59 @@
+ 
+.reportContainer{
+  margin: auto;
+  margin-left: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.gridData{
+  display: grid;
+  grid-template-columns: repeat(auto, 1fr) 100px;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+.label{
+  border: 1px solid black;
+  text-align: start;
+  padding-left: 5px;
+}
+
+.prom{
+  background-color: #E3ecE4;
+}
+
+.camp{
+  background-color: rgb(166, 166, 235);
+}
+
+.col1{
+  grid-column: 1;
+}
+
+.col2{
+  grid-column: 2;
+}
+
+.col3{
+  grid-column: 3;
+  text-align: center;
+}
+
+.col4{
+  grid-column: 4;
+}
+
+.listContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+ 
+  align-items: center;
+
+}
+
+.closeButton{
+  width: fit-content;
+  padding: 1%;
+}

@@ -1,0 +1,37 @@
+
+.answersGrid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+}
+
+.answersGrid div{
+  border: 1px solid black;
+}
+
+.col1{
+  grid-column: 1;
+}
+
+.col2{
+  grid-column: 2;
+}
+
+.col3{
+  grid-column: 3;
+}
+
+.col4{
+  grid-column: 4;
+}
+
+.col5{
+  grid-column: 5;
+}
+
+.grid6{
+  grid-column: 6;
+}

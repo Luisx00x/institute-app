@@ -13,9 +13,13 @@ export default function Home() {
   const router = useRouter();
 
   useEffect( () => {
-    if(user?.RolId === 1){
+    if(user?.RolId === 1 || user?.RolId === 5){
       router.push("/Admin");
     }
+    if(user?.RolId === 3) router.push("/Teacher");
+    if(user?.RolId === 2) router.push("/student");
+    if(user?.RolId === 4) router.push("/parents");
+    if(user?.RolId === 6) router.push("/tutor");
   },[user])
 
   return (

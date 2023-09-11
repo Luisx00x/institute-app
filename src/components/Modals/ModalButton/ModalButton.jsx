@@ -2,10 +2,10 @@
 
 import s from './ModalButton.module.css';
 import { useDispatch } from "react-redux";
-import { confirmModal } from "./ModalButtonHandler";
+import { confirmModal, submitInfo, submitReleaseFile } from "./ModalButtonHandler";
 import { SUCCESS } from '@/const';
 
-const ModalButton = ({text, type}) => {
+const ModalButton = ({text, type, data, setData, url, uploadFile, input, setInput, msg}) => {
 
   const dispatch = useDispatch();
 
@@ -13,7 +13,15 @@ const ModalButton = ({text, type}) => {
     <>
       <button
       className={ type === SUCCESS ? s.success : s.failure}
-      onClick={(e) => confirmModal(e, dispatch) }
+      onClick={(e) => {
+
+        if(data && uploadFile == false) submitInfo(e, data, dispatch, url, msg);
+        if(data && uploadFile == true) submitReleaseFile(e, data, input, dispatch, setData, setInput, url);
+        else{
+          confirmModal(e, dispatch)
+        }
+      
+      }}
       >{text}</button>
     </>
   )

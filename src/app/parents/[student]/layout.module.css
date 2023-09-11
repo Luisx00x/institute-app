@@ -1,0 +1,12 @@
+.container{
+  width: 100%;
+  margin: 1% auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.uiContainer{
+  display: flex;
+  background-color: #265857;
+  justify-content: flex-start;
+}

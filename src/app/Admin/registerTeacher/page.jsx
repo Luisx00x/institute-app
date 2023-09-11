@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import ModalMsg from '@/components/Modals/ModalMsg/ModalMsg';
 
 const attributes = [
-  {name: "Nombres del profesor", attribute: "name"},
-  {name: "Apellidos del profesor", attribute: "lastName"},
+  {name: "DNI", attribute: "DNI"},
+  {name: "Nombres del profesor", attribute: "names"},
+  {name: "Apellidos del profesor", attribute: "teacherLastNames"},
   {name: "Email", attribute: "email"}
 ]
 
@@ -20,8 +21,9 @@ const RegisterAdmin = () => {
   const modal = useSelector(state => state.primarySlice.modal);
 
   const [inputs, setInputs] = useState({
-    name: "",
-    lastName: "",
+    DNI: "",
+    names: "",
+    teacherLastNames: "",
     email: ""
   });
 

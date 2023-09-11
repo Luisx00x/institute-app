@@ -1,8 +1,9 @@
 .container{
-  background-color: azure;
-  width: 100%;
+  background-color: #E3ecE4;
   border: 1px solid black;
   padding: 2% 3%;
+  flex-basis: 40%;
+  border-radius: 6px;
 }
 
 .container:hover{
@@ -14,4 +15,8 @@
   display: block;
   margin: 0 auto;
   width: max-content;
+}
+
+.links{
+  text-decoration: none;
 }

@@ -34,10 +34,12 @@ export const formatingData = (setData, input, time, index) => {
 
   setData( prev => {
 
-    let newHour = {
-      ...prev.days[index],
-      [input]: `${hour}:${min}`
-    }
+    let newHour;
+
+      newHour = {
+        ...prev.days[index],
+        [input]: `${hour}:${min}`
+      }
 
     const array = prev.days;
     

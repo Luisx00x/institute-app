@@ -15,8 +15,8 @@ const GradesAssignment = ({attributes, title, collection, setCollection}) => {
   )
   
   return(
+    
     <>
-      
       <div className={s.container}>
         
         <CreateUsers title={title} attributes={attributes} set={setInitial} values={initial} handler={initialHandler} info={initial.sections}>
@@ -26,30 +26,32 @@ const GradesAssignment = ({attributes, title, collection, setCollection}) => {
         </CreateUsers>
 
           <div className={s.test}>
-            <h3 className={s.title}>Niveles y Secciones asignadas:</h3>
+            <h3 className={s.title}>Grados y Secciones asignadas:</h3>
             {
               collection?.map( element => {
                 return( 
                 <div className={s.sections}>
-                  <label>Nivel: {element.gradeName}</label> <br/> {console.log(element.sections.length-1, "LONG")}
+                  <label>Grado: {element.gradeName}</label> <br/>
                   <label>Secciones: {element.sections.map( (section,index) => `"${section}" ${element.sections.length-1 !== index ? `/` : `.` }`)}</label>  
                 </div>
                 )
               })
             }
           </div>
-      </div>
 
-      <div>
+        <div>
 
-        <button className={s.button} type="button"
-        onClick={() => {
-          assingLevel(setCollection, initial);
-          setInitial( prev => {
-            return { gradeName: "", section: "", sections: []}
-          })
-        }}
-        >Asignar</button>
+          <button className={s.button} type="button"
+          onClick={() => {
+            assingLevel(setCollection, initial);
+            //reinicia los valores
+            setInitial( prev => {
+              return { gradeName: "", section: "", sections: []}
+            })
+          }}
+          >Asignar</button>
+
+        </div>
 
       </div>
 

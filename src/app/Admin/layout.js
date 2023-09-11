@@ -2,18 +2,20 @@
 import s from './layout.module.css';
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { ADMIN_ROUTES as menuRoutes } from '@/routes';
 
 
 const layout = ({children}) =>{
 
-  const menuRoutes = [
-    {name: "Resumen", route: "/Admin"},
-    {name: "Registrar Alumno", route: "/Admin/RegisterStudent"},
-    {name: "Registrar Profesor", route: "/Admin/registerTeacher"},
-    {name: "Crear un nuevo año escolar", route: "/Admin/createYear"},
-    {name: "Crear un nuevo Curso", route: "/Admin/createCourse"},
-    {name: "Asignar alumno a una sección", route: "/Admin/assignStudent"}
-  ]
+  const user = useSelector(state => state.primarySlice.userLog);
+  const router = useRouter();
+
+  useEffect( () => {
+    if(user?.RolId !== 1) router.push("/");
+  },[user])
 
   return (
     <>

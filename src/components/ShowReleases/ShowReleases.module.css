@@ -1,0 +1,47 @@
+
+.releasesContainer{
+  width: 100%;
+  margin: 1%;
+  background-color: white;
+  height: fit-content;
+}
+
+.gridContainer{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid black;
+}
+
+.gridCourseContainer{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid black;
+}
+
+.gridContainer div{
+  border: 1px solid black;
+}
+
+.gridCourseContainer div{
+  border: 1px solid black;
+}
+
+.gridCol1{
+  grid-column: 1;
+}
+
+.gridCol2{
+  grid-column: 2;
+}
+
+.gridCol3{
+  grid-column: 3;
+}
+
+.gridCol4{
+  grid-column: 4;
+}
+
+.gridCol5{
+  grid-column: 5;
+}

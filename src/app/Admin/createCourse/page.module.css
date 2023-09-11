@@ -1,14 +1,14 @@
 .container{
   display: flex;
-  width: 100%;
-  margin-left: 5%;
   margin-top: 2%;
+  margin-right: 1%;
   flex-direction: column;
 }
 
 .form{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .submit{
@@ -32,11 +32,61 @@
   border-radius: 15px;
 }
 
+.newDay{
+  border-radius: 4px;
+  padding: 2% 3%;
+  background-color: #0B699C;
+  margin-bottom: 10px;
+}
+
 .daysCounter{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: rgb(73, 236, 73);
+  background-color: rgb(158, 209, 230);
   padding: 5%;
   border-radius: 6px;
+}
+
+.skillContainer{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  background-color: #E3ecE4;
+  padding: 2% 3%;
+  margin-bottom: 5px;
+}
+
+.cancelSkill{
+  background-color: rgb(255, 3, 3);
+  color: #FFF;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancelSkill:hover{
+  background-color: rgb(211, 20, 20);
+}
+
+.abbr{
+  width: 40px;
+}
+
+.hourContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.hourSet{
+  width: fit-content;
+}
+
+.topElement{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }

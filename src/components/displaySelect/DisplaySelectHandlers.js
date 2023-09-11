@@ -2,7 +2,6 @@ export const setSelectHandler = (e, set) => {
 
   e.preventDefault();
   set( prev => {
-    console.log(e.target.value, "DENRO DE FUNCIOn")
     if(e.target.name !== "gradeId"){
       return {
         ...prev,
@@ -17,3 +16,12 @@ export const setSelectHandler = (e, set) => {
   })
 
 }
+
+export const selectLevelHandler = (e, set) => {
+
+  e.preventDefault();
+  set( prev => {
+    return e.target.name = e.target.value;
+  })
+
+} 

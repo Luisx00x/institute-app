@@ -1,0 +1,43 @@
+
+.container{
+  width: 90%;
+  margin: 3% auto;
+  background-color: white;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overflow{
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.bimestersContainer{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 1%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.bimester{
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  background-color: #E3ecE4;
+  border-radius: 15px;
+}
+
+.buttonsContainer{
+  width: 30%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

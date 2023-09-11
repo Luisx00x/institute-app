@@ -1,5 +1,6 @@
 import useFetch from "@/Hooks/useFetch";
-import { setAllGrades, setTeachers } from '@/redux/slice.js';
+import { DAY, FAILURE, SKILL, SUCCESS } from "@/const";
+import { setAllGrades, setModal, setTeachers } from '@/redux/slice.js';
 
 const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL;
 
@@ -59,13 +60,21 @@ export const searchTeachers = async (dispatch) => {
 
 }
 
-export const setDay = (set) => {
+export const setData = (prop, set) => {
   set( prev => {
-    return {
-      ...prev,
-      days: [...prev.days, {day: "", init: "", end: ""}]
+    if(prop === DAY){
+      return {
+        ...prev,
+        days: [...prev.days, {day: "", init: "", end: ""}]
+      }
     }
-  })
+    if(prop === SKILL){
+      return {
+        ...prev,
+        skills: [...prev.skills, {skill: "", abbrev: ""}]
+      }
+    }
+  });
 }
 
 export const dayHandler = (e, set, index) => {
@@ -86,25 +95,66 @@ export const dayHandler = (e, set, index) => {
   })
 }
 
-export const submitHandler = async (e, data) => {
+export const submitHandler = async (e, data, dispatch, setInputs) => {
+
+  let skills = []
+  let abbrev = []
+
+  data.skills.map( element => {
+    skills.push(element.skill);
+    abbrev.push(element.abbrev);
+  })
+  
+  const convertData = {...data, skills: skills, Abbrev: abbrev}
 
   e.preventDefault();
   try{
 
     let status;
 
-    const fechingData = useFetch(`${LOGIN_URL}/courseCreation`, "POST", data)
+    const fechingData = useFetch(`${LOGIN_URL}/courseCreation`, "POST", convertData)
     .then( res => {
       status = res.status;
       return res.json();
     })
     .then(res => {
-      if(status != 200) throw new Error(res);
-      console.log(res);
+      if(status == 200 || status == 304) {
+      
+        setInputs( prev => {
+          return {
+            courseName: "",
+            gradeId: null,
+            sectionId: null,
+            teacherId: null,
+            days: [],
+            skills: [],
+            Abbrev: []
+          }
+        })
+        return dispatch(setModal({msg:res, type:SUCCESS, isActive: true}));
+      
+      }
+      dispatch(setModal({msg:res, type:FAILURE, isActive: true}));
     })
 
   }catch(err){
     console.error(err)
   }
+
+}
+
+export const deleteSkill = (e, element, index, setInputs) => {
+
+  e.preventDefault();
+
+  setInputs( prev => {
+    
+    prev[element].splice(index,1);
+
+    return {
+      ...prev
+    }
+
+  })
 
 }
