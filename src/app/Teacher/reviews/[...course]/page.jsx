@@ -1,6 +1,7 @@
 import { HOMEWORKS, HOMEWORKSLIST, REVIEW, TEACHER } from "@/const";
 import s from '../../homeworks/[...id]/page.module.css';
 import DocList from "@/components/DocList/DocList";
+import BackButton from "@/components/backButton/BackButton";
 
 const HomeworkSelect = ({params}) => {
 
@@ -11,6 +12,8 @@ const HomeworkSelect = ({params}) => {
     <>
 
       <div className={s.container}>
+
+        <BackButton /> 
 
         <DocList 
         listType={HOMEWORKS} 

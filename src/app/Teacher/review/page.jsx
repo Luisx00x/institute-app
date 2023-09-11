@@ -5,24 +5,27 @@ import { useSelector } from "react-redux";
 import { callHomeworksAnswers } from "./reviewHandler";
 import StudentsHomework from "@/components/StudentsHomework/StudentsHomework";
 import s from './review.module.css';
+import BackButton from "@/components/backButton/BackButton";
 
 const SetReviews = () => {
   
-  const { homeworkId } = useSelector(state => state.teacher.reviewsParam);
+  const params = useSelector(state => state.teacher.reviewsParam);
   const [homework, setHomework] = useState();
   const modal = useSelector(state => state.primarySlice.modal);
 
   useEffect( () => {
 
-    callHomeworksAnswers(setHomework, homeworkId);
+    if(params) callHomeworksAnswers(setHomework, params.homeworkId);
 
-  },[homeworkId, modal])
+  },[params, modal])
 
 
   return (
     <>
 
       <div className={s.answerContainer}>
+
+        <BackButton />
 
         <h2>Asignación: {homework?.asignation}</h2>
 
