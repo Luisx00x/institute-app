@@ -2,9 +2,19 @@
 import s from './layout.module.css';
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 const layout = ({children}) =>{
+
+  const user = useSelector(state => state.primarySlice.userLog);
+  const router = useRouter();
+
+  useEffect( () => {
+    if(user?.RolId !== 1) router.push("/");
+  },[user])
 
   const menuRoutes = [
     {name: "Resumen", route: "/Admin"},
