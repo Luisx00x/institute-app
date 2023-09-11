@@ -5,6 +5,7 @@ import Sidebar from '@/components/sidebar/Sidebar';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { ADMINROUTES as menuRoutes } from '@/routes';
 
 
 const layout = ({children}) =>{
@@ -15,16 +16,6 @@ const layout = ({children}) =>{
   useEffect( () => {
     if(user?.RolId !== 1) router.push("/");
   },[user])
-
-  const menuRoutes = [
-    {name: "Resumen", route: "/Admin"},
-    {name: "Crear un nuevo año escolar", route: "/Admin/createYear"},
-    {name: "Registrar Alumno", route: "/Admin/RegisterStudent"},
-    {name: "Registrar Profesor", route: "/Admin/registerTeacher"},
-    {name: "Crear un nuevo Curso", route: "/Admin/createCourse"},
-    {name: "Asignar alumno a una sección", route: "/Admin/assignStudent"},
-    {name: "Enviar un comunicado/citación", route: "/Admin/releases"}
-  ]
 
   return (
     <>
