@@ -5,7 +5,7 @@ import Sidebar from '@/components/sidebar/Sidebar';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { ADMINROUTES as menuRoutes } from '@/routes';
+import { ADMIN_ROUTES as menuRoutes } from '@/routes';
 
 
 const layout = ({children}) =>{

@@ -2,17 +2,9 @@
 import s from '../Admin/layout.module.css';
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
-
+import { STUDENT_ROUTES as menuRoutes } from '@/routes';
 
 const layout = ({children}) =>{
-
-  const menuRoutes = [
-    {name: "Inicio", route: "/student"},
-    {name: "Horario", route: "/student/schedules"},
-    {name: "Ver tareas", route: "/student/homeworks"},
-    {name: "Ver comunicados", route: "/student/releases"},
-    {name: "Ver libreta de calificaciones", route: "/student/reportCard"},
-  ]
 
   return (
     <>
