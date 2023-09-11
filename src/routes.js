@@ -27,3 +27,8 @@ export const TEACHER_ROUTES = [
   {name: "Asistencias", route: "/Teacher/list"},
   {name: "Cargar calificación bimestreal", route: "/Teacher/uploadNotes"}
 ]
+
+export const TUTOR_ROUTES = [
+  {name: "Resumen", route: "/tutor"},
+  {name: "Cargar calificaciones de conducta bimestrales", route: "/tutor/behavior"}
+]

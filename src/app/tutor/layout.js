@@ -2,14 +2,10 @@
 import s from '@/app/Admin/layout.module.css'
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
+import { TUTOR_ROUTES as menuRoutes } from '@/routes';
 
 
 const tutorLayout = ({children}) =>{
-
-  const menuRoutes = [
-    {name: "Resumen", route: "/tutor"},
-    {name: "Cargar calificaciones de conducta bimestrales", route: "/tutor/behavior"}
-  ]
 
   return (
     <>
