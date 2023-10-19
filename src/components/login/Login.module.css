@@ -1,3 +1,8 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 
 .formContainer{
   margin: auto;
@@ -28,4 +33,23 @@
 .submit{
   margin: auto;
   width: 30%;
+}
+
+.advice{
+  display: flex;
+  align-self: flex-end;
+  width: 40%;
+  padding: 2%;
+  background-color: rgb(112, 255, 112);
+  margin: 2%;
+}
+
+.user{
+  background-color: rgb(195, 245, 195);
+  padding: 2%;
+  border-radius: 15px;
+}
+
+.advice p {
+  margin: 0;
 }

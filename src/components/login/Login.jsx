@@ -12,10 +12,10 @@ const Login = () => {
   })
 
   return (
-    <>    
+    <div className={s.container}>    
       <div className={s.formContainer}>
       <h1>
-        Projecto
+        Proyecto Institute
       </h1>
         <form className={s.userForm}>
           <div className={s.columns}>
@@ -36,7 +36,16 @@ const Login = () => {
         </form>
         <LoginButton userName={inputs.userName} password={inputs.password} />
       </div>
-    </>
+
+      <div className={s.advice}>
+        <div className={s.user}>
+          <b>Admin</b>
+          <p>userName: Ruben123</p>
+          <p>password: 1234</p>
+        </div>
+      </div>
+
+    </div>
   )
 
 }
